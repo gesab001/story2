@@ -28,13 +28,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpErrorHandler }     from './http-error-handler.service';
 import { MessageService }       from './message.service';
+import { SlideshowComponent } from './slideshow/slideshow.component';
 //modules for autocomplete
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SlideshowComponent
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,7 @@ export class AppComponent {
   });
 
   stateGroups: StateGroup[];
-
+  storytitle: string;
   stateGroupOptions: Observable<StateGroup[]>;
   subscription;
   title = 'story';

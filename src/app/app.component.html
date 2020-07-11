@@ -4,6 +4,7 @@
 <form [formGroup]="stateForm">
   <mat-form-field>
     <input type="text"
+           [(ngModel)]='storytitle'
            matInput
            placeholder="Pick a story"
            formControlName="stateGroup"
@@ -18,4 +19,13 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
+<p>{{storytitle}}</p>
 
+<nav>
+  <ul>
+    <li><a [routerLink]="['/slideshow', storytitle]" routerLinkActive="active">View</a></li>
+    <li><a routerLink="/" routerLinkActive="active">Search</a></li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
