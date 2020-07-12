@@ -1,31 +1,44 @@
-<p>Stories</p>
-<button (click)="clearCache()">clear cache</button>
-<p>{{clearCacheConfirm}}</p>
-<form [formGroup]="stateForm">
-  <mat-form-field>
-    <input type="text"
-           [(ngModel)]='storytitle'
-           matInput
-           placeholder="Pick a story"
-           formControlName="stateGroup"
-           required
-           [matAutocomplete]="autoGroup">
-      <mat-autocomplete #autoGroup="matAutocomplete">
-        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-          <mat-option *ngFor="let name of group.names" [value]="name">
-            {{name}}
-          </mat-option>
-      </mat-optgroup>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
-<p>{{storytitle}}</p>
+<mat-drawer-container class="example-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="side">
 
-<nav>
-  <ul>
-    <li><a [routerLink]="['/slideshow', storytitle]" routerLinkActive="active">View</a></li>
-    <li><a routerLink="/" routerLinkActive="active">Search</a></li>
-  </ul>
-</nav>
+        <button (click)="clearCache()">clear cache</button>
+        <p>{{clearCacheConfirm}}</p>
+        <form [formGroup]="stateForm">
+          <mat-form-field>
+            <input type="text"
+                   [(ngModel)]='storytitle'
+                   matInput
+                   placeholder="Pick a story"
+                   formControlName="stateGroup"
+                   required
+                   [matAutocomplete]="autoGroup">
+              <mat-autocomplete #autoGroup="matAutocomplete">
+                <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{name}}
+                  </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+
+        <nav>
+          <ul>
+            <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+            <li><a [routerLink]="['/slideshow', storytitle]" routerLinkActive="active">{{storytitle}}</a></li>
+
+          </ul>
+        </nav>
+
+ </mat-drawer>
+  <mat-drawer-content>
+    <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
 <!-- The routed views render in the <router-outlet>-->
 <router-outlet></router-outlet>
+  
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+

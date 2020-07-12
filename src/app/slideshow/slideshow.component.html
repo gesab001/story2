@@ -5,17 +5,17 @@
   </ul>
   <div class="carousel-inner">
     <div class="carousel-item active ">
-      <img src="https://resources.stuff.co.nz/content/dam/images/4/y/m/7/v/x/image.related.StuffLandscapeSixteenByNine.710x400.20b6st.png/1588901774127.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="" width="1100" height="500">
+      <img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/sunset.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="">
       <div class="carousel-caption centered">
         <h1 class="textshadow display-1">{{storytitle}}</h1>
 
       </div>   
     </div>
     <div *ngFor="let slide of slides" class="carousel-item">
-      <img [src]="[slide['image']]"  onerror="this.src='https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg';" alt="Chicago" width="1100" height="500">
+      <img class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
       <div class="carousel-caption">
 
-        <p class="textshadow">{{slide["text"]}}</p>
+        <h1 class="textshadow ">{{slide["text"]}}</h1>
       </div>   
     </div>
   </div>
