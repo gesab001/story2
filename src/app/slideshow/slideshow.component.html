@@ -1,2 +1,30 @@
-<p>{{storytitle}}</p>
-<p *ngFor="let slide of slides">{{slide["text"]}}</p>
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li *ngFor="let slide of slides; index as i" data-target="#demo" [attr.data-slide-to]="i+1"></li>
+  </ul>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://resources.stuff.co.nz/content/dam/images/4/y/m/7/v/x/image.related.StuffLandscapeSixteenByNine.710x400.20b6st.png/1588901774127.jpg" alt="Los Angeles" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>{{storytitle}}</h3>
+
+      </div>   
+    </div>
+    <div *ngFor="let slide of slides" class="carousel-item">
+      <img [src]="[slide['image']]" alt="Chicago" width="1100" height="500">
+      <div class="carousel-caption">
+
+        <p>{{slide["text"]}}</p>
+      </div>   
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+

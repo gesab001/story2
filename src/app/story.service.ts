@@ -33,6 +33,7 @@ export class StoryService {
   }
 
   getData() {
+    this.clearCache();
     if (!this._data) {
       this._data = this.http
         .get(this.url)
