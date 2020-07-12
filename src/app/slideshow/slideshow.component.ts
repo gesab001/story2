@@ -21,7 +21,7 @@ export class SlideshowComponent implements OnInit {
      this.route.paramMap.subscribe(params => { this.storytitle = params.get('title');});
      let re = /\s/gi;   
      let filename = this.storytitle.replace(re, "_") + ".json";
-     this.storytitle = filename;
+     this.storytitle = this.storytitle.toUpperCase();
      this.loadData(filename);
   }
 

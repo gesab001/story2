@@ -1,21 +1,21 @@
-<div id="demo" class="carousel slide" data-ride="carousel">
+<div id="demo" class="carousel slide" data-ride="carousel" keyboard="true" data-wrap="false" data-interval="false">
   <ul class="carousel-indicators">
     <li data-target="#demo" data-slide-to="0" class="active"></li>
     <li *ngFor="let slide of slides; index as i" data-target="#demo" [attr.data-slide-to]="i+1"></li>
   </ul>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://resources.stuff.co.nz/content/dam/images/4/y/m/7/v/x/image.related.StuffLandscapeSixteenByNine.710x400.20b6st.png/1588901774127.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Los Angeles" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>{{storytitle}}</h3>
+    <div class="carousel-item active ">
+      <img src="https://resources.stuff.co.nz/content/dam/images/4/y/m/7/v/x/image.related.StuffLandscapeSixteenByNine.710x400.20b6st.png/1588901774127.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="" width="1100" height="500">
+      <div class="carousel-caption centered">
+        <h1 class="textshadow display-1">{{storytitle}}</h1>
 
       </div>   
     </div>
     <div *ngFor="let slide of slides" class="carousel-item">
-      <img [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago" width="1100" height="500">
+      <img [src]="[slide['image']]"  onerror="this.src='https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg';" alt="Chicago" width="1100" height="500">
       <div class="carousel-caption">
 
-        <p>{{slide["text"]}}</p>
+        <p class="textshadow">{{slide["text"]}}</p>
       </div>   
     </div>
   </div>
