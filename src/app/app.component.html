@@ -26,6 +26,7 @@
           <ul>
             <li><a routerLink="/" routerLinkActive="active">Home</a></li>
             <li><a [routerLink]="['/slideshow', storytitle]" routerLinkActive="active">{{storytitle}}</a></li>
+            <li *ngIf="storytitle!=null"><a [routerLink]="['/quiz', storytitle]" routerLinkActive="active">quiz</a></li>
 
           </ul>
         </nav>

@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorHandler }     from './http-error-handler.service';
 import { MessageService }       from './message.service';
 import { SlideshowComponent } from './slideshow/slideshow.component';
+import { QuizComponent } from './quiz/quiz.component';
 //modules for autocomplete
 
 
@@ -36,7 +37,8 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SlideshowComponent
+    SlideshowComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
