@@ -1,7 +1,24 @@
-<div *ngFor="let item of questions; let i=index;">
-    <h1>{{i+1}}. {{item.question}}</h1>
-    <div *ngFor="let choice of shuffle(item.choices); let i=index;">  
-        <p>{{letterchoices[i]}}. {{choice}}</p>
+<div class="container-fluid">
+  <h2 class="display-1" >Bible Quiz</h2>
+  <div class="card" >
+    <div class="card-header bg-success">
+        <h1 class="text-dark text-center ">{{questions[questionNumber].question}}</h1>
     </div>
+    <div class="card-body">
+        <div *ngFor="let choice of questions[questionNumber].choices; let i=index;">  
+            <br>
+            <button type="button" (click)="setAnswer(choice)" class="btn btn-warning">{{letterchoices[i]}}. {{choice}}</button>
+        </div>
+
+    </div> 
+    <div class="card-footer">
+    
+        <div class="d-flex justify-content-between">
+            <button (click)="onSubmit()"type="button" class="btn btn-primary">SUBMIT</button>
+            <p class="text-dark text-right p-2 ">{{questionNumber+1}}/5</p>
+        </div>
+    </div>
+  </div>
 </div>
+
 

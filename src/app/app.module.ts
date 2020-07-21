@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+//optional modules
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -20,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
