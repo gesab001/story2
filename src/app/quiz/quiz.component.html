@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div  class="container-fluid" [ngSwitch]="cardType">
   <h2 class="display-1" >Bible Quiz</h2>
-  <div class="card" >
+  <div *ngSwitchCase="'questionCard'" class="card" >
     <div class="card-header bg-success">
         <h1 class="text-dark text-center ">{{questions[questionNumber].question}}</h1>
     </div>
@@ -17,6 +17,18 @@
             <button (click)="onSubmit()"type="button" class="btn btn-primary">SUBMIT</button>
             <p class="text-dark text-right p-2 ">{{questionNumber+1}}/5</p>
         </div>
+    </div>
+  </div>
+ <div *ngSwitchCase="'scoreCard'" class="card" >
+    <div class="card-header bg-success">
+        <h1 class="text-dark text-center ">YOUR SCORE</h1>
+    </div>
+    <div class="card-body">
+        <p *ngIf="mistakes>1"class="text-dark text-center">you made {{mistakes}} mistakes</p>
+        <p *ngIf="mistakes<2"class="text-dark text-center">you made {{mistakes}} mistake</p>
+    </div> 
+    <div class="card-footer">
+                <button (click)="startAgain()"type="button" class="btn btn-primary">START AGAIN</button>
     </div>
   </div>
 </div>

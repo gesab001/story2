@@ -10,7 +10,10 @@ import { SlideshowService} from '../slideshow/slideshow.service';
 export class QuizComponent implements OnInit{
   storytitle: string;
   questions: any;
+  cardType: string = "questionCard";
+  totalcorrect: number = 0;
   correct: string = "";
+  mistakes: number = 0;
   answer: string = "";
   subscription;
   letterchoices: any = ['A', 'B', 'C', 'D'];
@@ -56,23 +59,34 @@ export class QuizComponent implements OnInit{
     }
 
   onSubmit(){
+    if (this.questionNumber==4){
+        this.cardType = "scoreCard";
+    }
     if (this.answer==""){
       alert("please choose an answer");
     }else{
         if(this.questions[this.questionNumber].answer  ==  this.answer){
             let congratsMessage = this.congrats[this.getRandomNumberBetween(0,this.congrats.length-1)];
+
             alert(congratsMessage);
             this.shuffleChoices();
+            
             this.questionNumber = this.questionNumber + 1;
             this.answer = "";
             this.setCorrectAnswer();
         }else{
            alert("wrong answer");
+           this.mistakes = this.mistakes + 1;
+           
         }
     }
+
   }
 
-
+  startAgain(){
+    this.cardType = "questionCard";
+    this.questionNumber = 0;
+  }
 
   shuffle(a) {
     var j, x, i;
