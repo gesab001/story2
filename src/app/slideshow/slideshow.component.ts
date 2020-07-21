@@ -11,18 +11,24 @@ import { ActivatedRoute } from '@angular/router';
 export class SlideshowComponent implements OnInit {
   subscription;
   storytitle: string;
+  quiztitle: string;
   constructor(private slideshowService: SlideshowService, private route: ActivatedRoute) {
       this.storytitle = "jesus";
+      this.quiztitle = "jesus";
   }
 
   slides: any;
   ngOnInit(): void {
 
-     this.route.paramMap.subscribe(params => { this.storytitle = params.get('title');});
-     let re = /\s/gi;   
-     let filename = this.storytitle.replace(re, "_") + ".json";
-     this.storytitle = this.storytitle.toUpperCase();
-     this.loadData(filename);
+     this.route.paramMap.subscribe(params => { 
+        this.storytitle = params.get('title');
+        this.quiztitle = this.storytitle;
+        let re = /\s/gi;   
+        let filename = this.storytitle.replace(re, "_") + ".json";
+        this.storytitle = this.storytitle.toUpperCase();
+        this.loadData(filename);
+     });
+    
   }
 
  loadData(filename) {

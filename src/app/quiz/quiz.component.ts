@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SlideshowService} from '../slideshow/slideshow.service';
 @Component({
@@ -7,7 +7,7 @@ import { SlideshowService} from '../slideshow/slideshow.service';
   styleUrls: ['./quiz.component.sass'],
   providers: [SlideshowService]
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit{
   storytitle: string;
   questions: any;
   subscription;
