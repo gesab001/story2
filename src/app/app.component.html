@@ -1,17 +1,18 @@
 <mat-drawer-container class="example-container" hasBackdrop="true">
-  <mat-drawer #drawer mode="side">
+  <mat-drawer #drawer mode="side" class="drawer">
 
         <button (click)="clearCache()">clear cache</button>
         <p>{{clearCacheConfirm}}</p>
         <form [formGroup]="stateForm">
-          <mat-form-field>
+          <mat-form-field class="searchField">
             <input type="text"
                    [(ngModel)]='storytitle'
                    matInput
                    placeholder="Pick a story"
                    formControlName="stateGroup"
                    required
-                   [matAutocomplete]="autoGroup">
+                   [matAutocomplete]="autoGroup"
+                   >
               <mat-autocomplete #autoGroup="matAutocomplete">
                 <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
                   <mat-option *ngFor="let name of group.names" [value]="name">
@@ -25,6 +26,7 @@
         <nav>
           <ul>
             <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+            <li><a [routerLink]="['/list', stateGroups]" routerLinkActive="active">list</a></li>
             <li><a [routerLink]="['/slideshow', storytitle]" routerLinkActive="active">{{storytitle}}</a></li>
             <li *ngIf="storytitle!=null"><a [routerLink]="['/quiz', storytitle]" routerLinkActive="active">quiz</a></li>
 

@@ -32,6 +32,8 @@ import { HttpErrorHandler }     from './http-error-handler.service';
 import { MessageService }       from './message.service';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { StorylistComponent } from './storylist/storylist.component';
 //modules for autocomplete
 
 
@@ -40,7 +42,9 @@ import { QuizComponent } from './quiz/quiz.component';
   declarations: [
     AppComponent,
     SlideshowComponent,
-    QuizComponent
+    QuizComponent,
+    HomepageComponent,
+    StorylistComponent
   ],
   imports: [
     BrowserModule,
