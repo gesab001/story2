@@ -67,7 +67,7 @@ export class QuizComponent implements OnInit{
     }else{
         if(this.questions[this.questionNumber].answer  ==  this.answer){
             let congratsMessage = this.congrats[this.getRandomNumberBetween(0,this.congrats.length-1)];
-
+            this.playAudio("correct2.mp3");
             alert(congratsMessage);
             this.shuffleChoices();
             
@@ -75,7 +75,9 @@ export class QuizComponent implements OnInit{
             this.answer = "";
             this.setCorrectAnswer();
         }else{
+           this.playAudio("wrong2.mp3");
            alert("wrong answer");
+
            this.mistakes = this.mistakes + 1;
            
         }
@@ -98,6 +100,14 @@ export class QuizComponent implements OnInit{
     }
     return a;
   }
+
+ playAudio(filename: string){
+  let audio = new Audio();
+  audio.src = "https://gesab001.github.io/assets/soundeffects/"+filename;
+  audio.load();
+  audio.play();
+ }
+
 
 }
 
