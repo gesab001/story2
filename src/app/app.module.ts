@@ -34,6 +34,8 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { StorylistComponent } from './storylist/storylist.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 //modules for autocomplete
 
 
@@ -70,7 +72,8 @@ import { StorylistComponent } from './storylist/storylist.component';
     MatTableModule,
     MatGridListModule,
     DeviceDetectorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]
