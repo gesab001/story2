@@ -1,37 +1,51 @@
 <mat-drawer-container class="example-container" hasBackdrop="true">
   <mat-drawer #drawer mode="side" class="drawer">
 
-        <button (click)="clearCache()">clear cache</button>
+        <!--<button (click)="clearCache()">clear cache</button>-->
+ <button mat-raised-button (click)="drawer.toggle()">close</button>
         <p>{{clearCacheConfirm}}</p>
         <form [formGroup]="stateForm">
           <mat-form-field class="searchField">
             <input type="text"
                    [(ngModel)]='storytitle'
                    matInput
-                   placeholder="Pick a story"
+                   placeholder="Search title"
                    formControlName="stateGroup"
                    required
                    [matAutocomplete]="autoGroup"
                    >
-              <mat-autocomplete #autoGroup="matAutocomplete">
+              <mat-autocomplete #autoGroup="matAutocomplete" class="autocomplete">
                 <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
                   <mat-option *ngFor="let name of group.names" [value]="name">
-                    {{name}}
+        <a (click)="drawer.close()" [routerLink]="['/slideshow', name]" routerLinkActive="active">{{name}}</a>
                   </mat-option>
               </mat-optgroup>
             </mat-autocomplete>
           </mat-form-field>
         </form>
 
-        <nav>
-          <ul>
-            <li><a routerLink="/" routerLinkActive="active">Home</a></li>
-            <li><a [routerLink]="['/list', stateGroups]" routerLinkActive="active">list</a></li>
-            <li><a [routerLink]="['/slideshow', storytitle]" routerLinkActive="active">{{storytitle}}</a></li>
-            <li *ngIf="storytitle!=null"><a [routerLink]="['/quiz', storytitle]" routerLinkActive="active">quiz</a></li>
 
-          </ul>
-        </nav>
+
+            <!--<ol><a routerLink="/" routerLinkActive="active">Home</a></ol>-->
+            <!--<ol><a [routerLink]="['/list', stateGroups]" routerLinkActive="active">list</a></li>-->
+
+            <!--<ol *ngIf="storytitle!=null"><a [routerLink]="['/quiz', storytitle]" routerLinkActive="active">quiz</a></ol>-->
+            <div class="container-fluid" >
+                  <div class="card mt-3" *ngFor="let group of stateGroups">
+                    <div class="card-header">
+                      <h1 class="text-dark">{{group.letter}}</h1>
+                    </div>
+                    <div class="card-body" >
+                         <div class="list-group list-group-flush w-100" >
+                             <a (click)="drawer.close()" *ngFor="let name of group.names" class="text-primary bg-light list-group-item list-group-item-action"  [routerLink]="['/slideshow', name]" routerLinkActive="active">{{name}}</a>
+                        </div> 
+
+                    </div>
+                  </div>
+            </div>
+
+
+
 
  </mat-drawer>
   <mat-drawer-content>
