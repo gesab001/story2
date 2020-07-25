@@ -22,6 +22,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
+import {CdkScrollableModule} from '@angular/cdk/scrolling'; 
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -73,6 +76,8 @@ import { environment } from '../environments/environment';
     MatGridListModule,
     DeviceDetectorModule,
     MatFormFieldModule,
+    CdkScrollableModule,
+    ScrollingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [HttpErrorHandler, MessageService],
