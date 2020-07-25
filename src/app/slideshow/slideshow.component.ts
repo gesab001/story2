@@ -26,29 +26,25 @@ export class SlideshowComponent implements OnInit {
       this.quiztitle = "jesus";
       this.currentSlide = -1;
       this.checkDeviceType();
-
+      this.checkOrientation();
   }
 
   checkDeviceType() {
-      alert('hello `Home` component');
       this.deviceInfo = this.deviceService.getDeviceInfo();
       this.isMobile = this.deviceService.isMobile();
       this.isTablet = this.deviceService.isTablet();
       this.isDesktop = this.deviceService.isDesktop();
-      alert(this.deviceInfo);
-      alert(this.isMobile);  // returns if the device is a mobile device (android / iPhone / windows-phone etc)
-      alert(this.isTablet);  // returns if the device us a tablet (iPad etc)
-      alert(this.isDesktop); // returns if the app is running on a Desktop browser.
-        if(window.innerHeight > window.innerWidth){
-            alert("you are on portrait mode");
+    }
+
+  checkOrientation(){
+      if(window.innerHeight > window.innerWidth){
             this.isPortrait = true;
             this.isLandscape = false;
         }else{
-           alert("you are on landscape mode");
            this.isLandscape = true;
-           this.isPortrait = false;
-        }
-    }
+           this.isPortrait = false
+      }
+  }
 
   slides: any;
   ngOnInit(): void {
