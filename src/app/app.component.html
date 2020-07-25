@@ -49,9 +49,9 @@
 
  </mat-drawer>
   <mat-drawer-content>
-    <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+    <a [routerLink]="['/']" routerLinkActive="active"mat-raised-button (click)="openDrawer($event)">MENU</a>
 <!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
   
 
   </mat-drawer-content>

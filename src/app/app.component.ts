@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {FormControl, FormBuilder, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -18,6 +18,7 @@ export const _filter = (opt: string[], value: string): string[] => {
   providers: [StoryService]
 })
 export class AppComponent {
+  @ViewChild('drawer')drawer;
  clearCacheConfirm: string;
  stateForm: FormGroup = this._formBuilder.group({
     stateGroup: '',
@@ -73,6 +74,14 @@ export class AppComponent {
     }
 
     return this.stateGroups;
+  }
+
+  public onRouterOutletActivate(event : any) {
+
+  }
+
+  openDrawer(evt) {
+     this.drawer.open();
   }
 
 }
