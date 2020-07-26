@@ -1,16 +1,19 @@
-import {ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ViewChild, Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import { SlideshowService} from './slideshow.service';
 import { ActivatedRoute } from '@angular/router';
   import { DeviceDetectorService } from 'ngx-device-detector';
+import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
   styleUrls: ['./slideshow.component.sass'],
-  providers: [SlideshowService],
+  providers: [SlideshowService, NgbCarouselConfig],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SlideshowComponent implements OnInit {
+  @ViewChild('myCarousel') myCarousel: NgbCarousel;
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   deviceInfo = null;
   isMobile: boolean;
   isTablet: boolean;
@@ -21,12 +24,17 @@ export class SlideshowComponent implements OnInit {
   storytitle: string;
   quiztitle: string;
   currentSlide: number;
-  constructor(private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
+  constructor(config: NgbCarouselConfig, private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
       this.storytitle = "jesus";
       this.quiztitle = "jesus";
-      this.currentSlide = -1;
+      this.currentSlide = 0;
       this.checkDeviceType();
       this.checkOrientation();
+
+        config.interval = 1000000;
+        config.wrap = false;
+        config.keyboard = true;
+        config.pauseOnHover = false;
   }
 
   checkDeviceType() {
@@ -60,6 +68,7 @@ export class SlideshowComponent implements OnInit {
 
      });
     
+     this.myCarousel.activeId='2';
   }
 
  loadData(filename) {
@@ -77,5 +86,25 @@ export class SlideshowComponent implements OnInit {
      this.currentSlide = this.currentSlide - 1;
   }
 
+ onSwipeLeft(evt) {
+     alert("left");
+  }
 
+  onSwipeRight(evt) {
+     alert("right");
+  }
+
+  onTap(evt){
+     alert("tap");
+  }
+
+
+  onSlide(event) {
+
+    alert(event)
+   
+  }
+  getCurrentSlide(event){
+    this.currentSlide = event.current;
+  }
 }

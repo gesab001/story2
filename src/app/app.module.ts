@@ -39,6 +39,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { StorylistComponent } from './storylist/storylist.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //modules for autocomplete
 
 
@@ -78,7 +79,8 @@ import { environment } from '../environments/environment';
     MatFormFieldModule,
     CdkScrollableModule,
     ScrollingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgbModule
   ],
   providers: [HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]
