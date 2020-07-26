@@ -68,7 +68,7 @@ export class SlideshowComponent implements OnInit {
 
      });
     
-     this.myCarousel.activeId='2';
+     this.myCarousel.activeId='0';
   }
 
  loadData(filename) {
@@ -80,6 +80,7 @@ export class SlideshowComponent implements OnInit {
   }
   nextSlideNumber(){
      this.currentSlide = this.currentSlide + 1; 
+
   }
  
   prevSlideNumber(){
@@ -88,10 +89,12 @@ export class SlideshowComponent implements OnInit {
 
  onSwipeLeft(evt) {
      alert("left");
+     this.myCarousel.activeId = (this.convertString(this.myCarousel.activeId) + 1).toString();
   }
 
   onSwipeRight(evt) {
      alert("right");
+     this.myCarousel.activeId = (this.convertString(this.myCarousel.activeId) - 1).toString();
   }
 
   onTap(evt){
@@ -105,6 +108,10 @@ export class SlideshowComponent implements OnInit {
    
   }
   getCurrentSlide(event){
-    this.currentSlide = event.current;
+    this.currentSlide = event.current-1;
+  }
+
+  convertString(value){
+    return parseFloat(value);
   }
 }

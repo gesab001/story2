@@ -1,27 +1,57 @@
+<div *ngIf="isPortrait">
+    <ngb-carousel #myCarousel="ngbCarousel"  (slide)="getCurrentSlide($event)" *ngIf="images" >
+      <ng-template ngbSlide id="0">
+        <img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/sunset.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="">
+        <div class="carousel-caption centered">
+           <h1 class="textshadow display-1">{{storytitle}}</h1>
+        </div>   
+      </ng-template>
+      <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
+              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
+      </ng-template>
 
-<ngb-carousel #myCarousel="ngbCarousel" (slide)="getCurrentSlide($event)" *ngIf="images" >
-  <ng-template ngbSlide id="0">
-    <img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/sunset.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="">
-    <div class="carousel-caption centered">
-       <h1 class="textshadow display-1">{{storytitle}}</h1>
-    </div>   
-  </ng-template>
-  <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
-          <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
-  </ng-template>
+      <ng-template ngbSlide id="slides.length">
 
-  <ng-template ngbSlide id="slides.length">
-
-    <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/quiztime.jpg" alt="quiztime"></a>
-    
-  </ng-template> 
-</ngb-carousel>
+        <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/quiztime.jpg" alt="quiztime"></a>
+        
+      </ng-template> 
+    </ngb-carousel>
 
 
-<div *ngIf="currentSlide>-1">
-<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+    <div *ngIf="currentSlide>-1">
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
 
-<h1 class="textshadow ">{{slides[currentSlide]["text"]}}</h1>
-</cdk-virtual-scroll-viewport>
+    <h1 class="textshadow ">{{slides[currentSlide]["text"]}}</h1>
+    </cdk-virtual-scroll-viewport>
 
+    </div>
 </div>
+
+<div *ngIf="isLandscape">
+    <ngb-carousel #myCarousel="ngbCarousel"  (slide)="getCurrentSlide($event)" *ngIf="images" >
+      <ng-template ngbSlide id="0">
+        <img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/sunset.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="">
+        <div class="carousel-caption centered">
+           <h1 class="textshadow display-1">{{storytitle}}</h1>
+        </div>   
+      </ng-template>
+      <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
+              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
+      </ng-template>
+
+      <ng-template ngbSlide id="slides.length">
+
+        <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/quiztime.jpg" alt="quiztime"></a>
+        
+      </ng-template> 
+    </ngb-carousel>
+
+
+    <div class="scrollmenu" *ngIf="currentSlide>-1">
+
+    <h1 class="textshadow ">{{slides[currentSlide]["text"]}}</h1>
+
+
+    </div>
+</div>
+
