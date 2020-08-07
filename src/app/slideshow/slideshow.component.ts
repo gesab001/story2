@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ViewChild, Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ViewChild, Component, OnInit, HostListener } from '@angular/core';
 import {Observable} from 'rxjs';
 import { SlideshowService} from './slideshow.service';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +12,7 @@ import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SlideshowComponent implements OnInit {
+
   @ViewChild('myCarousel') myCarousel: NgbCarousel;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   deviceInfo = null;
@@ -37,6 +38,12 @@ export class SlideshowComponent implements OnInit {
         config.pauseOnHover = false;
   }
 
+  @HostListener('window:resize', ['$event'])
+    onOrientationChange(event) {
+      this.checkOrientation();
+
+
+  }
   checkDeviceType() {
       this.deviceInfo = this.deviceService.getDeviceInfo();
       this.isMobile = this.deviceService.isMobile();
@@ -48,10 +55,13 @@ export class SlideshowComponent implements OnInit {
       if(window.innerHeight > window.innerWidth){
             this.isPortrait = true;
             this.isLandscape = false;
+
         }else{
            this.isLandscape = true;
-           this.isPortrait = false
+           this.isPortrait = false;
+
       }
+      
   }
 
   slides: any;
