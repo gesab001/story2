@@ -72,7 +72,7 @@
         </div>
         <div   *ngFor="let slide of slides; let i = index;" class="carousel-item">
           <div >
-              <a href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block imageslide" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>
+              <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block imageslide" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>
               <div class="carousel-caption">
 
                 <h1 class="textshadow ">{{slide["text"]}}</h1>
