@@ -41,6 +41,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JigsawComponent } from './jigsaw/jigsaw.component';
+import { MemorygameComponent } from './memorygame/memorygame.component';
 //modules for autocomplete
 
 
@@ -52,7 +53,8 @@ import { JigsawComponent } from './jigsaw/jigsaw.component';
     QuizComponent,
     HomepageComponent,
     StorylistComponent,
-    JigsawComponent
+    JigsawComponent,
+    MemorygameComponent
   ],
   imports: [
     BrowserModule,
