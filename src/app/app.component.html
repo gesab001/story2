@@ -37,7 +37,23 @@
                     </div>
                     <div class="card-body" >
                          <div class="list-group list-group-flush w-100" >
-                             <a (click)="drawer.close()" *ngFor="let name of group.names" class="text-primary bg-light list-group-item list-group-item-action"  [routerLink]="['/slideshow', name]" routerLinkActive="active">{{name}}</a>
+                             <div class="text-primary bg-light list-group-item list-group-item-action">
+                                 <div *ngFor="let name of group.names"   class="card mt-3">
+                                     <div class="card-header">
+                                          <h2 class="card-title">{{name}}</h2>
+                                     </div>
+                                     <div class="card-footer">
+                                          <a class="card-link" (click)="drawer.close()"  [routerLink]="['/slideshow', name]" routerLinkActive="active">Read Story</a>
+                                          <a (click)="drawer.close()" [routerLink]="['/quiz', name]" routerLinkActive="active" class="card-link">Quiz</a>
+                                          <a  (click)="drawer.close()" [routerLink]="['/jigsaw', name]" routerLinkActive="active"  class="btn btn-info" role="button" class="card-link" data-toggle="modal" data-target="#myModal">Jigsaw</a>
+
+                                          <a class="card-link">WordSearch</a>
+                                          <a class="card-link">Hangman</a>
+                                     </div>
+                                 </div>
+                             
+
+                             </div>
                         </div> 
 
                     </div>
@@ -56,6 +72,5 @@
 
   </mat-drawer-content>
 </mat-drawer-container>
-
 
 

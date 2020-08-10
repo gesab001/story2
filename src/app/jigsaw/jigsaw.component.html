@@ -1,0 +1,16 @@
+<!-- Page Content -->
+<div class="container">
+
+  <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">CHOOSE A PICTURE TO PLAY</h1>
+
+  <hr class="mt-2 mb-5">
+
+  <div class="row text-center text-lg-left">
+
+    <div  *ngFor="let slide of slides; let i = index;" id={{i+1}} class="col-lg-3 col-md-4 col-6">
+
+<a target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid img-thumbnail" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>
+    </div>
+  </div>
+
+</div>

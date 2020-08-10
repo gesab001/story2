@@ -40,6 +40,7 @@ import { StorylistComponent } from './storylist/storylist.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JigsawComponent } from './jigsaw/jigsaw.component';
 //modules for autocomplete
 
 
@@ -50,7 +51,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SlideshowComponent,
     QuizComponent,
     HomepageComponent,
-    StorylistComponent
+    StorylistComponent,
+    JigsawComponent
   ],
   imports: [
     BrowserModule,
