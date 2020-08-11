@@ -42,6 +42,7 @@ import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JigsawComponent } from './jigsaw/jigsaw.component';
 import { MemorygameComponent } from './memorygame/memorygame.component';
+import { HangmanComponent } from './hangman/hangman.component';
 //modules for autocomplete
 
 
@@ -54,7 +55,8 @@ import { MemorygameComponent } from './memorygame/memorygame.component';
     HomepageComponent,
     StorylistComponent,
     JigsawComponent,
-    MemorygameComponent
+    MemorygameComponent,
+    HangmanComponent
   ],
   imports: [
     BrowserModule,
