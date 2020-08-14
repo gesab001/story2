@@ -1,18 +1,18 @@
 import {ChangeDetectionStrategy, ViewChild, Component, OnInit, HostListener } from '@angular/core';
 import {Observable} from 'rxjs';
-import { HangmanService} from './hangman.service';
+import { WordsearchService} from './wordsearch.service';
 import { ActivatedRoute } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import * as CryptoJS from 'crypto-js';  
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
-  selector: 'app-hangman',
-  templateUrl: './hangman.component.html',
-  styleUrls: ['./hangman.component.sass'],
-  providers: [HangmanService, NgbCarouselConfig],
+  selector: 'app-wordsearch',
+  templateUrl: './wordsearch.component.html',
+  styleUrls: ['./wordsearch.component.sass'],
+  providers: [WordsearchService, NgbCarouselConfig],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HangmanComponent implements OnInit {
+export class WordsearchComponent implements OnInit {
 
  plainText:string;  
   encryptText: string;  
@@ -33,7 +33,7 @@ export class HangmanComponent implements OnInit {
   storytitle: string;
   quiztitle: string;
   currentSlide: number;
-  constructor(config: NgbCarouselConfig, private hangmanService: HangmanService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
+  constructor(config: NgbCarouselConfig, private wordsearchService: WordsearchService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
       this.storytitle = "jesus";
       this.quiztitle = "jesus";
       this.currentSlide = 0;
@@ -90,7 +90,7 @@ export class HangmanComponent implements OnInit {
   }
 
  loadData(filename) {
-    this.subscription = this.hangmanService.getData(filename).subscribe(
+    this.subscription = this.wordsearchService.getData(filename).subscribe(
       res => (this.slides = res["slides"]),
       error => console.log(error),
     );
@@ -136,7 +136,6 @@ export class HangmanComponent implements OnInit {
  //method is used to encrypt and decrypt the text  
   convertText(conversion:string) {  
       if (conversion=="encrypt") {  
-        this.plainText = this.getRandomWord();
         this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.plainText.trim(), this.encPassword.trim()).toString();  
       }  
       else {  
@@ -144,10 +143,6 @@ export class HangmanComponent implements OnInit {
 
     }  
   }  
-
-  getRandomNumberBetween(min,max){
-        return Math.floor(Math.random()*(max-min+1)+min);
-    }
 
   getWordList(){
 
@@ -172,15 +167,5 @@ export class HangmanComponent implements OnInit {
         }
      }
      return uniquewords;
-  }
-
-  getRandomWord(){
-    var wordlist:any = this.getWordList();
-    var totalwords:number = wordlist.length;
-    var index:number = this.getRandomNumberBetween(0,3);
-    var selectedword = wordlist[index];
-    return selectedword;
-    
-    
   }
 }

@@ -47,7 +47,7 @@
                                           <a (click)="drawer.close()" [routerLink]="['/quiz', name]" routerLinkActive="active" class="card-link">Quiz</a>
                                           <a  (click)="drawer.close()" [routerLink]="['/jigsaw', name]" routerLinkActive="active"  class="btn btn-info" role="button" class="card-link" data-toggle="modal" data-target="#myModal">Jigsaw</a>
 
-                                          <a class="card-link">WordSearch</a>
+                                          <a (click)="drawer.close()" [routerLink]="['/wordsearch', name]" routerLinkActive="active"  class="btn btn-info" role="button" class="card-link">WordSearch</a>
                                           <a (click)="drawer.close()" [routerLink]="['/hangman', name]" routerLinkActive="active"  class="btn btn-info" role="button" class="card-link">Hangman</a>
                                           <a class="card-link">Vocabulary</a>
                                           <a (click)="drawer.close()" [routerLink]="['/memorygame', name]" routerLinkActive="active"  class="btn btn-info" role="button" class="card-link">Memory Game</a> 

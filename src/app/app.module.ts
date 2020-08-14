@@ -43,6 +43,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JigsawComponent } from './jigsaw/jigsaw.component';
 import { MemorygameComponent } from './memorygame/memorygame.component';
 import { HangmanComponent } from './hangman/hangman.component';
+import { WordsearchComponent } from './wordsearch/wordsearch.component';
 //modules for autocomplete
 
 
@@ -56,7 +57,8 @@ import { HangmanComponent } from './hangman/hangman.component';
     StorylistComponent,
     JigsawComponent,
     MemorygameComponent,
-    HangmanComponent
+    HangmanComponent,
+    WordsearchComponent
   ],
   imports: [
     BrowserModule,

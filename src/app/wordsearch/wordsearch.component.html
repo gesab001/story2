@@ -1,29 +1,26 @@
-<h1>Hangman</h1>
+<p>hangman works!{{getWordList()}}</p>
 
-<p>{{getWordList()}}</p>
-
-<!--<h1 class="text-center">Encrypt-Decrypt with AES</h1>  -->
+<h1 class="text-center">Encrypt-Decrypt with AES</h1>  
 <br>  
 <div>  
   <div class="row">  
     <div class="col-sm-6">  
-<!--      <button type="button" class="btn btn-primary btn-lg btn-block">  
+      <button type="button" class="btn btn-primary btn-lg btn-block">  
         Encryption  
-      </button>  -->
+      </button>  
       <br>  
-  <div class="form-group">  
-        <label for="txtTextToConvert">Enter word length</label>  
-        <input type="number" class="form-control" placeholder="Enter number of letters in a word" [(ngModel)]="wordlength">  
+      <div class="form-group">  
+        <label for="txtTextToConvert">Plain Text</label>  
+        <input type="text" class="form-control" placeholder="Enter text you want to encrypt" [(ngModel)]="plainText">  
       </div>  
 <!--
       <div class="form-group">  
         <label for="txtPassword">Password</label>  
         <input type="password" class="form-control" placeholder="Enter encryption password" value="secret" [(ngModel)]="encPassword">  
       </div>  -->
-      <h2>Encrypted word</h2>
       <textarea class="form-control" readonly rows="3">{{conversionEncryptOutput}}</textarea>  
       <br>  
-      <button type="button" class="btn btn-success float-right" (click)="convertText('encrypt')">Get a word</button>  
+      <button type="button" class="btn btn-success float-right" (click)="convertText('encrypt')">Encrypt</button>  
 <a target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play</a>
     </div>  
 <!--
