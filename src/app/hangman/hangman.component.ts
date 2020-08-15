@@ -14,7 +14,7 @@ import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HangmanComponent implements OnInit {
 
- plainText:string;  
+  plainText:string;  
   encryptText: string;  
   encPassword: string = "secret";  
   decPassword:string;  
@@ -177,7 +177,7 @@ export class HangmanComponent implements OnInit {
   getRandomWord(){
     var wordlist:any = this.getWordList();
     var totalwords:number = wordlist.length;
-    var index:number = this.getRandomNumberBetween(0,3);
+    var index:number = this.getRandomNumberBetween(0,totalwords);
     var selectedword = wordlist[index];
     return selectedword;
     

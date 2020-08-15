@@ -143,9 +143,9 @@ export class WordsearchComponent implements OnInit {
 
     }  
   }  
-
+  wordlist: any = {"items": []};
   getWordList(){
-
+     this.wordlist["items"] = [];
      var words:string = "";
 
      for(var i=0; i<10; i++){
@@ -164,8 +164,9 @@ export class WordsearchComponent implements OnInit {
         if (uniquewords.includes(entry)==false)  {
            uniquewords.push(entry);
            uniquestring = uniquestring + " " + entry;
+           this.wordlist["items"].push(entry);
         }
      }
-     return uniquewords;
+     return JSON.stringify(this.wordlist);
   }
 }

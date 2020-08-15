@@ -1,27 +1,31 @@
-<p>hangman works!{{getWordList()}}</p>
+<h1>Wordsearch</h1>
 
-<h1 class="text-center">Encrypt-Decrypt with AES</h1>  
+<p>{{getWordList()}}</p>
+
+<!--<h1 class="text-center">Encrypt-Decrypt with AES</h1>  -->
 <br>  
 <div>  
   <div class="row">  
     <div class="col-sm-6">  
-      <button type="button" class="btn btn-primary btn-lg btn-block">  
+<!--      <button type="button" class="btn btn-primary btn-lg btn-block">  
         Encryption  
-      </button>  
+      </button>  -->
       <br>  
-      <div class="form-group">  
-        <label for="txtTextToConvert">Plain Text</label>  
-        <input type="text" class="form-control" placeholder="Enter text you want to encrypt" [(ngModel)]="plainText">  
+  <div class="form-group">  
+        <label for="txtTextToConvert">Enter word length</label>  
+        <input type="number" class="form-control" placeholder="Enter number of letters in a word" [(ngModel)]="wordlength">  
       </div>  
 <!--
       <div class="form-group">  
         <label for="txtPassword">Password</label>  
         <input type="password" class="form-control" placeholder="Enter encryption password" value="secret" [(ngModel)]="encPassword">  
       </div>  -->
-      <textarea class="form-control" readonly rows="3">{{conversionEncryptOutput}}</textarea>  
+     <!-- <h2>Encrypted word</h2>
+      <textarea class="form-control" readonly rows="3">{{conversionEncryptOutput}}</textarea>  -->
       <br>  
-      <button type="button" class="btn btn-success float-right" (click)="convertText('encrypt')">Encrypt</button>  
-<a target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play</a>
+      <!--<button type="button" class="btn btn-success float-right" (click)="convertText('encrypt')">Get a word</button>  -->
+<a  role="button" class="btn btn-success float-right"  target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/wordsearch?wordlist={{getWordList()}}">Play github</a>
+<a  role="button" class="btn btn-success float-right"  target="_blank" class="d-block mb-4 h-100" href="http://192.168.1.70/wordsearch?wordlist={{getWordList()}}">Play local</a>
     </div>  
 <!--
     <div class="col-sm-6">  
