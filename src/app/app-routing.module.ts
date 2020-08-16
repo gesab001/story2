@@ -7,6 +7,7 @@ import {JigsawComponent} from './jigsaw/jigsaw.component';
 import {MemorygameComponent} from './memorygame/memorygame.component';
 import {HangmanComponent} from './hangman/hangman.component';
 import {WordsearchComponent} from './wordsearch/wordsearch.component';
+import {VocabularyComponent} from './vocabulary/vocabulary.component';
 const routes: Routes = [
     {path: 'slideshow/:title', component: SlideshowComponent},
     {path: 'quiz/:title', component: QuizComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
     {path: 'jigsaw/:title', component: JigsawComponent},
     {path: 'memorygame/:title', component: MemorygameComponent},
     {path: 'hangman/:title', component: HangmanComponent},
-    {path: 'wordsearch/:title', component: WordsearchComponent}
+    {path: 'wordsearch/:title', component: WordsearchComponent},
+    {path: 'vocabulary/:title', component: VocabularyComponent}
 
 ];
 

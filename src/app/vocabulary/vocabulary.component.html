@@ -1,0 +1,56 @@
+<h1>Vocabulary</h1>
+      <br>  
+<label for="txtTextToConvert">Select word length</label>  
+  <div class="form-group">  
+        
+        <input type="number" class="form-control" placeholder="Enter number of letters in a word" [(ngModel)]="wordlength">  
+      </div>  
+<p *ngFor="let item of getWordList(); let i = index">{{i+1}}. {{item}}</p>
+
+<!--<h1 class="text-center">Encrypt-Decrypt with AES</h1>  -->
+<!--
+<br>  
+<div>  
+  <div class="row">  
+    <div class="col-sm-6">  
+<!--      <button type="button" class="btn btn-primary btn-lg btn-block">  
+        Encryption  
+      </button>  -->
+
+
+
+<!--
+      <div class="form-group">  
+        <label for="txtPassword">Password</label>  
+        <input type="password" class="form-control" placeholder="Enter encryption password" value="secret" [(ngModel)]="encPassword">  
+      </div>  -->
+
+<!--
+      <h2>Encrypted word</h2>
+      <textarea class="form-control" readonly rows="3">{{conversionEncryptOutput}}</textarea>  
+      <br>  
+      <button type="button" class="btn btn-success float-right" (click)="convertText('encrypt')">Get a word</button>  
+<a target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play</a>
+    </div>  
+
+<!--
+    <div class="col-sm-6">  
+      <button type="button" class="btn btn-dark btn-lg btn-block">  
+        Decryption  
+      </button>  
+      <br>  
+      <div class="form-group">  
+        <label for="txtTextToConvert">Encrypted Text</label>  
+        <input type="text" class="form-control" placeholder="Enter text you want to decrypt" [(ngModel)]="encryptText">  
+      </div>  
+
+      <div class="form-group">  
+        <label for="txtPassword">Password</label>  
+        <input type="password" class="form-control" placeholder="Enter decryption password" [(ngModel)]="decPassword">  
+      </div>  
+      <textarea class="form-control" readonly rows="3">{{conversionDecryptOutput}}</textarea>  
+      <br>  
+      <button type="button" class="btn btn-success float-right" (click)="convertText('decrypt')">Decrypt</button>  
+    </div>  
+  </div>  
+</div>-->
