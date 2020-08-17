@@ -208,7 +208,7 @@ export class HangmanComponent implements OnInit {
             word = wordlist[i];
         }
     }
-    return word;
+    return longest;
   }
 
   setWordLength(length: number){

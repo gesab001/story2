@@ -15,7 +15,7 @@
         <label for="txtTextToConvert">Enter word length</label>  
         <input type="number" class="form-control" placeholder="Enter number of letters in a word" [(ngModel)]="wordlength">  
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-          <div *ngFor="let i of [].constructor(12); let x=index">
+          <div *ngFor="let i of [].constructor(getLongestWord()); let x=index">
               <div class="btn-group mr-2" role="group" aria-label="First group">
                 <input type="submit" value="{{x+1}}"(click)="setWordLength(x+1)" class="btn btn-success">
 
