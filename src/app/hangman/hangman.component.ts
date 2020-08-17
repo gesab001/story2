@@ -145,6 +145,17 @@ export class HangmanComponent implements OnInit {
     }  
   }  
 
+  convertTextSelectedWord(conversion:string, selected:string) {  
+      if (conversion=="encrypt") {  
+        this.plainText = selected;
+        this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.plainText.trim(), this.encPassword.trim()).toString();  
+      }  
+      else {  
+        this.conversionDecryptOutput = CryptoJS.AES.decrypt(this.encryptText.trim(), this.decPassword.trim()).toString(CryptoJS.enc.Utf8);  
+
+    }  
+  } 
+
   getRandomNumberBetween(min,max){
         return Math.floor(Math.random()*(max-min+1)+min);
     }
@@ -180,7 +191,27 @@ export class HangmanComponent implements OnInit {
     var index:number = this.getRandomNumberBetween(0,totalwords);
     var selectedword = wordlist[index];
     return selectedword;
-    
-    
+  }
+
+ getLongestWord() {
+    var words:string = "";
+    for(var i=0; i<10; i++){
+      words = words + " " + this.slides[i]["text"];
+     }
+    words = words.toLowerCase().replace(/[^a-zA-Z ]/g, "");
+    var wordlist:any = words.split(" ");
+    var longest = 0;
+    var word = null;
+    for (var i = 0; i < wordlist.length; i++) {
+        if (longest < wordlist[i].length) {
+            longest = wordlist[i].length;
+            word = wordlist[i];
+        }
+    }
+    return word;
+  }
+
+  setWordLength(length: number){
+    this.wordlength = length;
   }
 }

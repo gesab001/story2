@@ -1,6 +1,6 @@
 <h1>Hangman</h1>
 
-<p>{{getWordList()}}</p>
+
 
 <!--<h1 class="text-center">Encrypt-Decrypt with AES</h1>  -->
 <br>  
@@ -14,7 +14,28 @@
   <div class="form-group">  
         <label for="txtTextToConvert">Enter word length</label>  
         <input type="number" class="form-control" placeholder="Enter number of letters in a word" [(ngModel)]="wordlength">  
-      </div>  
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div *ngFor="let i of [].constructor(12); let x=index">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <input type="submit" value="{{x+1}}"(click)="setWordLength(x+1)" class="btn btn-success">
+
+              </div>
+          </div>
+        </div>
+  </div>  
+
+<h2>Choose a word</h2>
+<p></p>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div *ngFor="let word of getWordList()">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-warning" (click)="convertTextSelectedWord('encrypt', word)">{{word}}</button>  
+      </div>
+  </div>
+</div>
+
+<h2>Or Random</h2>
+<button type="button" class="btn btn-warning" (click)="convertText('encrypt')">Get a random word</button>  
 <!--
       <div class="form-group">  
         <label for="txtPassword">Password</label>  
@@ -23,9 +44,13 @@
       <h2>Encrypted word</h2>
       <textarea class="form-control" readonly rows="3">{{conversionEncryptOutput}}</textarea>  
       <br>  
-      <button type="button" class="btn btn-success float-right" (click)="convertText('encrypt')">Get a word</button>  
-<a target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play</a>
-    </div>  
+      <div>  
+        <a target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play GitHub Server</a>
+      </div>
+      <div>
+       <a target="_blank" class="d-block mb-4 h-100" href="http://192.168.1.70/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play Local Server</a>
+      </div> 
+</div>  
 <!--
     <div class="col-sm-6">  
       <button type="button" class="btn btn-dark btn-lg btn-block">  

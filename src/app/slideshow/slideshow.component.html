@@ -7,7 +7,8 @@
         </div>   
       </ng-template>
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
-              <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>
+             <!-- <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>-->
+           <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
       </ng-template>
 
       <ng-template ngbSlide id="slides.length">
@@ -36,7 +37,7 @@
         </div>   
       </ng-template>
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
-              <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>
+              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
       </ng-template>
 
       <ng-template ngbSlide id="slides.length">
@@ -57,7 +58,7 @@
 
 
 <div *ngIf="isDesktop && isLandscape">
-    <div id="demo" class="carousel slide "  data-ride="carousel" keyboard="true" data-wrap="false" data-interval="false">
+    <div id="demo" class="carousel slide "  data-ride="carousel" data-wrap="false" data-interval="false">
       <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
         <li *ngFor="let slide of slides; index as i" data-target="#demo" [attr.data-slide-to]="i+1"></li>
@@ -72,7 +73,7 @@
         </div>
         <div   *ngFor="let slide of slides; let i = index;" class="carousel-item">
           <div >
-              <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block imageslide" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>
+             <img  class="img-fluid mx-auto d-block imageslide" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
               <div class="carousel-caption">
 
                 <h1 class="textshadow ">{{slide["text"]}}</h1>
@@ -103,7 +104,7 @@
         </div>   
       </ng-template>
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
-              <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>
+              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
       </ng-template>
 
       <ng-template ngbSlide id="slides.length">
