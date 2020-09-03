@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1597625834666,
+  "timestamp": 1599173197070,
   "index": "/story2/index.html",
   "assetGroups": [
     {
@@ -59,7 +59,7 @@
     "/story2/assets/icons/icon-76x76.png": "6260bdd11b587dd5a2dd744483be3bedfe3e92d6",
     "/story2/assets/icons/icon-96x96.png": "c164a29309124ef68a90553cf650c7ac46bfc133",
     "/story2/favicon.ico": "e735bf8cd9ea194decaff22434378e1fc3ae3c03",
-    "/story2/index.html": "7ceb972f3fdb34e67dd599f6e94d2a7c0a1efb0c",
+    "/story2/index.html": "0a56eca5dfa9189eff865b875c0e65136a06593d",
     "/story2/main-es2015.f145b1fb1d02195b9390.js": "f31da0e2880d62762846b8181db29ae235d86d0d",
     "/story2/main-es5.f145b1fb1d02195b9390.js": "d16c8a40c63b6f4ddfbeae89b2eae740659b32bc",
     "/story2/manifest.webmanifest": "86b10c942c48f1881fa38be749a9d081a5cfcbd6",
