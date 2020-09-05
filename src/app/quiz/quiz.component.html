@@ -7,7 +7,7 @@
     <div class="card-body">
         <div *ngFor="let choice of questions[questionNumber].choices; let i=index;">  
             <br>
-            <button type="button" (click)="setAnswer(choice)" class="btn btn-warning">{{letterchoices[i]}}. {{choice}}</button>
+            <button type="button" (click)="setAnswer(choice)" class="btn choice">{{letterchoices[i]}}. {{choice}}</button>
         </div>
 
     </div> 
