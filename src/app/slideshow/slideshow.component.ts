@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, ViewChild, Component, OnInit, HostListener } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {ChangeDetectionStrategy, ViewChild, Inject, Component, OnInit, HostListener, AfterViewInit, Renderer2 } from '@angular/core';
 import {Observable} from 'rxjs';
 import { SlideshowService} from './slideshow.service';
 import { ActivatedRoute } from '@angular/router';
@@ -16,6 +17,7 @@ export class SlideshowComponent implements OnInit {
   @ViewChild('myCarousel') myCarousel: NgbCarousel;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   deviceInfo = null;
+  
   isMobile: boolean;
   isTablet: boolean;
   isDesktop: boolean;
@@ -25,7 +27,10 @@ export class SlideshowComponent implements OnInit {
   storytitle: string;
   quiztitle: string;
   currentSlide: number;
-  constructor(config: NgbCarouselConfig, private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
+  nextSlide; 
+  previousSlide;
+  elem: any;
+  constructor(@Inject(DOCUMENT) private document: any, config: NgbCarouselConfig, private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService, private render: Renderer2) {
       this.storytitle = "jesus";
       this.quiztitle = "jesus";
       this.currentSlide = 0;
@@ -44,6 +49,37 @@ export class SlideshowComponent implements OnInit {
 
 
   }
+  
+   @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+     var key = event.key;
+
+    if (key==="PageUp"){
+		  this.previousSlide.click();
+ 
+    }
+    if (key==="PageDown"){
+        this.nextSlide.click();
+           
+    }
+  }
+  
+
+  ngAfterViewInit(){
+    this.nextSlide = document.querySelector('.carousel-control-next');
+      this.render.listen(this.nextSlide, 'click', (target)=>{
+        console.log('clicked', target);
+      });
+    console.log(this.nextSlide);
+     this.previousSlide = document.querySelector('.carousel-control-prev');
+      this.render.listen(this.previousSlide, 'click', (target)=>{
+        console.log('clicked', target);
+      });
+    console.log(this.previousSlide);
+    this.openFullscreen();
+
+  }
+  
   checkDeviceType() {
       this.deviceInfo = this.deviceService.getDeviceInfo();
       this.isMobile = this.deviceService.isMobile();
@@ -66,7 +102,7 @@ export class SlideshowComponent implements OnInit {
 
   slides: any;
   ngOnInit(): void {
-
+     this.elem = document.documentElement;
      this.route.paramMap.subscribe(params => { 
         this.storytitle = params.get('title');
         this.quiztitle = this.storytitle;
@@ -96,6 +132,38 @@ export class SlideshowComponent implements OnInit {
   prevSlideNumber(){
      this.currentSlide = this.currentSlide - 1;
   }
+
+ openFullscreen() {
+     console.log("fullscreen mode");
+        if (this.elem.requestFullscreen) {
+          this.elem.requestFullscreen();
+        } else if (this.elem.mozRequestFullScreen) {
+          /* Firefox */
+          this.elem.mozRequestFullScreen();
+        } else if (this.elem.webkitRequestFullscreen) {
+          /* Chrome, Safari and Opera */
+          this.elem.webkitRequestFullscreen();
+        } else if (this.elem.msRequestFullscreen) {
+          /* IE/Edge */
+          this.elem.msRequestFullscreen();
+        }
+ }
+ /* Close fullscreen */
+ closeFullscreen() {
+        if (this.document.exitFullscreen) {
+          this.document.exitFullscreen();
+        } else if (this.document.mozCancelFullScreen) {
+          /* Firefox */
+          this.document.mozCancelFullScreen();
+        } else if (this.document.webkitExitFullscreen) {
+          /* Chrome, Safari and Opera */
+          this.document.webkitExitFullscreen();
+        } else if (this.document.msExitFullscreen) {
+          /* IE/Edge */
+          this.document.msExitFullscreen();
+        }
+  }
+
 
  onSwipeLeft(evt) {
      alert("left");
