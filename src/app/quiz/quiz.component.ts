@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SlideshowService} from '../slideshow/slideshow.service';
 @Component({
@@ -9,6 +9,9 @@ import { SlideshowService} from '../slideshow/slideshow.service';
 })
 export class QuizComponent implements OnInit{
   storytitle: string;
+    elem: any;
+      buttonChoices;
+  feedback;
   questions: any;
   cardType: string = "questionCard";
   totalcorrect: number = 0;
@@ -19,10 +22,46 @@ export class QuizComponent implements OnInit{
   letterchoices: any = ['A', 'B', 'C', 'D'];
   questionNumber: number = 0;
   congrats: any = ["correct", "excellent", "awesome", "well done", "great job", "fantastic", "all right!", "exactly right", "exceptional", "sensational", "wonderful", "fabulous", "outstanding", "You're learning fast", "perfect", "You're doing well", "Unbelievable", "Way to go", "Marvelous", "Good for you", "That's great"];
-  constructor(private slideshowService: SlideshowService, private route: ActivatedRoute) { }
+  constructor(private slideshowService: SlideshowService, private route: ActivatedRoute, private render: Renderer2) { }
+  buttonChoiceIndex = -1;
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+     var key = event.key;
 
+    if (key==="b"){
+        //alert("pressed b");
+        this.setButtonChoiceIndex();
+    }
+        if (key==="PageDown"){
+		this.onSubmit();
+    }
+
+  }
+  
+  setButtonChoiceIndex(){
+        //alert(this.buttonChoices[this.buttonChoiceIndex].innerHTML);
+        if(this.buttonChoiceIndex>3){
+          this.buttonChoiceIndex = 0;
+        }
+        this.setAnswer();
+        console.log("this.answer:"+this.answer);
+        this.buttonChoiceIndex = this.buttonChoiceIndex + 1;
+
+    
+  }
+  
+  answerbuttonClick(event){
+    this.answer = event;
+  }
+  
+@HostListener('focus', ["$event"])
+    onFocus(event: KeyboardEvent) {
+        console.log("Focus called from HostListener");
+    }
+    
+  
   ngOnInit(): void {
-
+     this.elem = document.documentElement;
      this.route.paramMap.subscribe(params => { this.storytitle = params.get('title');});
      let re = /\s/gi;   
      let filename = this.storytitle.replace(re, "_") + ".json";
@@ -33,6 +72,13 @@ export class QuizComponent implements OnInit{
 
   }
 
+  ngAfterViewInit(){
+    this.setChoicesListener();
+    this.setButtonChoiceIndex();
+    this.openFullscreen();
+
+  }
+  
   loadData(filename) {
     this.subscription = this.slideshowService.getData(filename).subscribe(
       res => (this.questions = res["questions"]),
@@ -42,10 +88,28 @@ export class QuizComponent implements OnInit{
 
   setCorrectAnswer(){
     this.correct = this.questions[this.questionNumber].answer;
-  }
 
-  setAnswer(event){
-     this.answer = event;
+  }
+  setChoicesListener(){
+    
+    this.buttonChoices = document.querySelectorAll('.choice');
+     for (var x=0; x<this.buttonChoices.length; x++){
+      this.render.listen(this.buttonChoices[x], 'click', (target)=>{
+        console.log('clicked', target);
+        //this.setButtonChoiceIndex();
+        
+
+      });
+    }  
+  }
+  
+  destroyChoicesListener(){
+      this.render.destroy();
+  }
+  
+  setAnswer(){
+     this.answer = this.questions[this.questionNumber].choices[this.buttonChoiceIndex];
+     console.log("setAnswer: " + this.answer);
   }
   
   shuffleChoices(){
@@ -63,31 +127,47 @@ export class QuizComponent implements OnInit{
         this.cardType = "scoreCard";
     }
     if (this.answer==""){
-      alert("please choose an answer");
+      this.feedback = "please choose an answer";
+      this.buttonChoiceIndex = -1;
     }else{
+        console.log("questionanswer:"+this.questions[this.questionNumber].answer + "==" + this.answer);
         if(this.questions[this.questionNumber].answer  ==  this.answer){
             let congratsMessage = this.congrats[this.getRandomNumberBetween(0,this.congrats.length-1)];
             this.playAudio("correct2.mp3");
-            alert(congratsMessage);
+            this.feedback = congratsMessage;
             this.shuffleChoices();
             
             this.questionNumber = this.questionNumber + 1;
             this.answer = "";
             this.setCorrectAnswer();
+            this.buttonChoiceIndex = -1;
+            this.setButtonChoiceIndex();
+            
+
+            
         }else{
            this.playAudio("wrong2.mp3");
-           alert("wrong answer");
+          this.feedback = "wrong answer";
 
            this.mistakes = this.mistakes + 1;
            
         }
     }
 
+
+
   }
 
   startAgain(){
     this.cardType = "questionCard";
     this.questionNumber = 0;
+    this.buttonChoiceIndex = -1;
+    this.buttonChoices = document.querySelectorAll('.choice');
+     for (var x=0; x<this.buttonChoices.length; x++){
+      this.render.listen(this.buttonChoices[x], 'click', (target)=>{
+        console.log('clicked', target);
+      });
+    }
   }
 
   shuffle(a) {
@@ -108,6 +188,21 @@ export class QuizComponent implements OnInit{
   audio.play();
  }
 
+openFullscreen() {
+     console.log("fullscreen mode");
+        if (this.elem.requestFullscreen) {
+          this.elem.requestFullscreen();
+        } else if (this.elem.mozRequestFullScreen) {
+          /* Firefox */
+          this.elem.mozRequestFullScreen();
+        } else if (this.elem.webkitRequestFullscreen) {
+          /* Chrome, Safari and Opera */
+          this.elem.webkitRequestFullscreen();
+        } else if (this.elem.msRequestFullscreen) {
+          /* IE/Edge */
+          this.elem.msRequestFullscreen();
+        }
+ }
 
 }
 

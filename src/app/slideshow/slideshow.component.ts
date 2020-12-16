@@ -62,6 +62,15 @@ export class SlideshowComponent implements OnInit {
         this.nextSlide.click();
            
     }
+    
+    if(key==="b"){
+       alert("you pressed b");
+    }
+    
+    if(key==="Escape"){
+    
+      alert("you pressed escape");
+    }
   }
   
 
@@ -76,6 +85,9 @@ export class SlideshowComponent implements OnInit {
         console.log('clicked', target);
       });
     console.log(this.previousSlide);
+   
+    
+    
     this.openFullscreen();
 
   }
@@ -115,6 +127,8 @@ export class SlideshowComponent implements OnInit {
      });
     
      this.myCarousel.activeId='0';
+         this.openFullscreen();
+
   }
 
  loadData(filename) {

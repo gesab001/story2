@@ -7,7 +7,7 @@
     <div class="card-body">
         <div *ngFor="let choice of questions[questionNumber].choices; let i=index;">  
             <br>
-            <button type="button" (click)="setAnswer(choice)" class="btn choice">{{letterchoices[i]}}. {{choice}}</button>
+            <button type="button" (click)="answerbuttonClick(choice)" class="btn choice">{{letterchoices[i]}}. {{choice}}</button>
         </div>
 
     </div> 
@@ -15,6 +15,7 @@
     
         <div class="d-flex justify-content-between">
             <button (click)="onSubmit()"type="button" class="btn btn-primary">SUBMIT</button>
+            <p class="feedback">{{feedback}}</p> 
             <p class="text-dark text-right p-2 ">{{questionNumber+1}}/5</p>
         </div>
     </div>
