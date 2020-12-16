@@ -29,6 +29,7 @@ export class SlideshowComponent implements OnInit {
   currentSlide: number;
   nextSlide; 
   previousSlide;
+  quiztimeSlide;
   elem: any;
   constructor(@Inject(DOCUMENT) private document: any, config: NgbCarouselConfig, private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService, private render: Renderer2) {
       this.storytitle = "jesus";
@@ -60,6 +61,13 @@ export class SlideshowComponent implements OnInit {
     }
     if (key==="PageDown"){
         this.nextSlide.click();
+        console.log("currentslide:"+this.currentSlide);
+        if(this.currentSlide>10){
+           console.log('quiztime');
+           this.quiztimeSlide =  document.querySelector('.quiztime');
+           this.quiztimeSlide.click();
+
+        }
            
     }
     
