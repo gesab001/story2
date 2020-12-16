@@ -30,6 +30,11 @@ export class QuizComponent implements OnInit{
 
     if (key==="b"){
         //alert("pressed b");
+        console.log("index: " + this.buttonChoiceIndex);
+               if(this.buttonChoiceIndex>3){
+          this.buttonChoiceIndex = 0;
+        }
+        this.buttonChoices[this.buttonChoiceIndex].focus();
         this.setButtonChoiceIndex();
     }
         if (key==="PageDown"){
@@ -40,9 +45,7 @@ export class QuizComponent implements OnInit{
   
   setButtonChoiceIndex(){
         //alert(this.buttonChoices[this.buttonChoiceIndex].innerHTML);
-        if(this.buttonChoiceIndex>3){
-          this.buttonChoiceIndex = 0;
-        }
+ 
         this.setAnswer();
         console.log("this.answer:"+this.answer);
         this.buttonChoiceIndex = this.buttonChoiceIndex + 1;
