@@ -12,6 +12,7 @@ export class QuizComponent implements OnInit{
     elem: any;
       buttonChoices;
   feedback;
+  isfullscreen: boolean = true;
   questions: any;
   cardType: string = "questionCard";
   totalcorrect: number = 0;
@@ -27,18 +28,28 @@ export class QuizComponent implements OnInit{
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
      var key = event.key;
-
+    console.log("key:"+key);
     if (key==="b"){
         //alert("pressed b");
         console.log("index: " + this.buttonChoiceIndex);
                if(this.buttonChoiceIndex>3){
           this.buttonChoiceIndex = 0;
         }
+        this.buttonChoices = document.querySelectorAll('.choice');
         this.buttonChoices[this.buttonChoiceIndex].focus();
         this.setButtonChoiceIndex();
     }
         if (key==="PageDown"){
 		this.onSubmit();
+    }
+    console.log("isfullscreen:"+this.isfullscreen);
+
+    var isFullScreen = document.fullscreen;
+    console.log("fullscreenmode:" + isFullScreen);
+    if (!isFullScreen){ 
+		if (key==="Escape"){
+			this.openFullscreen();
+		}
     }
 
   }
@@ -76,7 +87,7 @@ export class QuizComponent implements OnInit{
   }
 
   ngAfterViewInit(){
-    this.setChoicesListener();
+    //this.setChoicesListener();
     this.setButtonChoiceIndex();
     this.openFullscreen();
 
@@ -206,6 +217,22 @@ openFullscreen() {
           this.elem.msRequestFullscreen();
         }
  }
+ 
+ /* Close fullscreen */
+      closeFullscreen() {
+        if (this.document.exitFullscreen) {
+          this.document.exitFullscreen();
+        } else if (this.document.mozCancelFullScreen) {
+          /* Firefox */
+          this.document.mozCancelFullScreen();
+        } else if (this.document.webkitExitFullscreen) {
+          /* Chrome, Safari and Opera */
+          this.document.webkitExitFullscreen();
+        } else if (this.document.msExitFullscreen) {
+          /* IE/Edge */
+          this.document.msExitFullscreen();
+        }
+      }
 
 }
 
