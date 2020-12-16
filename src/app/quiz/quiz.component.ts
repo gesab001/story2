@@ -220,17 +220,17 @@ openFullscreen() {
  
  /* Close fullscreen */
       closeFullscreen() {
-        if (this.document.exitFullscreen) {
-          this.document.exitFullscreen();
-        } else if (this.document.mozCancelFullScreen) {
+        if (this.elem.exitFullscreen) {
+          this.elem.exitFullscreen();
+        } else if (this.elem.mozCancelFullScreen) {
           /* Firefox */
-          this.document.mozCancelFullScreen();
-        } else if (this.document.webkitExitFullscreen) {
+          this.elem.mozCancelFullScreen();
+        } else if (this.elem.webkitExitFullscreen) {
           /* Chrome, Safari and Opera */
-          this.document.webkitExitFullscreen();
-        } else if (this.document.msExitFullscreen) {
+          this.elem.webkitExitFullscreen();
+        } else if (this.elem.msExitFullscreen) {
           /* IE/Edge */
-          this.document.msExitFullscreen();
+          this.elem.msExitFullscreen();
         }
       }
 
