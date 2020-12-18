@@ -74,7 +74,7 @@
         <div   *ngFor="let slide of slides; let i = index;" class="carousel-item">
           <div >
              <img  class="img-fluid mx-auto d-block imageslide" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
-              <div class="carousel-caption">
+              <div #carouselCaption class="carousel-caption" [ngClass]="{'hideCaption': isHiddenCaption}">
 
                 <h1 class="textshadow ">{{slide["text"]}}</h1>
               </div>

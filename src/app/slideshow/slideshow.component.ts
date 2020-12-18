@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import {ChangeDetectionStrategy, ViewChild, Inject, Component, OnInit, HostListener, AfterViewInit, Renderer2 } from '@angular/core';
+import {ChangeDetectionStrategy, ViewChild, Inject, Component, OnInit, HostListener, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
 import {Observable} from 'rxjs';
 import { SlideshowService} from './slideshow.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,9 +15,10 @@ import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 export class SlideshowComponent implements OnInit {
 
   @ViewChild('myCarousel') myCarousel: NgbCarousel;
+ //   @ViewChild("carouselCaption") carouselCaption: ElementRef;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   deviceInfo = null;
-  
+  isHiddenCaption: boolean = true;
   isMobile: boolean;
   isTablet: boolean;
   isDesktop: boolean;
@@ -72,8 +73,15 @@ export class SlideshowComponent implements OnInit {
     }
     
     if(key==="b"){
-       alert("you pressed b");
-    }
+       //alert("you pressed b");
+       //var carouselCaption =  document.querySelector('.carousel-caption');
+     //  this.carouselCaption.nativeElement.style.display = "none";  
+         if (this.isHiddenCaption){
+			  this.isHiddenCaption  = false;
+		 }else{
+		     this.isHiddenCaption  = true;
+		 }	  
+     }
     
     if(key==="Escape"){
     
