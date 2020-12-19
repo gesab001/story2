@@ -30,7 +30,7 @@
             <!--<ol><a [routerLink]="['/list', stateGroups]" routerLinkActive="active">list</a></li>-->
 
             <!--<ol *ngIf="storytitle!=null"><a [routerLink]="['/quiz', storytitle]" routerLinkActive="active">quiz</a></ol>-->
-            <div class="container-fluid" >
+            <div style="display:flex; flex-direction:column">
                   <div class="card mt-3" *ngFor="let group of stateGroups">
                     <div class="card-header">
                       <h1 class="text-dark">{{group.letter}}</h1>
