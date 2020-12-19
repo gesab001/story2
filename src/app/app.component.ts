@@ -84,6 +84,10 @@ export class AppComponent {
      this.drawer.open();
   }
 
-
+  getPoster(name){
+     var folder = name.replace(/\s/g, "").toLowerCase();
+     console.log("folder:", folder);
+     return "https://gesab001.github.io/assets/images/"+folder+"/poster.jpg";
+  }
 
 }
