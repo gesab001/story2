@@ -18,7 +18,10 @@ export class SlideshowComponent implements OnInit {
  //   @ViewChild("carouselCaption") carouselCaption: ElementRef;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   deviceInfo = null;
-  isHiddenCaption: boolean = true;
+  isHiddenCaption: boolean = false;
+  isHiddenImage: boolean = false;
+
+  hiddenNumber = 0;
   isMobile: boolean;
   isTablet: boolean;
   isDesktop: boolean;
@@ -74,13 +77,30 @@ export class SlideshowComponent implements OnInit {
     
     if(key==="b"){
        //alert("you pressed b");
+       this.hiddenNumber = this.hiddenNumber + 1;
+       console.log("hiddennumber: " + this.hiddenNumber);
        //var carouselCaption =  document.querySelector('.carousel-caption');
      //  this.carouselCaption.nativeElement.style.display = "none";  
-         if (this.isHiddenCaption){
-			  this.isHiddenCaption  = false;
-		 }else{
-		     this.isHiddenCaption  = true;
-		 }	  
+       if(this.hiddenNumber==1){
+		  this.isHiddenCaption  = true;
+ 
+	   }
+	   if(this.hiddenNumber==2){
+		  this.isHiddenCaption  = false;
+ 
+	   }
+	   if(this.hiddenNumber==3){
+	       this.isHiddenImage = true;
+	       console.log("hide image" + this.isHiddenImage);
+	   }
+	   if(this.hiddenNumber>3){
+	    this.isHiddenImage = false;
+	    console.log("hide image" + this.isHiddenImage);
+	    this.hiddenNumber = 0;
+        console.log("hiddennumber: " + this.hiddenNumber);
+
+	   }
+
      }
     
     if(key==="Escape"){
@@ -108,6 +128,14 @@ export class SlideshowComponent implements OnInit {
 
   }
   
+  getSlideImage(image){
+   	 if(this.isHiddenImage){
+   	      return "https://gesab001.github.io/assets/images/black.jpg";
+   	 }else{
+   	    return image;
+   	 }
+
+  }
   checkDeviceType() {
       this.deviceInfo = this.deviceService.getDeviceInfo();
       this.isMobile = this.deviceService.isMobile();
