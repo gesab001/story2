@@ -45,6 +45,7 @@ import { MemorygameComponent } from './memorygame/memorygame.component';
 import { HangmanComponent } from './hangman/hangman.component';
 import { WordsearchComponent } from './wordsearch/wordsearch.component';
 import { VocabularyComponent } from './vocabulary/vocabulary.component';
+
 //modules for autocomplete
 
 

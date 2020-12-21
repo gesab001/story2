@@ -1,8 +1,39 @@
+<mat-drawer-container class="example-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="side" class="drawer">
 
+        <!--<button (click)="clearCache()">clear cache</button>-->
+ <button mat-raised-button (click)="drawer.toggle()">close</button>
+        <p>{{clearCacheConfirm}}</p>
+        <form [formGroup]="stateForm">
+          <mat-form-field class="searchField">
+            <input type="text"
+                   [(ngModel)]='storytitle'
+                   matInput
+                   placeholder="Search title"
+                   formControlName="stateGroup"
+                   required
+                   [matAutocomplete]="autoGroup"
+                   >
+              <mat-autocomplete #autoGroup="matAutocomplete" class="autocomplete">
+                <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+        <a (click)="drawer.close()" [routerLink]="['/slideshow', name]" routerLinkActive="active">{{name}}</a>
+                  </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+
+
+
+            <!--<ol><a routerLink="/" routerLinkActive="active">Home</a></ol>-->
+            <!--<ol><a [routerLink]="['/list', stateGroups]" routerLinkActive="active">list</a></li>-->
+
+            <!--<ol *ngIf="storytitle!=null"><a [routerLink]="['/quiz', storytitle]" routerLinkActive="active">quiz</a></ol>-->
             <div style="display:flex; flex-direction:column">
                   <div  style="margin-bottom:50px"*ngFor="let group of stateGroups">
                     <div >
-                      <h1 style="font-weight:bold; color:white">{{group.letter}}</h1>
+                      <h1 style="font-weight:bold">{{group.letter}}</h1>
                     </div>
                     <div style="display:flex; flex-direction:row;  overflow:auto; white-space:nowrap;" >         
                                  <div *ngFor="let name of group.names"  style="flex-shrink:0">
@@ -12,7 +43,7 @@
 -->
                                      </div>
                                      <div style="padding: 10px">
-										  <a class="card-link" [routerLink]="['/slideshow', name]" routerLinkActive="active">  
+										  <a class="card-link" (click)="drawer.close()" [routerLink]="['/slideshow', name]" routerLinkActive="active">  
 											  <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name)"></a>
 <!--
                                           <a class="card-link" (click)="drawer.close()"  [routerLink]="['/slideshow', name]" routerLinkActive="active">Read Story</a>
@@ -35,3 +66,18 @@
                     </div>
                   </div>
             </div>
+
+
+
+
+ </mat-drawer>
+  <mat-drawer-content>
+    <a [routerLink]="['/']" routerLinkActive="active"mat-raised-button (click)="openDrawer($event)">MENU</a>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+  
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

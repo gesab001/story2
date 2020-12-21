@@ -8,7 +8,10 @@ import {MemorygameComponent} from './memorygame/memorygame.component';
 import {HangmanComponent} from './hangman/hangman.component';
 import {WordsearchComponent} from './wordsearch/wordsearch.component';
 import {VocabularyComponent} from './vocabulary/vocabulary.component';
+import {HomepageComponent} from './homepage/homepage.component';
+
 const routes: Routes = [
+    {path: '', component: HomepageComponent},
     {path: 'slideshow/:title', component: SlideshowComponent},
     {path: 'quiz/:title', component: QuizComponent},
     {path: 'list/:list', component: StorylistComponent},
