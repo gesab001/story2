@@ -41,4 +41,15 @@ export class HomepageComponent implements OnInit {
      console.log("folder:", folder);
      return "https://gesab001.github.io/assets/images/"+folder+"/poster.jpg";
   }
+  
+  isTitleNull(event){
+     console.log("number of titles: " + event.names.length);
+     var count = event.names.length;
+     if (count>0){
+        return true;
+     }else{
+          return false;
+
+     }
+  }
 }
