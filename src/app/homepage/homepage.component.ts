@@ -38,12 +38,10 @@ export class HomepageComponent implements OnInit {
 
   getPoster(name){
      var folder = name.replace(/\s/g, "").toLowerCase();
-     console.log("folder:", folder);
      return "https://gesab001.github.io/assets/images/"+folder+"/poster.jpg";
   }
   
   isTitleNull(event){
-     console.log("number of titles: " + event.names.length);
      var count = event.names.length;
      if (count>0){
         return true;
@@ -51,5 +49,27 @@ export class HomepageComponent implements OnInit {
           return false;
 
      }
+  }
+  
+  isSwipeNeeded (event){
+     var count = event.names.length;
+     if (count>7){
+        return true;
+     }else{
+          return false;
+
+     }
+  }
+  
+  swipeNext(id){
+     var element = document.getElementById(id);
+     element.scrollLeft += 1300;
+     
+  }
+  
+  swipePrev(id){
+     var element = document.getElementById(id);
+     element.scrollLeft -= 1300;
+     
   }
 }

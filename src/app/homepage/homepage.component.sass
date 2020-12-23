@@ -6,11 +6,14 @@
   color: white
   
 .row-container
-  overflow: auto
+  overflow: hidden
   white-space: nowrap
   position: relative
-  background-color: red
-
+  scroll-behavior: smooth
+ 
+.blankPoster
+  width: 100px
+  background-color: yellow
 
 .slide-container
   display: inline-block
@@ -25,33 +28,25 @@
    width:200px
    border-radius: 3px 3px 0 0
 
-.swipe-left-container
-
+.swipe-container
   position: absolute
   top: 0
   bottom: 0
   z-index:1
-  opacity: 0.5 
-  background-color: yellow
-  width: calc(((100% - 100% * 5 / 6)/ 2) + 1rem)
-
-.swipe-left-container:hover 
-
+  opacity: 0
+  background-color: black
+  width: 100px
+  
+.swipe-container:hover 
+  opacity: 0.5
   
 .swipe-right-container
-  position: absolute
-  top: 0
-  bottom: 0
   right: 0
-  z-index:1
-  opacity: 0.5 
-  background-color: yellow
-  width: calc(((100% - 100% * 5 / 6)/ 2) + 1rem)
   
 .swipe-button-prev
   position: absolute
   top: 50%
-  background-image: url(https://www.tvnz.co.nz/assets/images/belt-left-arrow-cc790ae979fe0317f53a1b05bcd1f3f2.svg)  
+  background-image: url(https://gesab001.github.io/assets/images/belt-left-arrow.svg)  
   background-size: 48px
   height: 44px
   width: 48px
@@ -60,7 +55,7 @@
   position: absolute
   top: 50%
   right: 0
-  background-image: url(https://www.tvnz.co.nz/assets/images/belt-right-arrow-adb45e0aea7ca31f3de9f799a8a8cfa7.svg)  
+  background-image: url(https://gesab001.github.io/assets/images/belt-right-arrow.svg)  
   background-size: 48px
   height: 44px
   width: 48px
