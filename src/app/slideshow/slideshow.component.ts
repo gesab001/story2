@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, ViewChild, Inject, Component, OnInit, HostListe
 import {Observable} from 'rxjs';
 import { SlideshowService} from './slideshow.service';
 import { ActivatedRoute } from '@angular/router';
-  import { DeviceDetectorService } from 'ngx-device-detector';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-slideshow',

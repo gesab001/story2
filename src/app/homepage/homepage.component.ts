@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {FormControl, FormBuilder, FormGroup} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import { StoryService} from '../story.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-homepage',
@@ -13,7 +14,8 @@ import { StoryService} from '../story.service';
 
 })
 export class HomepageComponent implements OnInit {
-
+  isMobile: boolean;
+  isDesktop: boolean;
  stateForm: FormGroup = this._formBuilder.group({
     stateGroup: '',
   });
@@ -23,12 +25,25 @@ export class HomepageComponent implements OnInit {
   storytitle: string;
   stateGroupOptions: Observable<StateGroup[]>;
   
-  constructor(private _formBuilder: FormBuilder,  private storyService: StoryService) { }
+  constructor(private deviceService: DeviceDetectorService, private _formBuilder: FormBuilder,  private storyService: StoryService) { 
+      this.checkDeviceType();
+      
+  }
 
   ngOnInit() {
     this.loadData();
   }
 
+  checkDeviceType() {
+ 
+      this.isMobile = this.deviceService.isMobile();
+      this.isDesktop = this.deviceService.isDesktop();
+      console.log("ismobile: " + this.isMobile);
+      console.log("isDesktop: " + this.isDesktop);
+      alert("ismobile: " + this.isMobile);
+
+    }
+    
  loadData() {
     this.subscription = this.storyService.getData().subscribe(
       res => (this.stateGroups = res),

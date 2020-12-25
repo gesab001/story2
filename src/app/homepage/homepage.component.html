@@ -5,16 +5,17 @@
 		<div   class="row-title">
 		  <h1>{{group.letter}}</h1>
 		</div>
-		<div *ngIf="isSwipeNeeded(group)">
-			<div (click)="swipePrev(group.letter)" class="swipe-container">
-				<div class="swipe-button-prev"></div>
-			</div>	 
-			<div (click)="swipeNext(group.letter)" class="swipe-container swipe-right-container">
-			   <div  class="swipe-button-next"></div>
-			</div>    		
-		</div>
-
-		<div id="{{group.letter}}" class="row-container"  >    
+		<div *ngIf="isDesktop">
+			<div *ngIf="isSwipeNeeded(group)">
+				<div (click)="swipePrev(group.letter)" class="swipe-container">
+					<div class="swipe-button-prev"></div>
+				</div>	 
+				<div (click)="swipeNext(group.letter)" class="swipe-container swipe-right-container">
+				   <div  class="swipe-button-next"></div>
+				</div>    		
+			</div>
+        </div>
+		<div id="{{group.letter}}" class="row-container" [ngClass]="{'row-container-desktop': isDesktop}"  >    
 			 <div class="slide-container"><div class="blankPoster"></div></div>
 			 <div class="slide-container" *ngFor="let name of group.names">
 				 
