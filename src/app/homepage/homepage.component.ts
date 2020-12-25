@@ -38,9 +38,9 @@ export class HomepageComponent implements OnInit {
  
       this.isMobile = this.deviceService.isMobile();
       this.isDesktop = this.deviceService.isDesktop();
-      console.log("ismobile: " + this.isMobile);
-      console.log("isDesktop: " + this.isDesktop);
-      alert("ismobile: " + this.isMobile);
+      //console.log("ismobile: " + this.isMobile);
+      //console.log("isDesktop: " + this.isDesktop);
+      //alert("ismobile: " + this.isMobile);
 
     }
     
