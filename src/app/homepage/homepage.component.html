@@ -44,7 +44,10 @@
 					  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active">  
 						  <div class="posterimage-container">
 							 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
-							 <div class="caption-container"><h2 class="caption">{{name.title}} {{name.description}}</h2></div>
+							 <div class="caption-container">
+								 <h1 class="caption">{{name.title}}</h1>
+								 <p class="caption">{{name.description}}</p>
+						     </div>
 						  </div>
 					  </a>
 				 </div>

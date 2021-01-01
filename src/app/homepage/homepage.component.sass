@@ -93,18 +93,27 @@
 
 
 .posterimage-container:hover .caption
-
   font-size: 1.5em
-  z-index: 1
-    
-.caption
+  
+.caption-container
+  position: absolute
+  bottom: 20px   
+  width: 350px
+  white-space: normal
 
-  z-index: -1
-  font-size: 1em
-  -webkit-transition: font-size 1s ease-in-out
-  -moz-transition: font-size 1s ease-in-out
-  -o-transition: font-size 1s ease-in-out
-  transition: font-size 1s ease-in-out
+
+.caption
+  padding: 5px
+
+  position: relative
+  font-size: 0em
+  -webkit-transition: font-size .5s ease
+  -moz-transition: font-size .5s ease
+  -o-transition: font-size .5s ease
+  transition: font-size .5s ease
+  color: white
+  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black
+  font-weight: bold
   
 .posterimage
    width:100%
