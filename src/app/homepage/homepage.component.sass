@@ -80,18 +80,35 @@
 .drawer
    width: 100%
 
+.posterimage-container
+  width: 200px
+  -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out
+  webkit-transition: width 1s ease-in-out, left 1.5s ease-in-out
+  moz-transition: width 1s ease-in-out, left 1.5s ease-in-out
+  -o-transition: width 1s ease-in-out, left 1.5s ease-in-out
+  transition: width 1s ease-in-out, left 1.5s ease-in-out
+    
+.posterimage-container:hover
+  width: 400px
+
+
+.posterimage-container:hover .caption
+
+  font-size: 1.5em
+  z-index: 1
+    
+.caption
+
+  z-index: -1
+  font-size: 1em
+  -webkit-transition: font-size 1s ease-in-out
+  -moz-transition: font-size 1s ease-in-out
+  -o-transition: font-size 1s ease-in-out
+  transition: font-size 1s ease-in-out
+  
 .posterimage
-   width:200px
+   width:100%
    border-radius: 3px
-   -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out
-   -webkit-transition: width 1s ease-in-out, left 1.5s ease-in-out
-   -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out
-   -o-transition: width 1s ease-in-out, left 1.5s ease-in-out
-   transition: width 1s ease-in-out, left 1.5s ease-in-out
-
-
-.posterimage:hover
-   width: 400px
 
 .swipe-container
   position: absolute
