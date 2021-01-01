@@ -58,6 +58,7 @@ export class HomepageComponent implements OnInit {
   
   isTitleNull(event){
      var count = event.names.length;
+     console.log("count: " + count);
      if (count>0){
         return true;
      }else{

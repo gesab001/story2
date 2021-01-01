@@ -41,8 +41,10 @@
 			 <div class="slide-container" *ngFor="let name of group.names">
 				 
 				 <div style="padding: 10px">
-					  <a class="card-link" [routerLink]="['/slideshow', name]" routerLinkActive="active">  
-						  <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name)"></a>
+					  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active">  
+						  <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">
+						  <p>{{name.title}}</p>
+					  </a>
 				 </div>
 			 </div>
 			 <div class="slide-container"><div class="blankPoster"></div></div>

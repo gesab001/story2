@@ -1,19 +1,19 @@
 <div *ngIf="isPortrait && isMobile">
     <ngb-carousel #myCarousel="ngbCarousel"  (slide)="getCurrentSlide($event)" *ngIf="images" >
       <ng-template ngbSlide id="0">
-        <img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/sunset.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="">
+        <img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/sunset.jpg" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="">
         <div class="carousel-caption centered">
            <h1 class="textshadow display-1">{{storytitle}}</h1>
         </div>   
       </ng-template>
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
-             <!-- <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago"></a>-->
-           <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"    onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
+             <!-- <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>-->
+           <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"    onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
       </ng-template>
 
       <ng-template ngbSlide id="slides.length">
 
-        <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/quiztime.jpg" alt="quiztime"></a>
+        <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
         
       </ng-template> 
     </ngb-carousel>
@@ -31,18 +31,18 @@
 <div *ngIf="isLandscape && isMobile">
     <ngb-carousel #myCarousel="ngbCarousel"  (slide)="getCurrentSlide($event)" *ngIf="images" >
       <ng-template ngbSlide id="0">
-        <img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/sunset.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="">
+        <img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/sunset.jpg" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="">
         <div class="carousel-caption centered">
            <h1 class="textshadow display-1">{{storytitle}}</h1>
         </div>   
       </ng-template>
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
-              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
+              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
       </ng-template>
 
       <ng-template ngbSlide id="slides.length">
 
-        <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/quiztime.jpg" alt="quiztime"></a>
+        <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
         
       </ng-template> 
     </ngb-carousel>
@@ -66,7 +66,7 @@
 		  </ul>
 		  <div class="carousel-inner">
 			<div class="carousel-item active ">
-			  <img class="imageslide" src="https://gesab001.github.io/assets/images/sunset.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="">
+			  <img class="imageslide" src="https://raw.githubusercontent.com/gesab001/assets/master/images/sunset.jpg" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="">
 			  <div class="carousel-caption centered">
 				<h1 class="textshadow display-1">{{storytitle}}</h1>
 
@@ -74,7 +74,7 @@
 			</div>
 			<div  *ngFor="let slide of slides; let i = index;" class="carousel-item" >
 
-					<img  class="imageslide"   [src]="getSlideImage([slide['image']])"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
+					<img  class="imageslide"   [src]="getSlideImage([slide['image']])"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
 				  <div class="carousel-caption" [ngClass]="{'hideCaption': isHiddenCaption}">
 
 					<h1 class="textshadow ">{{slide["text"]}}</h1>
@@ -83,7 +83,7 @@
 
 			<div class="carousel-item">
 			  
-		<a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block imageslide quiztime" src="https://gesab001.github.io/assets/images/quiztime.jpg" alt="quiztime"></a>
+		<a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block imageslide quiztime" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
 			</div>
 		  </div>
 		  <a (click)="prevSlideNumber()" class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -102,18 +102,18 @@
 <div *ngIf="isPortrait && isDesktop">
     <ngb-carousel #myCarousel="ngbCarousel"  (slide)="getCurrentSlide($event)" *ngIf="images" >
       <ng-template ngbSlide id="0">
-        <img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/sunset.jpg" onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="">
+        <img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/sunset.jpg" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="">
         <div class="carousel-caption centered">
            <h1 class="textshadow display-1">{{storytitle}}</h1>
         </div>   
       </ng-template>
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
-              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
+              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
       </ng-template>
 
       <ng-template ngbSlide id="slides.length">
 
-        <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://gesab001.github.io/assets/images/quiztime.jpg" alt="quiztime"></a>
+        <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
         
       </ng-template> 
     </ngb-carousel>
