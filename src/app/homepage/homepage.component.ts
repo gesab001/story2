@@ -15,6 +15,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class HomepageComponent implements OnInit {
   isMobile: boolean;
+  isHoverState: boolean = false;
+  isDefaultState: boolean = true;
   isDesktop: boolean;
  stateForm: FormGroup = this._formBuilder.group({
     stateGroup: '',
@@ -87,5 +89,21 @@ export class HomepageComponent implements OnInit {
      var element = document.getElementById(id);
      element.scrollLeft -= 1300;
      
+  }
+  
+  imageHoverIn(dom){
+      var defaultState = dom.childNodes[0].childNodes[0].childNodes[0];
+      defaultState.style.display = "none";
+      var hoverState = dom.childNodes[0].childNodes[0].childNodes[1];
+      hoverState.style.display = "block";
+
+ 
+  }
+  imageHoverOut(dom){
+     var defaultState = dom.childNodes[0].childNodes[0].childNodes[0];
+     defaultState.style.display = "block";
+     var hoverState = dom.childNodes[0].childNodes[0].childNodes[1];
+     hoverState.style.display = "none";
+
   }
 }

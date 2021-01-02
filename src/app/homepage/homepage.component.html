@@ -38,17 +38,28 @@
         </div>
 		<div id="{{group.letter}}" class="row-container" [ngClass]="{'row-container-desktop': isDesktop}"  >    
 			 <div class="slide-container"><div class="blankPoster"></div></div>
-			 <div class="slide-container" *ngFor="let name of group.names">
+			 <div class="slide-container" *ngFor="let name of group.names" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
 				 
 				 <div style="padding: 10px">
-					  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active">  
-						  <div class="posterimage-container">
-							 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
-							 <div class="caption-container">
-								 <h1 class="caption">{{name.title}}</h1>
-								 <p class="caption">{{name.description}}</p>
-						     </div>
+					  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
+						  <div class="default-state">
+							  <div class="posterimage-container">
+								 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+
+							  </div>						  
 						  </div>
+						  <div  class="hovered-state" style="display:none">
+								  <div class="posterimage-container">
+									 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+                                     <div class="caption-container">
+											<p class="caption">{{name.otherTitle}}</p>
+											<p class="caption">{{name.description}}</p>                                    
+                                     </div>
+                                     
+
+							  </div>					        
+						  </div>
+
 					  </a>
 				 </div>
 			 </div>

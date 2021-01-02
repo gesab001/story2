@@ -68,12 +68,15 @@
   white-space: nowrap
   position: relative
   scroll-behavior: smooth
+  padding-bottom: 50px
+  
 
 .row-container-desktop
   overflow: hidden
   white-space: nowrap
   position: relative
   scroll-behavior: smooth
+  
    
 .blankPoster
   width: 100px
@@ -97,23 +100,26 @@
   transition: width 1s ease-in-out, left 1.5s ease-in-out
     
 .posterimage-container:hover
-  width: 200px
+  width: 250px
+  border-bottom: 5px solid blue
 
 
 .posterimage-container:hover .caption
-  font-size: 1.5em
+  font-size: 16px
   
 .caption-container
-  display:flex
-  flex-direction: column
+  width: 250px
+  position: absolute
+  bottom: 60px
+  border-style: 5px solid red
   white-space: normal
 
 
 .caption
   padding: 5px
-
+  display: block
   position: relative
-  font-size: 0em
+  font-size: 0px
   -webkit-transition: font-size .5s ease
   -moz-transition: font-size .5s ease
   -o-transition: font-size .5s ease
