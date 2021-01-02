@@ -1,6 +1,6 @@
 .nav-container
   width: 100%
-  background-color: white
+  background-color: black
   height: 70px
   padding-left: 18.84px
   display: flex
@@ -11,7 +11,7 @@
   
 
 .nav-bar-items-left
-  background-color: yellow
+  background-color: black
   height: 100%
   display: flex
   flex-direction: row
@@ -19,19 +19,26 @@
   align-items: center
   flex: 1 1 0%
   
+  
 .nav-links
   font-size: 1.1875rem
   padding: 0 1.256rem
   font-weight: 500
   display: flex
+  color: white
+  text-decoration: none
   
 .nav-bar-items-right
   display: flex
   align-items: center
   font-size: 1.1875rem
+  color: white
+  text-decoration: none
 
 .user-profile-link
   width: 280px
+  color: white
+  font-weight: 500
   
   
 
@@ -52,8 +59,9 @@
    position: relative
 
 .row-title
-  font-weight: bold
+  font-weight: 500
   color: white
+  padding-left: 120px
   
 .row-container
   overflow: auto
@@ -81,7 +89,7 @@
    width: 100%
 
 .posterimage-container
-  width: 200px
+  width: 150px
   -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out
   webkit-transition: width 1s ease-in-out, left 1.5s ease-in-out
   moz-transition: width 1s ease-in-out, left 1.5s ease-in-out
@@ -89,16 +97,15 @@
   transition: width 1s ease-in-out, left 1.5s ease-in-out
     
 .posterimage-container:hover
-  width: 400px
+  width: 200px
 
 
 .posterimage-container:hover .caption
   font-size: 1.5em
   
 .caption-container
-  position: absolute
-  bottom: 20px   
-  width: 350px
+  display:flex
+  flex-direction: column
   white-space: normal
 
 
