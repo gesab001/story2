@@ -8,7 +8,7 @@
       </ng-template>
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
              <!-- <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>-->
-           <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"    onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
+           <img   class="img-fluid mx-auto d-block" [src]="[slide['image']]"    onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
           
       </ng-template>
 
@@ -21,7 +21,7 @@
 
 
     <div *ngIf="currentSlide>-1">
-		<div class="scrollmenu" style="white-space: nowrap; overflow:visible; background-color: black;">
+		<div style="white-space: normal; overflow:visible; background-color: black; ">
 		  <h1 class="textshadow">{{slides[currentSlide]["text"]}}</h1>
 	   
 		</div>
