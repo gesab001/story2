@@ -111,18 +111,26 @@ export class SlideshowComponent implements OnInit {
   
 
   ngAfterViewInit(){
-    var scrollmenu = document.getElementsByClassName('scrollmenu');
 
     this.nextSlide = document.querySelector('.carousel-control-next');
       this.render.listen(this.nextSlide, 'click', (target)=>{
         console.log('clicked', target);
-        scrollmenu[0].scrollLeft = 20;
+        var scrollmenu = document.getElementsByClassName('scrollmenu');
+        var container = scrollmenu[0];
+        //scrollmenu[0].scrollLeft = 20;
+        var dupe = container.cloneNode(true);
+        container.parentNode.replaceChild(dupe, container);
 
       });
     console.log(this.nextSlide);
      this.previousSlide = document.querySelector('.carousel-control-prev');
       this.render.listen(this.previousSlide, 'click', (target)=>{
         console.log('clicked', target);
+        var scrollmenu = document.getElementsByClassName('scrollmenu');
+        var container = scrollmenu[0];
+        //scrollmenu[0].scrollLeft = 20;
+        var dupe = container.cloneNode(true);
+        container.parentNode.replaceChild(dupe, container);
       });
     console.log(this.previousSlide);
    
