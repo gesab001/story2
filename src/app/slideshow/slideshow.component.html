@@ -9,6 +9,7 @@
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
              <!-- <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>-->
            <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"    onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
+          
       </ng-template>
 
       <ng-template ngbSlide id="slides.length">
@@ -20,10 +21,11 @@
 
 
     <div *ngIf="currentSlide>-1">
-    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-
-    <h1 class="textshadow ">{{slides[currentSlide]["text"]}}</h1>
-    </cdk-virtual-scroll-viewport>
+		<div class="scrollmenu" style="white-space: normal; overflow:visible; background-color: black;">
+		  <h1 class="textshadow">{{slides[currentSlide]["text"]}}</h1>
+	   
+		</div>
+  
 
     </div>
 </div>
@@ -48,9 +50,11 @@
     </ngb-carousel>
 
 
-    <div class="scrollmenu" *ngIf="currentSlide>-1">
-
-    <h1 class="textshadow ">{{slides[currentSlide]["text"]}}</h1>
+    <div *ngIf="currentSlide>-1">
+      <div class="scrollmenu">
+    <h1 class="textshadow">{{slides[currentSlide]["text"]}}</h1>
+     
+      </div> 
 
 
     </div>
@@ -76,8 +80,10 @@
 
 					<img  class="imageslide"   [src]="getSlideImage([slide['image']])"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
 				  <div class="carousel-caption" [ngClass]="{'hideCaption': isHiddenCaption}">
-
-					<h1 class="textshadow ">{{slide["text"]}}</h1>
+                   
+ 				     	<h1 class="textshadow ">{{slide["text"]}}</h1>
+                   
+      
 				  </div>
 			  </div>   
 
