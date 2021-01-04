@@ -24,6 +24,7 @@ export class SlideshowComponent implements OnInit {
   isHiddenImage: boolean = false;
   subscriptionScroll: Subscription;
   hiddenNumber = 0;
+  animateState = "running";
   isMobile: boolean;
   isTablet: boolean;
   isDesktop: boolean;
@@ -133,6 +134,21 @@ export class SlideshowComponent implements OnInit {
         h1.style.animation = "scroll-left "+lengthScroll+"s linear infinite";
         var dupe = container.cloneNode(true);
         container.parentNode.replaceChild(dupe, container);
+  }
+  
+  animatePause(){
+       var scrollmenu = document.getElementsByClassName('scrollmenu');
+       var container = scrollmenu[0];
+       var h1 = container.getElementsByTagName('h1')[0];
+       h1.style.animationPlayState = "paused";
+  }
+  
+  animateRun(){
+        var scrollmenu = document.getElementsByClassName('scrollmenu');
+       var container = scrollmenu[0];
+       var h1 = container.getElementsByTagName('h1')[0];
+       h1.style.animationPlayState = "running";     
+
   }
   
   
@@ -268,7 +284,15 @@ export class SlideshowComponent implements OnInit {
   }
 
   onTap(evt){
-     alert("tap");
+    // alert("tap");
+     if(this.animateState=="running"){
+        this.animatePause();
+        this.animateState = "paused";
+     }
+     else{
+        this.animateRun();
+        this.animateState = "running";
+     }
   }
 
 

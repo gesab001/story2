@@ -39,7 +39,7 @@
         </div>   
       </ng-template>
       <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
-              <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
+              <img   (tap)="onTap($event)"   class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
       </ng-template>
 
       <ng-template ngbSlide id="slides.length">
@@ -78,7 +78,7 @@
 			</div>
 			<div  *ngFor="let slide of slides; let i = index;" class="carousel-item" >
 
-					<img  class="imageslide"   [src]="getSlideImage([slide['image']])"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
+					<img class="imageslide"   [src]="getSlideImage([slide['image']])"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
 				  <div class="carousel-caption" [ngClass]="{'hideCaption': isHiddenCaption}">
                    
  				     	<h1 class="textshadow ">{{slide["text"]}}</h1>
