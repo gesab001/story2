@@ -5,6 +5,8 @@ import { SlideshowService} from './slideshow.service';
 import { ActivatedRoute } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { interval, Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
@@ -20,7 +22,7 @@ export class SlideshowComponent implements OnInit {
   deviceInfo = null;
   isHiddenCaption: boolean = false;
   isHiddenImage: boolean = false;
-
+  subscriptionScroll: Subscription;
   hiddenNumber = 0;
   isMobile: boolean;
   isTablet: boolean;
@@ -109,31 +111,48 @@ export class SlideshowComponent implements OnInit {
     }
   }
   
-
+  animateScrollText(){	
+        var scrollmenu = document.getElementsByClassName('scrollmenu');
+        var container = scrollmenu[0];
+        var scrollWidth = container.scrollWidth;
+		var cssAnimation = document.createElement('style');
+		cssAnimation.type = 'text/css';
+		var rules = document.createTextNode('@-webkit-keyframes scroll-left  {'+
+		'0% {  -webkit-transform: translateX(100%); }'+
+		'100% {  -webkit-transform: translateX(-'+scrollWidth+'px) }'+
+		'}');
+		cssAnimation.appendChild(rules);
+	    var newtext = this.slides[this.currentSlide]["text"];
+	    var h1 = container.getElementsByTagName('h1')[0];
+        h1.innerHTML = newtext; 
+        var lengthScroll = scrollWidth / 100;
+        //alert(lengthScroll);
+        //var lengthRule = document.createTextNode('animation: scroll-left 20s linear infinite');
+        //cssAnimation.appendChild(lengthRule);
+        h1.appendChild(cssAnimation);
+        h1.style.animation = "scroll-left "+lengthScroll+"s linear infinite";
+        var dupe = container.cloneNode(true);
+        container.parentNode.replaceChild(dupe, container);
+  }
+  
+  
   ngAfterViewInit(){
 
     this.nextSlide = document.querySelector('.carousel-control-next');
       this.render.listen(this.nextSlide, 'click', (target)=>{
-        console.log('clicked', target);
-        var scrollmenu = document.getElementsByClassName('scrollmenu');
-        var container = scrollmenu[0];
-
-	    var newtext = this.slides[this.currentSlide]["text"];
-        container.getElementsByTagName('h1')[0].innerHTML = newtext; 
-        var dupe = container.cloneNode(true);
-        container.parentNode.replaceChild(dupe, container);
+        // Create an Observable that will publish a value on an interval
+        //this.subscriptionScroll.unsubscribe();
+		//const source = interval(1000);
+		//const text = 'Your Text Here';
+		//this.subscriptionScroll = source.subscribe(val => this.animateScrollText());
+        this.animateScrollText();
 
       });
     console.log(this.nextSlide);
      this.previousSlide = document.querySelector('.carousel-control-prev');
       this.render.listen(this.previousSlide, 'click', (target)=>{
         console.log('clicked', target);
-        var scrollmenu = document.getElementsByClassName('scrollmenu');
-        var container = scrollmenu[0];
-	    var newtext = this.slides[this.currentSlide]["text"];
-        container.getElementsByTagName('h1')[0].innerHTML = newtext; 
-        var dupe = container.cloneNode(true);
-        container.parentNode.replaceChild(dupe, container);
+        this.animateScrollText();
       });
     console.log(this.previousSlide);
    
