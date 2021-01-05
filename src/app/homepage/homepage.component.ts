@@ -24,6 +24,7 @@ export class HomepageComponent implements OnInit {
   subscription;
 
   stateGroups: StateGroup[];
+  newGroups: StateGroup[];
   storytitle: string;
   stateGroupOptions: Observable<StateGroup[]>;
   

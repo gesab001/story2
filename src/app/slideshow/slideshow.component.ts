@@ -308,4 +308,8 @@ export class SlideshowComponent implements OnInit {
   convertString(value){
     return parseFloat(value);
   }
+  
+  test(){
+     alert("test");
+  }
 }
