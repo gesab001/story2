@@ -48,7 +48,7 @@ export class HomepageComponent implements OnInit {
     
  loadData() {
     this.subscription = this.storyService.getData().subscribe(
-      res => (this.stateGroups = res),
+      res => (this.stateGroups = res["atoz"]),
       error => console.log(error),
     );
   }
