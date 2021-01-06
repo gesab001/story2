@@ -1,6 +1,9 @@
 <div class="nav-container">
    <div class="mobile-nav">
-       <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">menu</mat-icon> 
+       <div><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">menu</mat-icon> </div>
+       <div><a class="nav-links" href="#">StoryIcon</a></div>
+	   <div style="padding-right:30px"><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">search</mat-icon></div>
+
    </div>
    	
   <div class="desktop-nav">
@@ -18,7 +21,9 @@
             <div class="search-bar" *ngIf="isSearchBar">
 		        <input type="text" placeholder="Search stories">
 		    </div>			
-			<mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">search</mat-icon> </div>
+			<mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">search</mat-icon> 
+	    </div>
+			
 		
     </div>  
    
