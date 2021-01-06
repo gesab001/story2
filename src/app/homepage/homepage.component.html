@@ -12,7 +12,7 @@
 		<a class="user-profile-link" [routerLink]="['']" routerLinkActive="active" *ngIf="isSearchBar==false">Giovanni</a>  
 		<div  class="search-icon-container">
             <div class="search-bar" *ngIf="isSearchBar">
-		        <input type="text" placeholder="Search story">
+		        <input type="text" placeholder="Search stories">
 		    </div>			
 			<mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">search</mat-icon> </div>
 		
@@ -23,53 +23,57 @@
 
 </div>
 
-<div class="cover-image" (click)="hideSearchBar()">
+<div class="search-results-content"></div>
+<div class="default-content">
+		<div class="cover-image" (click)="hideSearchBar()">
 
-</div>
-<div class="group-container"  *ngFor="let group of stateGroups" (click)="hideSearchBar()"> 
-	<div *ngIf="isTitleNull(group)">
-		<div   class="row-title">
-		  <h1>{{group.letter}}</h1>
 		</div>
-		<div *ngIf="isDesktop">
-			<div *ngIf="isSwipeNeeded(group)">
-				<div (click)="swipePrev(group.letter)" class="swipe-container">
-					<div class="swipe-button-prev"></div>
-				</div>	 
-				<div (click)="swipeNext(group.letter)" class="swipe-container swipe-right-container">
-				   <div  class="swipe-button-next"></div>
-				</div>    		
-			</div>
-        </div>
-		<div id="{{group.letter}}" class="row-container" [ngClass]="{'row-container-desktop': isDesktop}"  >    
-			 <div class="slide-container"><div class="blankPoster"></div></div>
-			 <div class="slide-container" *ngFor="let name of group.names" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
-				 
-				 <div style="padding: 10px">
-					  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
-						  <div class="default-state">
-							  <div class="posterimage-container">
-								 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+		<div class="group-container"  *ngFor="let group of stateGroups" (click)="hideSearchBar()"> 
+			<div *ngIf="isTitleNull(group)">
+				<div   class="row-title">
+				  <h1>{{group.letter}}</h1>
+				</div>
+				<div *ngIf="isDesktop">
+					<div *ngIf="isSwipeNeeded(group)">
+						<div (click)="swipePrev(group.letter)" class="swipe-container">
+							<div class="swipe-button-prev"></div>
+						</div>	 
+						<div (click)="swipeNext(group.letter)" class="swipe-container swipe-right-container">
+						   <div  class="swipe-button-next"></div>
+						</div>    		
+					</div>
+				</div>
+				<div id="{{group.letter}}" class="row-container" [ngClass]="{'row-container-desktop': isDesktop}"  >    
+					 <div class="slide-container"><div class="blankPoster"></div></div>
+					 <div class="slide-container" *ngFor="let name of group.names" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
+						 
+						 <div style="padding: 10px">
+							  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
+								  <div class="default-state">
+									  <div class="posterimage-container">
+										 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
 
-							  </div>						  
-						  </div>
-						  <div  class="hovered-state" style="display:none">
-								  <div class="posterimage-container">
-									 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
-                                     <div class="caption-container">
-											<p class="caption">{{name.otherTitle}}</p>
-											<p class="caption">{{name.description}}</p>                                    
-                                     </div>
-                                     
+									  </div>						  
+								  </div>
+								  <div  class="hovered-state" style="display:none">
+										  <div class="posterimage-container">
+											 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+											 <div class="caption-container">
+													<p class="caption">{{name.otherTitle}}</p>
+													<p class="caption">{{name.description}}</p>                                    
+											 </div>
+											 
 
-							  </div>					        
-						  </div>
+									  </div>					        
+								  </div>
 
-					  </a>
-				 </div>
-			 </div>
-			 <div class="slide-container"><div class="blankPoster"></div></div>
+							  </a>
+						 </div>
+					 </div>
+					 <div class="slide-container"><div class="blankPoster"></div></div>
+				</div>
+			</div>	
 		</div>
-	</div>	
 </div>
+
 
