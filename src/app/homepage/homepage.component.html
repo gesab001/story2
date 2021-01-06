@@ -1,6 +1,6 @@
 <div class="nav-container">
 	
-	<div class="nav-bar-items-left">
+	<div class="nav-bar-items-left" (click)="hideSearchBar()">
 		
 		    <a class="nav-links" href="#">StoryIcon</a>
 			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">Home</a>
@@ -9,8 +9,13 @@
 			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">News</a>
 	</div>
     <div class="nav-bar-items-right"  >
-		<a class="user-profile-link" [routerLink]="['']" routerLinkActive="active">Giovanni</a>  
-		<a [routerLink]="['']" routerLinkActive="active">Search</a>  
+		<a class="user-profile-link" [routerLink]="['']" routerLinkActive="active" *ngIf="isSearchBar==false">Giovanni</a>  
+		<div  class="search-icon-container">
+            <div class="search-bar" *ngIf="isSearchBar">
+		        <input type="text" placeholder="Search story">
+		    </div>			
+			<mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">search</mat-icon> </div>
+		
     </div>
 
         
@@ -18,10 +23,10 @@
 
 </div>
 
-<div class="cover-image">
+<div class="cover-image" (click)="hideSearchBar()">
 
 </div>
-<div class="group-container"  *ngFor="let group of stateGroups">
+<div class="group-container"  *ngFor="let group of stateGroups" (click)="hideSearchBar()"> 
 	<div *ngIf="isTitleNull(group)">
 		<div   class="row-title">
 		  <h1>{{group.letter}}</h1>

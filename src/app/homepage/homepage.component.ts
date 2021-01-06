@@ -14,6 +14,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 
 })
 export class HomepageComponent implements OnInit {
+  isSearchBar: boolean = false;
   isMobile: boolean;
   isHoverState: boolean = false;
   isDefaultState: boolean = true;
@@ -106,5 +107,13 @@ export class HomepageComponent implements OnInit {
      var hoverState = dom.childNodes[0].childNodes[0].childNodes[1];
      hoverState.style.display = "none";
 
+  }
+  
+  showSearchBar(){
+      this.isSearchBar = true;    
+  }
+  
+  hideSearchBar(){
+      this.isSearchBar = false;
   }
 }
