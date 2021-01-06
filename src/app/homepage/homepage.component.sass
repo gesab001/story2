@@ -20,6 +20,21 @@ mat-icon
   position: fixed
   z-index: 5
 
+.desktop-nav
+  display: none
+  flex-direction: row
+  width: 100%
+  @media screen and (min-width: 990px)
+     display: flex
+       
+.mobile-nav
+  display: none
+  flex-direction: row
+  width: 100%
+  z-index: 20
+  color: white
+  @media screen and (max-width: 989px)
+     display: flex
   
 .carousel-indicators  
   z-index: 0
