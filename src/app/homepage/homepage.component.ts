@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StateGroup } from '../stategroup';
+import { TitleGroup } from '../titlegroup';
 import {Observable} from 'rxjs';
 import {FormControl, FormBuilder, FormGroup} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith, filter} from 'rxjs/operators';
 import { StoryService} from '../story.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
@@ -24,9 +25,15 @@ export class HomepageComponent implements OnInit {
     stateGroup: '',
   });
   subscription;
-
+  isSearchMode: boolean = false;
+  isDefaultMode: boolean = true;
   stateGroups: StateGroup[];
+  stateGroupsSearchable: any = [];
+  filteredStateGroups: StateGroup[];
+  searchResultsStateGroup; 
+
   newGroups: StateGroup[];
+  searchableTitles: [];
   storytitle: string;
   stateGroupOptions: Observable<StateGroup[]>;
   
@@ -48,10 +55,23 @@ export class HomepageComponent implements OnInit {
       //alert("ismobile: " + this.isMobile);
 
     }
+ 
+ setSearchData(group: StateGroup[]){
+    for (var x=0; x<group.length; x++){
+        var names = group[x]["names"];
+        if(names.length>0){
+           for (var y=0; y<names.length; y++){
+                 this.stateGroupsSearchable.push(names[y]);
+           }
+        }
+    }
+         console.log(this.stateGroupsSearchable);
+
+ }
     
  loadData() {
     this.subscription = this.storyService.getData().subscribe(
-      res => (this.stateGroups = res["atoz"]),
+      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"])),
       error => console.log(error),
     );
   }
@@ -63,7 +83,7 @@ export class HomepageComponent implements OnInit {
   
   isTitleNull(event){
      var count = event.names.length;
-     console.log("count: " + count);
+     //console.log("count: " + count);
      if (count>0){
         return true;
      }else{
@@ -136,4 +156,24 @@ export class HomepageComponent implements OnInit {
     var items = document.getElementById("items");
     items.style.display = "none";
   }
+  
+  searchTitle(event){
+     this.searchResultsStateGroup = [];
+     var title = event.target.value;
+     if (title.length>0){
+        this.isSearchMode = true; 
+        this.isDefaultMode = false;
+     }
+     else {
+       this.isSearchMode = false;
+       this.isDefaultMode = true;
+     };
+	 var re = new RegExp(title, 'gi');
+	 var matches = this.stateGroupsSearchable.filter(item => item["otherTitle"].match(re));       
+     this.searchResultsStateGroup = matches;
+     console.log(this.searchResultsStateGroup);
+
+     
+  } 
+ 
 }
