@@ -81,7 +81,7 @@
 
 <div *ngIf="isSearchMode" class="search-results-content">
 
-				<div class="row-container" [ngClass]="{'row-container-desktop': isDesktop}"  >    
+				<div class="row-container-results"  >    
 					 <div class="slide-container"><div class="blankPoster"></div></div>
 					 <div class="slide-container" *ngFor="let name of searchResultsStateGroup" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
 						 

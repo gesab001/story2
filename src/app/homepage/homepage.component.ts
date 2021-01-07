@@ -169,7 +169,7 @@ export class HomepageComponent implements OnInit {
        this.isDefaultMode = true;
      };
 	 var re = new RegExp(title, 'gi');
-	 var matches = this.stateGroupsSearchable.filter(item => item["otherTitle"].match(re));       
+	 var matches = this.stateGroupsSearchable.filter(item => item["otherTitle"].match(re) || item["description"].match(re) );       
      this.searchResultsStateGroup = matches;
      console.log(this.searchResultsStateGroup);
 
