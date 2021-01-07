@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StateGroup } from '../stategroup';
 import {Observable} from 'rxjs';
 import {FormControl, FormBuilder, FormGroup} from '@angular/forms';
@@ -14,6 +14,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 
 })
 export class HomepageComponent implements OnInit {
+  panelOpenState = false;
   isSearchBar: boolean = false;
   isMobile: boolean;
   isHoverState: boolean = false;
@@ -115,5 +116,24 @@ export class HomepageComponent implements OnInit {
   
   hideSearchBar(){
       this.isSearchBar = false;
+  }
+  
+  openSideNav(){
+    var nav = document.getElementById("side-menu"); 
+    nav.style.width = "100%";
+    var menuItems = document.getElementById("menu-items");
+    menuItems.style.display = "block";
+    var items = document.getElementById("items");
+    items.style.display = "block";
+
+  }
+  
+  closeSideNav(){
+    var nav = document.getElementById("side-menu");
+    nav.style.width = "0%";
+    var menuItems = document.getElementById("menu-items");
+    menuItems.style.display = "block";
+    var items = document.getElementById("items");
+    items.style.display = "none";
   }
 }
