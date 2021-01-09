@@ -31,8 +31,8 @@ export class HomepageComponent implements OnInit {
   stateGroupsSearchable: any = [];
   filteredStateGroups: StateGroup[];
   searchResultsStateGroup; 
-
-  newGroups: StateGroup[];
+  latestTitle: string;
+  newList: any = null;
   searchableTitles: [];
   storytitle: string;
   stateGroupOptions: Observable<StateGroup[]>;
@@ -71,11 +71,19 @@ export class HomepageComponent implements OnInit {
     
  loadData() {
     this.subscription = this.storyService.getData().subscribe(
-      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"])),
+      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"]), this.newList = res["new"], this.loadCoverImage()),
       error => console.log(error),
     );
   }
 
+  loadCoverImage(){
+     var element = document.getElementById("cover-image");
+     var latestIndex = this.newList.length - 1;
+     var url = this.newList[latestIndex]["newcoverposter"];
+     this.latestTitle = this.newList[latestIndex]["title"];
+     console.log(url);
+     element.style.backgroundImage = "linear-gradient(to bottom,transparent,transparent,transparent,#000), url("+url+")"; 
+  }
   getPoster(name){
      var folder = name.replace(/\s/g, "").toLowerCase();
      return "https://gesab001.github.io/assets/images/"+folder+"/poster.jpg";
@@ -169,7 +177,7 @@ export class HomepageComponent implements OnInit {
        this.isDefaultMode = true;
      };
 	 var re = new RegExp(title, 'gi');
-	 var matches = this.stateGroupsSearchable.filter(item => item["otherTitle"].match(re) || item["description"].match(re) );       
+	 var matches = this.stateGroupsSearchable.filter(item => item["otherTitle"].match(re) || item["description"].match(re) || item["title"].match(re));       
      this.searchResultsStateGroup = matches;
      console.log(this.searchResultsStateGroup);
 
