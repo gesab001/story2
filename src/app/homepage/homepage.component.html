@@ -116,9 +116,15 @@
 	    <div style="height:70px; background-color: red;"></div>
 		<a class="card-link" [routerLink]="['/slideshow', latestTitle]" routerLinkActive="active"  >  
 			<div  id="cover-image" (click)="hideSearchBar()">
-
+			  <div class="cover-title">
+				 <div>
+					 <h1  style="display:flex; font-size: inherit" class="text-shadow">{{latestTitle}}</h1>
+					 <p style="font-size:initial; padding-top: 20px; width: 60%" class="text-shadow">{{latestDescription}}</p>
+			     </div>
+			  </div>
 			</div>
 		</a>	
+		
 		<div class="group-container"  *ngFor="let group of stateGroups" (click)="hideSearchBar()"> 
 			<div *ngIf="isTitleNull(group)">
 				<div   class="row-title">

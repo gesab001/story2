@@ -32,6 +32,7 @@ export class HomepageComponent implements OnInit {
   filteredStateGroups: StateGroup[];
   searchResultsStateGroup; 
   latestTitle: string;
+  latestDescription: string;
   newList: any = null;
   searchableTitles: [];
   storytitle: string;
@@ -80,7 +81,16 @@ export class HomepageComponent implements OnInit {
      var element = document.getElementById("cover-image");
      var latestIndex = this.newList.length - 1;
      var url = this.newList[latestIndex]["newcoverposter"];
-     this.latestTitle = this.newList[latestIndex]["title"];
+     if(url.length==0){
+       latestIndex = latestIndex - 1;
+       url = this.newList[latestIndex]["newcoverposter"];
+       this.latestTitle = this.newList[latestIndex]["otherTitle"];
+       this.latestDescription = this.newList[latestIndex]["description"];
+
+     }else{
+       this.latestTitle = this.newList[latestIndex]["otherTitle"]; 
+       this.latestDescription = this.newList[latestIndex]["description"];
+     }
      console.log(url);
      element.style.backgroundImage = "linear-gradient(to bottom,transparent,transparent,transparent,#000), url("+url+")"; 
   }
