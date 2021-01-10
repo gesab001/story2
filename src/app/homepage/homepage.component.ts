@@ -32,6 +32,7 @@ export class HomepageComponent implements OnInit {
   filteredStateGroups: StateGroup[];
   searchResultsStateGroup; 
   latestTitle: string;
+  latestOtherTitle: string;
   latestDescription: string;
   newList: any = null;
   searchableTitles: [];
@@ -84,11 +85,13 @@ export class HomepageComponent implements OnInit {
      if(url.length==0){
        latestIndex = latestIndex - 1;
        url = this.newList[latestIndex]["newcoverposter"];
-       this.latestTitle = this.newList[latestIndex]["otherTitle"];
+       this.latestTitle = this.newList[latestIndex]["title"];
+       this.latestOtherTitle = this.newList[latestIndex]["otherTitle"];
        this.latestDescription = this.newList[latestIndex]["description"];
 
      }else{
-       this.latestTitle = this.newList[latestIndex]["otherTitle"]; 
+       this.latestTitle = this.newList[latestIndex]["title"]; 
+       this.latestOtherTitle = this.newList[latestIndex]["otherTitle"];
        this.latestDescription = this.newList[latestIndex]["description"];
      }
      console.log(url);
