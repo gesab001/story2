@@ -6,6 +6,7 @@ import {FormControl, FormBuilder, FormGroup} from '@angular/forms';
 import {map, startWith, filter} from 'rxjs/operators';
 import { StoryService} from '../story.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -32,6 +33,7 @@ export class HomepageComponent implements OnInit {
   filteredStateGroups: StateGroup[];
   searchResultsStateGroup; 
   latestTitle: string;
+  latestIndex: number = -1;
   latestOtherTitle: string;
   latestDescription: string;
   newList: any = null;
@@ -77,25 +79,33 @@ export class HomepageComponent implements OnInit {
       error => console.log(error),
     );
   }
-
-  loadCoverImage(){
-     var element = document.getElementById("cover-image");
-     var latestIndex = this.newList.length - 1;
-     var url = this.newList[latestIndex]["newcoverposter"];
-     if(url.length==0){
-       latestIndex = latestIndex - 1;
-       url = this.newList[latestIndex]["newcoverposter"];
-       this.latestTitle = this.newList[latestIndex]["title"];
-       this.latestOtherTitle = this.newList[latestIndex]["otherTitle"];
-       this.latestDescription = this.newList[latestIndex]["description"];
-
-     }else{
-       this.latestTitle = this.newList[latestIndex]["title"]; 
-       this.latestOtherTitle = this.newList[latestIndex]["otherTitle"];
-       this.latestDescription = this.newList[latestIndex]["description"];
+  
+  startCoverImageSlideShow(){
+     this.latestIndex = this.latestIndex + 1;
+     if (this.latestIndex>this.newList.length-1){
+        this.latestIndex = 0;
      }
+     var element = document.getElementById("cover-image"); 
+     var index = this.latestIndex;
+     var url = this.newList[index]["newcoverposter"];
+
+     this.latestTitle = this.newList[index]["title"]; 
+     this.latestOtherTitle = this.newList[index]["otherTitle"];
+     this.latestDescription = this.newList[index]["description"];
      console.log(url);
      element.style.backgroundImage = "linear-gradient(to bottom,transparent,transparent,transparent,#000), url("+url+")"; 
+  }
+  
+  
+  loadCoverImage(){
+    this.startCoverImageSlideShow();
+     // Create an Observable that will publish a value on an interval
+	const secondsCounter = interval(10000);
+	// Subscribe to begin publishing values
+	const subscription = secondsCounter.subscribe(n =>
+	   this.startCoverImageSlideShow());
+
+
   }
   getPoster(name){
      var folder = name.replace(/\s/g, "").toLowerCase();
