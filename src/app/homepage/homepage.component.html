@@ -1,13 +1,14 @@
 <div id="side-menu">
 	<div  style="background-color:black; height:80px; display:flex; flex-direction:row; justify-content: flex-end; align-items: center">
-        <div style="color: white">Login</div>
 		<div style="padding-right:20px; color:white" >
 			<mat-icon aria-hidden="false" aria-label="Example home icon" (click)="closeSideNav()">close</mat-icon>
 		</div>
 	</div>	
 	<div id="menu-items">
-	  <div style="color: white">Home</div>	   
 	   <div id="items">
+		   
+        	 <div style="color: white">Home</div>	
+   	         <div style="color: white">Login</div> 
 			 <mat-accordion style="background-color: black">
 		  
 				  <mat-expansion-panel (opened)="panelOpenState = true"
