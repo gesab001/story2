@@ -19,6 +19,7 @@ export class HomepageComponent implements OnInit {
   panelOpenState = false;
   isSearchBar: boolean = false;
   isMobile: boolean;
+  isSearchIcon: boolean = true;
   isHoverState: boolean = false;
   isDefaultState: boolean = true;
   isDesktop: boolean;
@@ -146,27 +147,36 @@ export class HomepageComponent implements OnInit {
   }
   
   imageHoverIn(dom){
-      var defaultState = dom.childNodes[0].childNodes[0].childNodes[0];
-      defaultState.style.display = "none";
-      var hoverState = dom.childNodes[0].childNodes[0].childNodes[1];
-      hoverState.style.display = "block";
+      if (this.isDesktop){
+		var defaultState = dom.childNodes[0].childNodes[0].childNodes[0];
+		defaultState.style.display = "none";
+		var hoverState = dom.childNodes[0].childNodes[0].childNodes[1];
+		hoverState.style.display = "block";      
+      }
+     
 
  
   }
   imageHoverOut(dom){
+    if (this.isDesktop){
      var defaultState = dom.childNodes[0].childNodes[0].childNodes[0];
      defaultState.style.display = "block";
      var hoverState = dom.childNodes[0].childNodes[0].childNodes[1];
-     hoverState.style.display = "none";
+     hoverState.style.display = "none";    
+    }
+    
+
 
   }
   
   showSearchBar(){
       this.isSearchBar = true;    
+      this.isSearchIcon = false;
   }
   
   hideSearchBar(){
       this.isSearchBar = false;
+      this.isSearchIcon = true;
   }
   
   openSideNav(){

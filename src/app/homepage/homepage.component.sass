@@ -13,7 +13,25 @@
   justify-content: flex-start
   align-items: center
   width: 100% 
-  
+  @media screen and (max-width: 989px)
+     font-size: 24px
+     padding-left: 10px
+     bottom: 50%
+
+.cover-description
+  @media screen and (max-width: 989px)
+     display: none
+     
+#cover-image
+  height: 780.183px
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: cover
+  width: 100%
+  @media screen and (max-width: 989px)
+     background-repeat: repeat
+     height: 300px
+       
 mat-icon
   font-size: 40px
   display: flex
@@ -121,13 +139,8 @@ mat-icon
   
 
 
-#cover-image
-  height: 780.183px
-  background-position: center center
-  background-repeat: no-repeat
-  background-size: cover
-  width: 100%
 
+     
 
 
 .group-container
@@ -179,10 +192,19 @@ mat-icon
   moz-transition: width 1s ease-in-out, left 1.5s ease-in-out
   -o-transition: width 1s ease-in-out, left 1.5s ease-in-out
   transition: width 1s ease-in-out, left 1.5s ease-in-out
-    
+  @media screen and (max-width: 989px)
+    -moz-transition: none
+    webkit-transition: none
+    moz-transition: none
+    -o-transition: none
+    transition: none
+        
 .posterimage-container:hover
   width: 250px
   border-bottom: 5px solid blue
+  @media screen and (max-width: 989px)
+     width: 150px 
+     
 
 
 .posterimage-container:hover .caption

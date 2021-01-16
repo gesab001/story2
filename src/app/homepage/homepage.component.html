@@ -42,9 +42,15 @@
 
 <div class="nav-container">
    <div class="mobile-nav">
-       <div><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="openSideNav()">menu</mat-icon> </div>
-       <div><a class="nav-links" href="#">StoryIcon</a></div>
-	   <div style="padding-right:30px"><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">search</mat-icon></div>
+       <div><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="openSideNav()" (click)="hideSearchBar()">menu</mat-icon> </div>
+       <div><a class="nav-links" href="#" (click)="hideSearchBar()">StoryIcon</a></div>
+	   <div style="padding-right:30px">
+            <div class="search-bar" *ngIf="isSearchBar">
+		        <input type="text" (keyup)="searchTitle($event)" placeholder="Search stories">
+		    </div>			   
+		   <mat-icon aria-hidden="false" aria-label="Example home icon"  *ngIf="isSearchIcon" (click)="showSearchBar()">search</mat-icon>
+	   
+	   </div>
 
    </div>
    	
@@ -113,13 +119,13 @@
 				
 </div>
 <div *ngIf="isDefaultMode" class="default-content">
-	    <div style="height:70px; background-color: red;"></div>
+	    <div style="height:70px; "></div>
 		<a class="card-link" [routerLink]="['/slideshow', latestTitle]" routerLinkActive="active"  >  
-			<div  id="cover-image" (click)="hideSearchBar()">
-			  <div class="cover-title">
+			<div  id="cover-image" (click)="hideSearchBar()" >
+			  <div style="z-index: 0" class="cover-title">
 				 <div>
-					 <h1  style="display:flex; font-size: inherit" class="text-shadow">{{latestTitle}}</h1>
-					 <p style="font-size:initial; padding-top: 20px; width: 60%" class="text-shadow">{{latestDescription}}</p>
+					 <h1  style="display:flex; font-size: inherit; " class="text-shadow">{{latestTitle}}</h1>
+					 <p style="font-size:initial; padding-top: 20px; width: 60%" class="text-shadow cover-description">{{latestDescription}}</p>
 			     </div>
 			  </div>
 			</div>
@@ -145,26 +151,26 @@
 					 <div class="slide-container" *ngFor="let name of group.names" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
 						 
 						 <div style="padding: 10px">
-							  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
+							  <div  >  
 								  <div class="default-state">
-									  <div class="posterimage-container">
+									  <a [routerLink]="['/slideshow', name.title]" routerLinkActive="active" ><div class="posterimage-container">
 										 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
 									     <div class="storyTitle text-shadow">{{name.otherTitle}}</div>		
-									  </div>						  
+									  </div></a>						  
 								  </div>
 								  <div  class="hovered-state" style="display:none">
+									  
 										  <div class="posterimage-container">
 											 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
 											 <div class="caption-container">
 													<p class="caption">{{name.otherTitle}}</p>
 													<p class="caption">{{name.description}}</p>                                    
 											 </div>
-											 
-
-									  </div>					        
+									     </div>					        
+									     
 								  </div>
 
-							  </a>
+
 						 </div>
 					 </div>
 					 <div class="slide-container"><div class="blankPoster"></div></div>
