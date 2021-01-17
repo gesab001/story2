@@ -76,38 +76,48 @@ export class HomepageComponent implements OnInit {
     
  loadData() {
     this.subscription = this.storyService.getData().subscribe(
-      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"]), this.newList = res["new"], this.loadCoverImage()),
+      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"]), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
       error => console.log(error),
     );
   }
   
+  limitNewList(){
+      var total = this.newList.length;
+      if (total>10){
+        var numbertodelete = total - 10;
+        this.newList.splice(11,numbertodelete);
+      }
+  }
+  
   startCoverImageSlideShow(){
-     this.latestIndex = this.latestIndex + 1;
-     if (this.latestIndex>this.newList.length-1){
-        this.latestIndex = 0;
-     }
-     var element = document.getElementById("cover-image"); 
-     var index = this.latestIndex;
-     var url = this.newList[index]["newcoverposter"];
+     var slide = document.getElementById("next-button");
+     slide.click();
 
-     this.latestTitle = this.newList[index]["title"]; 
-     this.latestOtherTitle = this.newList[index]["otherTitle"];
-     this.latestDescription = this.newList[index]["description"];
-     console.log(url);
-     element.style.backgroundImage = "linear-gradient(to bottom,transparent,transparent,transparent,#000), url("+url+")"; 
   }
   
   
   loadCoverImage(){
-    this.startCoverImageSlideShow();
      // Create an Observable that will publish a value on an interval
-	const secondsCounter = interval(10000);
+	const secondsCounter = interval(5000);
 	// Subscribe to begin publishing values
 	const subscription = secondsCounter.subscribe(n =>
 	   this.startCoverImageSlideShow());
 
 
   }
+  
+  isFirstSlide(i){
+    if (i==0){
+       return true;
+    }
+  }
+
+  notFirstSlide(i){
+    if (i!=0){
+       return true;
+    }
+  }
+    
   getPoster(name){
      var folder = name.replace(/\s/g, "").toLowerCase();
      return "https://gesab001.github.io/assets/images/"+folder+"/poster.jpg";
