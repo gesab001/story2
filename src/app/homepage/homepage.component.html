@@ -7,7 +7,7 @@
 	<div id="menu-items">
 	   <div id="items">
 		   
-        	 <div style="color: white">Home</div>	
+        	 <div style="color: white"><a [routerLink]="['']" routerLinkActive="active">Home</a></div>	
    	         <div style="color: white">Login</div> 
 			 <mat-accordion style="background-color: black">
 		  
@@ -122,10 +122,10 @@
 <div *ngIf="isDefaultMode" class="default-content">
 	    <div style="height:70px; "></div>
 
-		<div id="demo" class="carousel slide cover-image-container" data-ride="carousel">
+		<div id="demo" class="carousel slide cover-image-container;" data-ride="carousel">
 
 		  <!-- Indicators -->
-		  <ul style="position:absolute; top:10px; z-index: 10;" class="carousel-indicators">
+		  <ul style="position:absolute; top:10px; z-index: 1; height: 30px;" class="carousel-indicators">
 			<li data-target="#demo" data-slide-to="0" class="active" ></li>
 			<li data-target="#demo" data-slide-to="1"></li>
 			<li data-target="#demo" data-slide-to="2"></li>
@@ -140,17 +140,19 @@
 		  </ul>
 		  
 		  <!-- The slideshow -->
-		  <div class="carousel-inner" style="height:100%">
+		  <div style="background-color:red" class="carousel-inner" style="height:100%">
 
-			<div   *ngFor="let slide of newList; let i = index;" class="carousel-item" [ngClass]="{'active': isFirstSlide(i)}"  style="height:100%">                  
-                <a class="card-link" [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active"  >  
-					<img style="height:100%; width: 100%"  [src]="newList[i]['newcoverposter']"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
-                    <div >
- 				     	<h1 class="cover-title text-shadow ">{{slide["otherTitle"]}}</h1>
-     					<p style="font-size:24px; line-height: 1.5; padding-top: 20px; width: 60%" class="text-shadow cover-description">{{newList[i]['description']}}</p>
-
+			<div  *ngFor="let slide of newList; let i = index;" class="carousel-item" [ngClass]="{'active': isFirstSlide(i)}"  (click)="openSlideshow(slide['title'])" style="height:100%">                  
+                
+					<a [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active">
+						<img style="height:100%; width: 100%;"  [src]="newList[i]['newcoverposter']"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>
+    
+                    <div   >
+ 				     	<a class="cover-title text-shadow " style="text-decoration:none;" [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active">{{slide["otherTitle"]}}</a>
+     					<a [routerLink]="['/slideshow', slide['title']]"  style="font-size:24px; text-decoration:none; line-height: 1.5; padding-top: 20px; width: 60%" class="text-shadow cover-description">{{newList[i]['description']}}</a>
+           
 				    </div>  
-				</a>            
+				           
 			</div>   
 		  </div>
 		  
@@ -158,7 +160,7 @@
 		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
 			<span class="carousel-control-prev-icon"></span>
 		  </a>
-		  <a id="next-button" class="carousel-control-next" href="#demo" data-slide="next">
+		  <a id="next-button"   class="carousel-control-next" href="#demo" data-slide="next">
 			<span class="carousel-control-next-icon"></span>
 		  </a>
 		</div>	

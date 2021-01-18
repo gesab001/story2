@@ -70,9 +70,11 @@
 <div class="carousel-container" *ngIf="isDesktop && isLandscape">
 	<div class="slide-container">
 		<div id="demo" class="carousel slide slide-container "  data-ride="carousel" data-wrap="false" data-interval="false">
-		  <ul 			 class="carousel-indicators">
+		  <ul style="height:30px;"	 class="carousel-indicators">
 			<li data-target="#demo" data-slide-to="0" class="active"></li>
 			<li *ngFor="let slide of slides; index as i" data-target="#demo" [attr.data-slide-to]="i+1"></li>
+			<li data-target="#demo" data-slide-to="11"></li>
+
 		  </ul>
 		  <div class="carousel-inner">
 			<div class="carousel-item active ">

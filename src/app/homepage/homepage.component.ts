@@ -226,5 +226,10 @@ export class HomepageComponent implements OnInit {
 
      
   } 
+  
+  openSlideshow(title){
+     alert("open");
+     window.open("/slideshow/"+title);
+  }
  
 }
