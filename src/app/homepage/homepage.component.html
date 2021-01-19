@@ -1,7 +1,7 @@
 <div id="side-menu">
 	<div  style="background-color:black; height:80px; display:flex; flex-direction:row; justify-content: flex-end; align-items: center">
 		<div style="padding-right:20px; color:white" >
-			<mat-icon aria-hidden="false" aria-label="Example home icon" (click)="closeSideNav()">close</mat-icon>
+			<mat-icon aria-hidden="false" aria-label="Example home icon" style="cursor: pointer" (click)="closeSideNav()">close</mat-icon>
 		</div>
 	</div>	
 	<div id="menu-items">
@@ -43,13 +43,13 @@
 
 <div class="nav-container">
    <div class="mobile-nav">
-       <div><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="openSideNav()" (click)="hideSearchBar()">menu</mat-icon> </div>
-       <div><a class="nav-links" href="#" (click)="hideSearchBar()">StoryIcon</a></div>
+       <div><mat-icon aria-hidden="false" aria-label="Example home icon" style="cursor: pointer" (click)="openSideNav()" (click)="hideSearchBar()">menu</mat-icon> </div>
+       <div><a class="nav-links" href="#" (click)="hideSearchBar()"><img class="app-icon" src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/story/icon-192x192.png"></a></div>
 	   <div style="padding-right:30px">
             <div class="search-bar" *ngIf="isSearchBar">
 		        <input type="text" (keyup)="searchTitle($event)" placeholder="Search stories">
 		    </div>			   
-		   <mat-icon aria-hidden="false" aria-label="Example home icon"  *ngIf="isSearchIcon" (click)="showSearchBar()">search</mat-icon>
+		   <mat-icon aria-hidden="false" aria-label="Example home icon"  *ngIf="isSearchIcon" style="cursor: pointer" (click)="showSearchBar()">search</mat-icon>
 	   
 	   </div>
 
@@ -58,7 +58,7 @@
   <div class="desktop-nav">
 	<div class="nav-bar-items-left" (click)="hideSearchBar()">
 		
-		    <a class="nav-links" href="#">StoryIcon</a>
+		    <a class="nav-links" href="#"><img class="app-icon" src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/story/icon-192x192.png" ></a>
 			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">Home</a>
 			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">Live TV & Guide</a>
 			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">Categories</a>
@@ -70,7 +70,7 @@
             <div class="search-bar" id="searchbar" style="display:none">
 		        <input type="text" autofocus id="inputField" (keyup)="searchTitle($event)" placeholder="Search stories">
 		    </div>			
-			<mat-icon aria-hidden="false" aria-label="Example home icon" (click)="showSearchBar()">search</mat-icon> 
+			<mat-icon aria-hidden="false" aria-label="Example home icon" style="cursor: pointer" (click)="showSearchBar()">search</mat-icon> 
 	    </div>
 			
 		
@@ -121,7 +121,7 @@
 <div *ngIf="isDefaultMode" class="default-content">
 	    <div style="height:70px; "></div>
 
-		<div id="demo" class="carousel slide cover-image-container;" data-ride="carousel">
+		<div id="demo" class="carousel slide cover-image-container;"  data-ride="carousel">
 
 		  <!-- Indicators -->
 		  <ul style="position:absolute; top:10px; z-index: 1; height: 30px;" class="carousel-indicators">
@@ -144,7 +144,8 @@
 			<div  *ngFor="let slide of newList; let i = index;" class="carousel-item" [ngClass]="{'active': isFirstSlide(i)}"  (click)="openSlideshow(slide['title'])" style="height:100%">                  
                 
 					<a [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active">
-						<img style="height:100%; width: 100%;"  [src]="newList[i]['newcoverposter']"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>
+						<div style="position:absolute; background-image: linear-gradient(to bottom,transparent,rgba(17,17,17,.25),rgba(17,17,17,.75),#111); height: 100%; width: 100%; top:0, bottom: 0"></div>
+						<img style="height:100%; width: 100%;"   [src]="newList[i]['newcoverposter']"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>
     
                     <div   >
  				     	<a class="cover-title text-shadow " style="text-decoration:none;" [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active">{{slide["otherTitle"]}}</a>
