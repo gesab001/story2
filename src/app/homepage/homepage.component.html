@@ -144,7 +144,7 @@
 			<div  *ngFor="let slide of newList; let i = index;" class="carousel-item" [ngClass]="{'active': isFirstSlide(i)}"  (click)="openSlideshow(slide['title'])" style="height:100%">                  
                 
 					<a [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active">
-						<div style="position:absolute; background-image: linear-gradient(to bottom,transparent,rgba(17,17,17,.25),rgba(17,17,17,.75),#111); height: 100%; width: 100%; top:0, bottom: 0"></div>
+						<div class="cover-image-fade" ></div>
 						<img style="height:100%; width: 100%;"   [src]="newList[i]['newcoverposter']"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>
     
                     <div   >
