@@ -1,6 +1,6 @@
 .storyTitle
   position: absolute 
-  top: 5
+
 
 .cover-title
   position: absolute
@@ -216,6 +216,8 @@ mat-icon
 
 .slide-container
   display: inline-block
+
+
   
 .example-container
    height: 100%
@@ -244,20 +246,45 @@ mat-icon
      width: 150px 
      
 
-
+a 
+ text-decoration: none
+ 
 .posterimage-container:hover .caption
   font-size: 16px
+
+.posterimage-container:hover .caption-container
+  width: 250px
   
 .caption-container
-  width: 250px
+  width: 0px
   position: absolute
-  bottom: 60px
+  bottom: 70px
   border-style: 5px solid red
   white-space: normal
-
+   -moz-transition: width .5s ease, bottom .5s ease
+  webkit-transition: width .5s ease, bottom .5s ease
+  moz-transition: width .5s ease, bottom .5s ease
+  -o-transition: width .5s ease, bottom .5s ease
+  transition: width 1.5s ease, bottom .5s ease
+  @media screen and (max-width: 989px)
+     display: none
+      
 .search-results-content
-  position: fixed
-  top: 20%
+  position: relative
+  width: 80%
+  margin-left: auto
+  margin-right: auto
+
+
+
+  
+  
+  
+.search-results-container
+  display: inline-block
+  padding-top: 80px
+
+  
 
 
 .caption
@@ -265,10 +292,10 @@ mat-icon
   display: block
   position: relative
   font-size: 0px
-  -webkit-transition: font-size .5s ease
-  -moz-transition: font-size .5s ease
-  -o-transition: font-size .5s ease
-  transition: font-size .5s ease
+  -webkit-transition: font-size 2s ease
+  -moz-transition: font-size 2s ease
+  -o-transition: font-size 2s ease
+  transition: font-size 2s ease
   color: white
   text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black
   font-weight: bold

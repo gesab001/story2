@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { StateGroup } from '../stategroup';
 import { TitleGroup } from '../titlegroup';
 import {Observable} from 'rxjs';
@@ -60,7 +60,20 @@ export class HomepageComponent implements OnInit {
       //alert("ismobile: " + this.isMobile);
 
     }
- 
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+     var key = event.key;
+
+    if(key==="Escape"){
+      this.isSearchMode = false;
+      this.isDefaultMode = true;    
+      this.hideSearchBar();
+
+      //alert("you pressed escape");
+    }
+  }
+   
  setSearchData(group: StateGroup[]){
     for (var x=0; x<group.length; x++){
         var names = group[x]["names"];

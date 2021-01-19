@@ -87,37 +87,36 @@
 </div>
 
 <div *ngIf="isSearchMode" class="search-results-content">
+	 <div class="search-results-container" *ngFor="let name of searchResultsStateGroup" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
+		 
+		 <div style="padding: 10px">
+			  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
+				  <div class="default-state">
+					  <div class="posterimage-container">
+						 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+						 <div class="storyTitle text-shadow">{{name.otherTitle}}</div>		
+					  </div>						  
+				  </div>
+				  <div  class="hovered-state" style="display:none">
+						<div class="posterimage-container">
+							 <a [routerLink]="['/slideshow', name.title]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+								 <div class="caption-container-search-results">
+										<p class="caption">{{name.otherTitle}}</p>
+										<p class="caption">{{name.description}}</p>                                    
+								 </div>
+							 </a>
 
-				<div class="row-container-results"  >    
-					 <div class="slide-container"><div class="blankPoster"></div></div>
-					 <div class="slide-container" *ngFor="let name of searchResultsStateGroup" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
-						 
-						 <div style="padding: 10px">
-							  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
-								  <div class="default-state">
-									  <div class="posterimage-container">
-										 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
-									     <div class="storyTitle text-shadow">{{name.otherTitle}}</div>		
-									  </div>						  
-								  </div>
-								  <div  class="hovered-state" style="display:none">
-										  <div class="posterimage-container">
-											 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
-											 <div class="caption-container">
-													<p class="caption">{{name.otherTitle}}</p>
-													<p class="caption">{{name.description}}</p>                                    
-											 </div>
-											 
+						 </div>		
+							 
+				        
+				  </div>
 
-									  </div>					        
-								  </div>
-
-							  </a>
-						 </div>
-					 </div>
-					 <div class="slide-container"><div class="blankPoster"></div></div>
-				</div>
-				
+			  </a>
+		 </div>
+	 </div>
+		
+	<div style="height:500px;"></div>
+			
 </div>
 <div *ngIf="isDefaultMode" class="default-content">
 	    <div style="height:70px; "></div>
@@ -195,11 +194,12 @@
 								  <div  class="hovered-state" style="display:none">
 									  
 										  <div class="posterimage-container">
-											 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+											 <a [routerLink]="['/slideshow', name.title]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
 											 <div class="caption-container">
 													<p class="caption">{{name.otherTitle}}</p>
 													<p class="caption">{{name.description}}</p>                                    
-											 </div>
+											 </div></a>
+
 									     </div>					        
 									     
 								  </div>
@@ -212,5 +212,7 @@
 			</div>	
 		</div>
 </div>
+
+<div style="height:500px; "></div>
 
 
