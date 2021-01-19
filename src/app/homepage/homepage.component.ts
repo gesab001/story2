@@ -192,14 +192,24 @@ export class HomepageComponent implements OnInit {
 
   }
   
+  focusSearchInput(){
+     var searchbar = document.getElementById("searchbar");
+     searchbar.style.display = "block";
+     var inputfield = document.getElementById("inputField");
+     inputfield.focus();
+  }
+  
   showSearchBar(){
       this.isSearchBar = true;    
       this.isSearchIcon = false;
+      this.focusSearchInput();
   }
   
   hideSearchBar(){
       this.isSearchBar = false;
       this.isSearchIcon = true;
+      var searchbar = document.getElementById("searchbar");
+      searchbar.style.display = "none";
   }
   
   openSideNav(){
