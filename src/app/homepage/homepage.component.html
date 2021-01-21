@@ -43,13 +43,13 @@
 
 <div class="nav-container">
    <div class="mobile-nav">
-       <div><mat-icon aria-hidden="false" aria-label="Example home icon" style="cursor: pointer" (click)="openSideNav()" (click)="hideSearchBar()">menu</mat-icon> </div>
-       <div><a class="nav-links" href="#" (click)="hideSearchBar()"><img class="app-icon" src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/story/icon-192x192.png"></a></div>
+      <!-- <div><mat-icon aria-hidden="false" aria-label="Example home icon" style="cursor: pointer" (click)="openSideNav()" (click)="hideSearchBar()">menu</mat-icon> </div> -->
+       <div><a  href="#" (click)="defaultMode()"><img class="app-icon" src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/story/icon-192x192.png"></a></div>
 	   <div style="padding-right:30px">
-            <div class="search-bar" *ngIf="isSearchBar">
-		        <input type="text" (keyup)="searchTitle($event)" placeholder="Search stories">
+            <div class="search-bar" id="searchbar-mobile" style="display:none" >
+		        <input type="text" id="inputField-mobile" (focusout)="hideSearchBarMobile()"  (keyup)="searchTitle($event)" placeholder="Search stories">
 		    </div>			   
-		   <mat-icon aria-hidden="false" aria-label="Example home icon"  *ngIf="isSearchIcon" style="cursor: pointer" (click)="showSearchBar()">search</mat-icon>
+		   <div class="maticon-search"><mat-icon aria-hidden="false" aria-label="Example home icon"  *ngIf="isSearchIcon" style="cursor: pointer" (click)="showSearchBarMobile()">search</mat-icon></div>
 	   
 	   </div>
 
@@ -58,19 +58,19 @@
   <div class="desktop-nav">
 	<div class="nav-bar-items-left" (click)="hideSearchBar()">
 		
-		    <a class="nav-links" href="#"><img class="app-icon" src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/story/icon-192x192.png" ></a>
-			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">Home</a>
+		    <a href="#"><img class="app-icon" src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/story/icon-192x192.png" ></a>
+		<!--	<a class="nav-links" [routerLink]="['']" routerLinkActive="active">Home</a>
 			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">Live TV & Guide</a>
 			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">Categories</a>
-			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">News</a>
+			<a class="nav-links" [routerLink]="['']" routerLinkActive="active">News</a>-->
 	</div>
     <div class="nav-bar-items-right"  >
-		<a class="user-profile-link" [routerLink]="['']" routerLinkActive="active" *ngIf="isSearchBar==false">Giovanni</a>  
+		<!--<a class="user-profile-link" [routerLink]="['']" routerLinkActive="active" *ngIf="isSearchBar==false">Giovanni</a>  -->
 		<div  class="search-icon-container">
             <div class="search-bar" id="searchbar" style="display:none">
-		        <input type="text" autofocus id="inputField" (keyup)="searchTitle($event)" placeholder="Search stories">
+		        <input type="text" (focusout)="hideSearchBar()" onfocus="this.value=''" autofocus id="inputField" (keyup)="searchTitle($event)" placeholder="Search stories">
 		    </div>			
-			<mat-icon aria-hidden="false" aria-label="Example home icon" style="cursor: pointer" (click)="showSearchBar()">search</mat-icon> 
+			<div class="maticon-search"><mat-icon aria-hidden="false" aria-label="Example home icon" style="cursor: pointer" (click)="showSearchBar()">search</mat-icon> </div>
 	    </div>
 			
 		
@@ -87,33 +87,45 @@
 </div>
 
 <div *ngIf="isSearchMode" class="search-results-content">
-	 <div class="search-results-container" *ngFor="let name of searchResultsStateGroup" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
-		 
-		 <div style="padding: 10px">
-			  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
-				  <div class="default-state">
-					  <div class="posterimage-container">
-						 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
-						 <div class="storyTitle text-shadow">{{name.otherTitle}}</div>		
-					  </div>						  
-				  </div>
-				  <div  class="hovered-state" style="display:none">
-						<div class="posterimage-container">
-							 <a [routerLink]="['/slideshow', name.title]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
-								 <div class="caption-container-search-results">
-										<p class="caption">{{name.otherTitle}}</p>
-										<p class="caption">{{name.description}}</p>                                    
-								 </div>
-							 </a>
 
-						 </div>		
+
+		 <div class="search-results-container" *ngFor="let name of searchResultsStateGroup" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
+			 
+			 <div style="padding: 10px">
+				  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
+					  <div class="default-state">
+						  <div class="posterimage-container-search-results">
+							  <div style="position: relative">
+								  <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage " [src]="getPoster(name.title)">	
+								   <div class="storyTitle text-shadow">
+									 <h1 >{{name.otherTitle}} </h1>
+									 <p *ngIf="isMobile" >{{name.description}} </p>
+								   </div>	
 							 
-				        
-				  </div>
+							  </div>
+							 
+							
 
-			  </a>
+						  </div>						  
+					  </div>
+					  <div  class="hovered-state" style="display:none">
+							<div class="posterimage-container">
+								 <a [routerLink]="['/slideshow', name.title]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+									 <div class="caption-container-search-results">
+											<p class="caption">{{name.otherTitle}}</p>
+											<p class="caption">{{name.description}}</p>                                    
+									 </div>
+								 </a>
+
+							 </div>		
+								 
+							
+					  </div>
+
+				  </a>
+			 </div>
 		 </div>
-	 </div>
+	 	 
 		
 	<div style="height:500px;"></div>
 			
@@ -157,10 +169,10 @@
 		  </div>
 		  
 		  <!-- Left and right controls -->
-		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+		  <a href="#demo" data-slide="prev">
 			<span class="carousel-control-prev-icon"></span>
 		  </a>
-		  <a id="next-button"   class="carousel-control-next" href="#demo" data-slide="next">
+		  <a id="next-button"  href="#demo" data-slide="next">
 			<span class="carousel-control-next-icon"></span>
 		  </a>
 		</div>	
