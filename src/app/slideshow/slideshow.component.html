@@ -94,7 +94,13 @@
       
 				  </div>
 			  </div>   
-
+		    <div class="carousel-item">
+								<div class="video-container">	<video width="70%" controls>
+					  <source [src]="this.videourl" type="video/mp4">
+					  Your browser does not support HTML video.
+					</video></div>
+				<!-- <a href="https://github.com/gesab001/videoassets/blob/main/Sodom.mp4"><img class="imageslide" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png"></a>	  -->
+			</div>
 			<div class="carousel-item">
 			  
 		        <a [routerLink]="['/quiz', quiztitle]"  routerLinkActive="active"><img  class="imageslide quiztime" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>

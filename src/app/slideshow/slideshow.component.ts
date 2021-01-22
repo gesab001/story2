@@ -23,6 +23,7 @@ export class SlideshowComponent implements OnInit {
   isHiddenCaption: boolean = false;
   isHiddenImage: boolean = false;
   subscriptionScroll: Subscription;
+  videourl = "https://gesab001.github.io/videoassets/Sodom.mp4";
   hiddenNumber = 0;
   animateState = "running";
   isMobile: boolean;
@@ -224,10 +225,11 @@ export class SlideshowComponent implements OnInit {
          this.openFullscreen();
 
   }
+   
 
  loadData(filename) {
     this.subscription = this.slideshowService.getData(filename).subscribe(
-      res => (this.slides = res["slides"]),
+      res => (this.slides = res["slides"], this.videourl = "https://gesab001.github.io/videoassets/Sodom.mp4"),
       error => console.log(error),
     );
 
