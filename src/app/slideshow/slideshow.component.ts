@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { interval, Subscription } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-slideshow',
@@ -23,7 +24,6 @@ export class SlideshowComponent implements OnInit {
   isHiddenCaption: boolean = false;
   isHiddenImage: boolean = false;
   subscriptionScroll: Subscription;
-  videourl = "https://gesab001.github.io/videoassets/Sodom.mp4";
   hiddenNumber = 0;
   animateState = "running";
   isMobile: boolean;
@@ -39,7 +39,9 @@ export class SlideshowComponent implements OnInit {
   previousSlide;
   quiztimeSlide;
   elem: any;
-  constructor(@Inject(DOCUMENT) private document: any, config: NgbCarouselConfig, private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService, private render: Renderer2) {
+  safeSrc: SafeResourceUrl;
+
+  constructor(@Inject(DOCUMENT) private document: any, config: NgbCarouselConfig, private sanitizer: DomSanitizer, private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService, private render: Renderer2) {
       this.storytitle = "jesus";
       this.quiztitle = "jesus";
       this.currentSlide = 0;
@@ -229,11 +231,26 @@ export class SlideshowComponent implements OnInit {
 
  loadData(filename) {
     this.subscription = this.slideshowService.getData(filename).subscribe(
-      res => (this.slides = res["slides"], this.videourl = "https://gesab001.github.io/videoassets/Sodom.mp4"),
+      res => (this.slides = res,         this.safeSrc = this.getSafeSrc()),
       error => console.log(error),
     );
 
   }
+  
+  getVideoUrl(){
+     var url = "https://gesab001.github.io/videoassets/"+this.slides['video'];
+     var videoplayer = document.getElementById("videoplayer");
+     console.log("getVideoUrl" + videoplayer);
+     return url;
+     
+  }
+  
+  public getSafeSrc(): SafeResourceUrl {
+     var stringurl = "https://gesab001.github.io/videoassets/"+this.slides['video'];
+     this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(stringurl);
+     return this.safeSrc;
+  }
+  
   nextSlideNumber(){
      this.currentSlide = this.currentSlide + 1; 
 

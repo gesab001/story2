@@ -12,13 +12,13 @@
            <h1 class="textshadow display-1">{{storytitle}}</h1>
         </div>   
       </ng-template>
-      <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
+      <ng-template ngbSlide *ngFor="let slide of slides['slides']; let i = index;" id={{i+1}}>
              <!-- <a target="_blank" href="https://gesab001.github.io/jigsaw?imageurl={{[slide['image']]}}"><img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>-->
            <img   class="img-fluid mx-auto d-block" [src]="[slide['image']]"    onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
           
       </ng-template>
 
-      <ng-template ngbSlide id="slides.length">
+      <ng-template ngbSlide id="slides['slides'].length">
 
         <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
         
@@ -28,7 +28,7 @@
 
     <div *ngIf="currentSlide>-1">
 		<div style="white-space: normal; overflow:visible; background-color: black; ">
-		  <h1 class="textshadow">{{slides[currentSlide]["text"]}}</h1>
+		  <h1 class="textshadow">{{slides['slides'][currentSlide]["text"]}}</h1>
 	   
 		</div>
   
@@ -44,11 +44,11 @@
            <h1 class="textshadow display-1">{{storytitle}}</h1>
         </div>   
       </ng-template>
-      <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
+      <ng-template ngbSlide *ngFor="let slide of slides['slides']; let i = index;" id={{i+1}}>
               <img   (tap)="onTap($event)"   class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
       </ng-template>
 
-      <ng-template ngbSlide id="slides.length">
+      <ng-template ngbSlide id="slides['slides'].length">
 
         <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
         
@@ -58,7 +58,7 @@
 
     <div *ngIf="currentSlide>-1">
       <div class="scrollmenu">
-    <h1 class="textshadow">{{slides[currentSlide]["text"]}}</h1>
+    <h1 class="textshadow">{{slides['slides'][currentSlide]["text"]}}</h1>
      
       </div> 
 
@@ -72,7 +72,7 @@
 		<div id="demo" class="carousel slide slide-container "  data-ride="carousel" data-wrap="false" data-interval="false">
 		  <ul style="height:30px;"	 class="carousel-indicators">
 			<li data-target="#demo" data-slide-to="0" class="active"></li>
-			<li *ngFor="let slide of slides; index as i" data-target="#demo" [attr.data-slide-to]="i+1"></li>
+			<li *ngFor="let slide of slides['slides']; index as i" data-target="#demo" [attr.data-slide-to]="i+1"></li>
 			<li data-target="#demo" data-slide-to="11"></li>
 
 		  </ul>
@@ -84,7 +84,7 @@
 
 			  </div>   
 			</div>
-			<div  *ngFor="let slide of slides; let i = index;" class="carousel-item" >
+			<div  *ngFor="let slide of slides['slides']; let i = index;" class="carousel-item" >
 
 					<img class="imageslide"   [src]="getSlideImage([slide['image']])"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
 				  <div class="carousel-caption" [ngClass]="{'hideCaption': isHiddenCaption}">
@@ -95,11 +95,12 @@
 				  </div>
 			  </div>   
 		    <div class="carousel-item">
-								<div class="video-container">	<video width="70%" controls>
-					  <source [src]="this.videourl" type="video/mp4">
-					  Your browser does not support HTML video.
-					</video></div>
-				<!-- <a href="https://github.com/gesab001/videoassets/blob/main/Sodom.mp4"><img class="imageslide" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png"></a>	  -->
+					<div style=" width:100%; height:100%; text-align: center; padding-top: 25%">
+	/<iframe  style="width:50%; " [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
+					</iframe>				
+					</div>
+					
+				<!--<a [href]="getVideoUrl()" target="_blank"><img class="imageslide" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png"></a>	 -->
 			</div>
 			<div class="carousel-item">
 			  
@@ -127,11 +128,11 @@
            <h1 class="textshadow display-1">{{storytitle}}</h1>
         </div>   
       </ng-template>
-      <ng-template ngbSlide *ngFor="let slide of slides; let i = index;" id={{i+1}}>
+      <ng-template ngbSlide *ngFor="let slide of slides['slides']; let i = index;" id={{i+1}}>
               <img  class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
       </ng-template>
 
-      <ng-template ngbSlide id="slides.length">
+      <ng-template ngbSlide id="slides['slides'].length">
 
         <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
         
@@ -142,7 +143,7 @@
     <div *ngIf="currentSlide>-1">
     <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
 
-    <h1 class="textshadow ">{{slides[currentSlide]["text"]}}</h1>
+    <h1 class="textshadow ">{{slides['slides'][currentSlide]["text"]}}</h1>
     </cdk-virtual-scroll-viewport>
 
     </div>
