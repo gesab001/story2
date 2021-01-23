@@ -213,7 +213,7 @@ export class SlideshowComponent implements OnInit {
      source.setAttribute('src', url);
      video.appendChild(source);
      video.style.display = "block";
-     video.play();
+     //video.play();
 
   }
  
@@ -223,7 +223,7 @@ export class SlideshowComponent implements OnInit {
      playIcon.style.display = "none";
      var video = document.getElementById('videoplayer');
      video.style.display = "block";
-     video.pause();
+     //video.pause();
 
   }
    
