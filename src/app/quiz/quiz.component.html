@@ -1,5 +1,5 @@
 <div  class="container-fluid" [ngSwitch]="cardType">
-  <h2 class="display-1" >Bible Quiz</h2>
+  <h1 (click)="backClicked()" style="cursor:pointer; color:white;">Back</h1>
   <div *ngSwitchCase="'questionCard'" class="card" >
     <div class="card-header bg-success">
         <h1 class="text-dark text-center ">{{questions[questionNumber].question}}</h1>

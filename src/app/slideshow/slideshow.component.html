@@ -74,6 +74,7 @@
 			<li data-target="#demo" data-slide-to="0" class="active"></li>
 			<li *ngFor="let slide of slides['slides']; index as i" data-target="#demo" [attr.data-slide-to]="i+1"></li>
 			<li data-target="#demo" data-slide-to="11"></li>
+			<li data-target="#demo" data-slide-to="12"></li>
 
 		  </ul>
 		  <div class="carousel-inner">
@@ -94,10 +95,14 @@
       
 				  </div>
 			  </div>   
-		    <div class="carousel-item">
-					<div style=" width:100%; height:100%; text-align: center; padding-top: 25%">
-	/<iframe  style="width:50%; " [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
-					</iframe>				
+		    <div id="videoSlide" class="carousel-item">
+					<div style=" width:100%; height: 100%; display:flex; flex-direction: column; align-items: center; justify-content: center">
+	<!--<iframe  style="width:50%; " [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
+					</iframe>	-->
+					<img id="videoPlayIcon" width="320" height="240" (click)="playVideo()" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png">
+					 <video style="display:none" id="videoplayer" controls><source id="videosource" src=""></video>		
+						 
+					
 					</div>
 					
 				<!--<a [href]="getVideoUrl()" target="_blank"><img class="imageslide" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png"></a>	 -->
@@ -107,10 +112,10 @@
 		        <a [routerLink]="['/quiz', quiztitle]"  routerLinkActive="active"><img  class="imageslide quiztime" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
 			</div>
 		  </div>
-		  <a (click)="prevSlideNumber()" class="carousel-control-prev" href="#demo" data-slide="prev">
+		  <a id="prevSlide" (click)="prevSlideNumber()" href="#demo" data-slide="prev">
 			<span class="carousel-control-prev-icon"></span>
 		  </a>
-		  <a (click)="nextSlideNumber()" class="carousel-control-next" href="#demo" data-slide="next">
+		  <a id="nextSlide" (click)="nextSlideNumber()" href="#demo" data-slide="next">
 			<span class="carousel-control-next-icon"></span>
 		  </a>
 

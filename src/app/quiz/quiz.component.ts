@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener, AfterViewInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SlideshowService} from '../slideshow/slideshow.service';
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -23,7 +25,7 @@ export class QuizComponent implements OnInit{
   letterchoices: any = ['A', 'B', 'C', 'D'];
   questionNumber: number = 0;
   congrats: any = ["correct", "excellent", "awesome", "well done", "great job", "fantastic", "all right!", "exactly right", "exceptional", "sensational", "wonderful", "fabulous", "outstanding", "You're learning fast", "perfect", "You're doing well", "Unbelievable", "Way to go", "Marvelous", "Good for you", "That's great"];
-  constructor(private slideshowService: SlideshowService, private route: ActivatedRoute, private render: Renderer2) { }
+  constructor(private _location: Location, private slideshowService: SlideshowService, private route: ActivatedRoute, private render: Renderer2) { }
   buttonChoiceIndex = -1;
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
@@ -52,6 +54,10 @@ export class QuizComponent implements OnInit{
 		}
     }
 
+  }
+  
+   backClicked() {
+    this._location.back();
   }
   
   setButtonChoiceIndex(){

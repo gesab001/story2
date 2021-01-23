@@ -31,8 +31,11 @@ export class SlideshowComponent implements OnInit {
   isDesktop: boolean;
   isPortrait: boolean;
   isLandscape: boolean;
+  isVideoSlide: boolean;
   subscription;
   storytitle: string;
+  otherTitle: string;
+  videoFileName: string;
   quiztitle: string;
   currentSlide: number;
   nextSlide; 
@@ -66,13 +69,25 @@ export class SlideshowComponent implements OnInit {
      var key = event.key;
 
     if (key==="PageUp"){
-		  this.previousSlide.click();
- 
+            //  alert(key);
+		  //this.previousSlide.click();
+		  document.getElementById("prevSlide").click();
+          console.log(document.querySelector(".carousel-item.active"));
+
+
+
     }
     if (key==="PageDown"){
-        this.nextSlide.click();
+          //alert(key);
+		  document.getElementById("nextSlide").click();
+
+           console.log(document.querySelector(".carousel-item.active"));
+
+		
+        //this.nextSlide.click();
         console.log("currentslide:"+this.currentSlide);
-        if(this.currentSlide>10){
+       // alert(this.currentSlide);
+        if(this.currentSlide>11){
            console.log('quiztime');
            this.quiztimeSlide =  document.querySelector('.quiztime');
            this.quiztimeSlide.click();
@@ -81,7 +96,7 @@ export class SlideshowComponent implements OnInit {
            
     }
     
-    if(key==="b"){
+    if(key==="b" || key==="B"){
        //alert("you pressed b");
        this.hiddenNumber = this.hiddenNumber + 1;
        console.log("hiddennumber: " + this.hiddenNumber);
@@ -178,9 +193,40 @@ export class SlideshowComponent implements OnInit {
     
     
     this.openFullscreen();
-
+    var url = "https://gesab001.github.io/videoassets/"+this.videoFileName;
+    var video = document.getElementById('videoplayer');
+    
+     var source = document.createElement('source');   
+     source.setAttribute('src', url);
+     video.appendChild(source);
+     video.style.display = "block";     
   }
   
+  playVideo(){
+     //alert(this.slides["video"]);
+     var playIcon = document.getElementById("videoPlayIcon");
+     playIcon.style.display = "none";
+     var video = document.getElementById('videoplayer');
+    
+     var url = "https://gesab001.github.io/videoassets/"+this.videoFileName;
+     var source = document.createElement('source');   
+     source.setAttribute('src', url);
+     video.appendChild(source);
+     video.style.display = "block";
+     video.play();
+
+  }
+ 
+   pauseVideo(){
+     //alert(this.slides["video"]);
+     var playIcon = document.getElementById("videoPlayIcon");
+     playIcon.style.display = "none";
+     var video = document.getElementById('videoplayer');
+     video.style.display = "block";
+     video.pause();
+
+  }
+   
   getSlideImage(image){
    	 if(this.isHiddenImage){
    	      return "https://gesab001.github.io/assets/images/black.jpg";
@@ -214,6 +260,8 @@ export class SlideshowComponent implements OnInit {
      this.elem = document.documentElement;
      this.route.paramMap.subscribe(params => { 
         this.storytitle = params.get('title');
+        this.otherTitle = params.get('otherTitle');
+        this.videoFileName = this.otherTitle + ".mp4"; 
         this.quiztitle = this.storytitle;
         let re = /\s/gi;   
         let filename = this.storytitle.replace(re, "_") + ".json";
@@ -252,12 +300,13 @@ export class SlideshowComponent implements OnInit {
   }
   
   nextSlideNumber(){
-     this.currentSlide = this.currentSlide + 1; 
+     this.currentSlide = this.currentSlide + 1;
 
   }
  
   prevSlideNumber(){
-     this.currentSlide = this.currentSlide - 1;
+		     this.currentSlide = this.currentSlide - 1;
+
   }
 
  openFullscreen() {

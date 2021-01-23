@@ -12,7 +12,7 @@ import {HomepageComponent} from './homepage/homepage.component';
 
 const routes: Routes = [
     {path: '', component: HomepageComponent},
-    {path: 'slideshow/:title', component: SlideshowComponent},
+    {path: 'slideshow/:title/:otherTitle', component: SlideshowComponent},
     {path: 'quiz/:title', component: QuizComponent},
     {path: 'list/:list', component: StorylistComponent},
     {path: 'jigsaw/:title', component: JigsawComponent},

@@ -155,13 +155,13 @@
 
 			<div  *ngFor="let slide of newList; let i = index;" class="carousel-item" [ngClass]="{'active': isFirstSlide(i)}"  (click)="openSlideshow(slide['title'])" style="height:100%">                  
                 
-					<a [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active">
+					<a [routerLink]="['/slideshow', slide['title'], slide['otherTitle']]" routerLinkActive="active">
 						<div class="cover-image-fade" ></div>
 						<img style="height:100%; width: 100%;"   [src]="newList[i]['newcoverposter']"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>
     
                     <div   >
  				     	<a class="cover-title text-shadow " style="text-decoration:none;" [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active">{{slide["otherTitle"]}}</a>
-     					<a [routerLink]="['/slideshow', slide['title']]"  style="font-size:24px; text-decoration:none; line-height: 1.5; padding-top: 20px; width: 60%" class="text-shadow cover-description">{{newList[i]['description']}}</a>
+     					<a [routerLink]="['/slideshow', slide['title'], slide['otherTitle']]"  style="font-size:24px; text-decoration:none; line-height: 1.5; padding-top: 20px; width: 60%" class="text-shadow cover-description">{{newList[i]['description']}}</a>
            
 				    </div>  
 				           
@@ -199,7 +199,7 @@
 						 <div style="padding: 10px">
 							  <div  >  
 								  <div class="default-state">
-									  <a [routerLink]="['/slideshow', name.title]" routerLinkActive="active" ><div class="posterimage-container">
+									  <a [routerLink]="['/slideshow', name.title, name.otherTitle]" routerLinkActive="active" ><div class="posterimage-container">
 										 <img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
 									     <div class="storyTitle text-shadow">{{name.otherTitle}}</div>		
 									  </div></a>						  
