@@ -77,14 +77,16 @@
 			<li data-target="#demo" data-slide-to="12"></li>
 
 		  </ul>-->
-		  <div style="display:flex; flex-direction: row; position: absolute; top: 30px; z-index:100;; justify-content: center; align-items: center;">
-				 <img class="item carousel-indicator-image" (click)="makeActive($event.currentTarget)" src="https://raw.githubusercontent.com/gesab001/assets/master/images/sunset.jpg" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="" data-target="#demo" [attr.data-slide-to]="0"> 
-    		     <!--<div style="position:absolute; z-index:2; top:0" ><h1 class="textshadow" style="font-size:12px">{{otherTitle}}</h1></div>-->
-    	
-		     <img (click)="makeActive($event.currentTarget)" *ngFor="let slide of slides['slides']; index as i" class="carousel-indicator-image item" [src]="getSlideImage([slide['image']])" data-target="#demo" [attr.data-slide-to]="i+1">
-			 <img  (click)="makeActive($event.currentTarget)" class="carousel-indicator-image item"  src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png" data-target="#demo" [attr.data-slide-to]="11">
-			 <img  (click)="makeActive($event.currentTarget)" class="carousel-indicator-image item"  src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" data-target="#demo" [attr.data-slide-to]="12">
+		  <div class="indicator-container">
+			  <div class="carousel-indicators" >
+					 <img class="item carousel-indicator-image active" src="https://raw.githubusercontent.com/gesab001/assets/master/images/sunset.jpg" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="" data-target="#demo" [attr.data-slide-to]="0"> 
+					 <!--<div style="position:absolute; z-index:2; top:0" ><h1 class="textshadow" style="font-size:12px">{{otherTitle}}</h1></div>-->
+			
+				 <img  *ngFor="let slide of slides['slides']; index as i" class="carousel-indicator-image item" [src]="getSlideImage([slide['image']])" data-target="#demo" [attr.data-slide-to]="i+1">
+				 <img  class="carousel-indicator-image item"  src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png" data-target="#demo" [attr.data-slide-to]="11">
+				 <img  class="carousel-indicator-image item"  src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" data-target="#demo" [attr.data-slide-to]="12">
 
+			  </div>
 		  </div>
 		  <div class="carousel-inner">
 			<div class="carousel-item active ">

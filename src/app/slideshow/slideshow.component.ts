@@ -223,7 +223,7 @@ export class SlideshowComponent implements OnInit {
 
   }
  
-  
+  /*  
   makeActive(element){
     var allElements = document.getElementsByClassName("carousel-indicator-image");
     console.log(allElements.length);
@@ -238,7 +238,7 @@ export class SlideshowComponent implements OnInit {
 
 
   }
-  
+
   makeActive2(index){
 	var allElements = document.getElementsByClassName("carousel-indicator-image");
 	for (var x=0; x<allElements.length; x++){
@@ -255,6 +255,8 @@ export class SlideshowComponent implements OnInit {
     element.style.borderColor = "none";
     element.style.opacity = "1";
   }
+  
+  */
    pauseVideo(){
      //alert(this.slides["video"]);
      var playIcon = document.getElementById("videoPlayIcon");
@@ -346,14 +348,14 @@ export class SlideshowComponent implements OnInit {
   nextSlideNumber(){
     
      this.currentSlide = this.currentSlide + 1;
-      this.makeActive2(this.currentSlide);
+     // this.makeActive2(this.currentSlide);
 
 
   }
  
   prevSlideNumber(){
 	 this.currentSlide = this.currentSlide - 1;
-     this.makeActive2(this.currentSlide);
+     //this.makeActive2(this.currentSlide);
 
   }
 
