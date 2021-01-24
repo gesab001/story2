@@ -70,13 +70,22 @@
 <div class="carousel-container" *ngIf="isDesktop && isLandscape">
 	<div class="slide-container">
 		<div id="demo" class="carousel slide slide-container "  data-ride="carousel" data-wrap="false" data-interval="false">
-		  <ul style="height:30px;"	 class="carousel-indicators">
+		<!--  <ul style="height:30px;"	 class="carousel-indicators carousel-indicators--thumbnails">
 			<li data-target="#demo" data-slide-to="0" class="active"></li>
 			<li *ngFor="let slide of slides['slides']; index as i" data-target="#demo" [attr.data-slide-to]="i+1"></li>
 			<li data-target="#demo" data-slide-to="11"></li>
 			<li data-target="#demo" data-slide-to="12"></li>
 
-		  </ul>
+		  </ul>-->
+		  <div style="display:flex; flex-direction: row; position: absolute; top: 30px; z-index:100;; justify-content: center; align-items: center;">
+				 <img class="item carousel-indicator-image" (click)="makeActive($event.currentTarget)" src="https://raw.githubusercontent.com/gesab001/assets/master/images/sunset.jpg" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="" data-target="#demo" [attr.data-slide-to]="0"> 
+    		     <!--<div style="position:absolute; z-index:2; top:0" ><h1 class="textshadow" style="font-size:12px">{{otherTitle}}</h1></div>-->
+    	
+		     <img (click)="makeActive($event.currentTarget)" *ngFor="let slide of slides['slides']; index as i" class="carousel-indicator-image item" [src]="getSlideImage([slide['image']])" data-target="#demo" [attr.data-slide-to]="i+1">
+			 <img  (click)="makeActive($event.currentTarget)" class="carousel-indicator-image item"  src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png" data-target="#demo" [attr.data-slide-to]="11">
+			 <img  (click)="makeActive($event.currentTarget)" class="carousel-indicator-image item"  src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" data-target="#demo" [attr.data-slide-to]="12">
+
+		  </div>
 		  <div class="carousel-inner">
 			<div class="carousel-item active ">
 			  <img class="imageslide" src="https://raw.githubusercontent.com/gesab001/assets/master/images/sunset.jpg" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="">
@@ -97,9 +106,9 @@
 			  </div>   
 		    <div id="videoSlide" class="carousel-item">
 					<div style=" width:100%; height: 100%; display:flex; flex-direction: column; align-items: center; justify-content: center">
-	<!--<iframe  style="width:50%; " [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
+	<!--<iframe  style="width:50%; height:50%; display:none"         loading="lazy" [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
 					</iframe>	-->
-					<img id="videoPlayIcon" width="320" height="240" (click)="playVideo()" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png">
+					<img  id="videoPlayIcon" width="320" height="240" (click)="playVideo()" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png">
 					 <video style="display:none" id="videoplayer" controls><source id="videosource" src=""></video>		
 						 
 					

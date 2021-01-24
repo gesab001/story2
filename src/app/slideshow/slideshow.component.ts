@@ -37,11 +37,13 @@ export class SlideshowComponent implements OnInit {
   otherTitle: string;
   videoFileName: string;
   quiztitle: string;
-  currentSlide: number;
+  currentSlide  = 0;
   nextSlide; 
   previousSlide;
   quiztimeSlide;
   elem: any;
+  currentActiveClass;
+
   safeSrc: SafeResourceUrl;
 
   constructor(@Inject(DOCUMENT) private document: any, config: NgbCarouselConfig, private sanitizer: DomSanitizer, private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService, private render: Renderer2) {
@@ -189,17 +191,21 @@ export class SlideshowComponent implements OnInit {
         this.animateScrollText();
       });
     console.log(this.previousSlide);
+
+    
+
    
     
     
     this.openFullscreen();
-    var url = "https://gesab001.github.io/videoassets/"+this.videoFileName;
+/*    var url = "https://gesab001.github.io/videoassets/"+this.videoFileName;
     var video = document.getElementById('videoplayer');
     
      var source = document.createElement('source');   
      source.setAttribute('src', url);
      video.appendChild(source);
-     video.style.display = "block";     
+     video.style.display = "block";     */
+     
   }
   
   playVideo(){
@@ -217,6 +223,38 @@ export class SlideshowComponent implements OnInit {
 
   }
  
+  
+  makeActive(element){
+    var allElements = document.getElementsByClassName("carousel-indicator-image");
+    console.log(allElements.length);
+    for (var x=0; x<allElements.length; x++){
+        this.makeInactive(allElements[x]);
+    }
+
+       element.style.borderStyle = "solid";
+       element.style.borderColor = "blue";
+       element.style.opacity = "0.7";
+    
+
+
+  }
+  
+  makeActive2(index){
+	var allElements = document.getElementsByClassName("carousel-indicator-image");
+	for (var x=0; x<allElements.length; x++){
+		this.makeInactive(allElements[x]);
+    }
+	var element = allElements[index+1];
+	element.style.borderStyle = "solid";
+    element.style.borderColor = "blue";
+    element.style.opacity = "0.7";
+  }
+  
+  makeInactive(element){
+    element.style.borderStyle = "none"; 
+    element.style.borderColor = "none";
+    element.style.opacity = "1";
+  }
    pauseVideo(){
      //alert(this.slides["video"]);
      var playIcon = document.getElementById("videoPlayIcon");
@@ -273,6 +311,12 @@ export class SlideshowComponent implements OnInit {
     
      this.myCarousel.activeId='0';
          this.openFullscreen();
+         this.currentActiveClass = document.getElementsByClassName("carousel-indicator-image")[0];
+    var element = this.currentActiveClass;
+    alert(this.currentActiveClass());
+    element.style.borderStyle = "solid"; 
+    element.style.borderColor = "blue";
+    element.style.opacity = "1";    
 
   }
    
@@ -294,18 +338,22 @@ export class SlideshowComponent implements OnInit {
   }
   
   public getSafeSrc(): SafeResourceUrl {
-     var stringurl = "https://gesab001.github.io/videoassets/"+this.slides['video'];
+     var stringurl = "https://gesab001.github.io/videoassets/"+this.videoFileName + "?autoplay=1";
      this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(stringurl);
      return this.safeSrc;
   }
   
   nextSlideNumber(){
+    
      this.currentSlide = this.currentSlide + 1;
+      this.makeActive2(this.currentSlide);
+
 
   }
  
   prevSlideNumber(){
-		     this.currentSlide = this.currentSlide - 1;
+	 this.currentSlide = this.currentSlide - 1;
+     this.makeActive2(this.currentSlide);
 
   }
 
