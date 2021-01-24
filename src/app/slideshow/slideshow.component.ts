@@ -223,7 +223,7 @@ export class SlideshowComponent implements OnInit {
 
   }
  
-  /*  
+  /* 	 
   makeActive(element){
     var allElements = document.getElementsByClassName("carousel-indicator-image");
     console.log(allElements.length);

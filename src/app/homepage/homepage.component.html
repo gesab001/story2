@@ -92,7 +92,7 @@
 		 <div class="search-results-container" *ngFor="let name of searchResultsStateGroup" (mouseenter)="imageHoverIn($event.currentTarget)" (mouseleave)="imageHoverOut($event.currentTarget)">
 			 
 			 <div style="padding: 10px">
-				  <a class="card-link" [routerLink]="['/slideshow', name.title]" routerLinkActive="active"  >  
+				  <a class="card-link" [routerLink]="['/slideshow', name.title, name.otherTitle]" routerLinkActive="active"  >  
 					  <div class="default-state">
 						  <div class="posterimage-container-search-results">
 							  <div style="position: relative">
@@ -110,7 +110,7 @@
 					  </div>
 					  <div  class="hovered-state" style="display:none">
 							<div class="posterimage-container">
-								 <a [routerLink]="['/slideshow', name.title]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+								 <a [routerLink]="['/slideshow', name.title, name.otherTitle]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
 									 <div class="caption-container-search-results">
 											<p class="caption">{{name.otherTitle}}</p>
 											<p class="caption">{{name.description}}</p>                                    
@@ -160,7 +160,7 @@
 						<img style="height:100%; width: 100%;"   [src]="newList[i]['newcoverposter']"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago"></a>
     
                     <div   >
- 				     	<a class="cover-title text-shadow " style="text-decoration:none;" [routerLink]="['/slideshow', slide['title']]" routerLinkActive="active">{{slide["otherTitle"]}}</a>
+ 				     	<a class="cover-title text-shadow " style="text-decoration:none;" [routerLink]="['/slideshow', slide['title'], slide['otherTitle']]" routerLinkActive="active">{{slide["otherTitle"]}}</a>
      					<a [routerLink]="['/slideshow', slide['title'], slide['otherTitle']]"  style="font-size:24px; text-decoration:none; line-height: 1.5; padding-top: 20px; width: 60%" class="text-shadow cover-description">{{newList[i]['description']}}</a>
            
 				    </div>  
@@ -207,7 +207,7 @@
 								  <div  class="hovered-state" style="display:none">
 									  
 										  <div class="posterimage-container">
-											 <a [routerLink]="['/slideshow', name.title]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
+											 <a [routerLink]="['/slideshow', name.title, name.otherTitle]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="getPoster(name.title)">	
 											 <div class="caption-container">
 													<p class="caption">{{name.otherTitle}}</p>
 													<p class="caption">{{name.description}}</p>                                    
