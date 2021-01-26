@@ -31,11 +31,11 @@ export class SlideshowComponent implements OnInit {
   isDesktop: boolean;
   isPortrait: boolean;
   isLandscape: boolean;
-  isVideoSlide: boolean;
   subscription;
   storytitle: string;
   otherTitle: string;
   videoFileName: string;
+  iframeIsNotLoaded: boolean = true;
   quiztitle: string;
   currentSlide  = 0;
   nextSlide; 
@@ -43,6 +43,7 @@ export class SlideshowComponent implements OnInit {
   quiztimeSlide;
   elem: any;
   currentActiveClass;
+  isVideoSlide: boolean = false;
 
   safeSrc: SafeResourceUrl;
 
@@ -74,27 +75,42 @@ export class SlideshowComponent implements OnInit {
             //  alert(key);
 		  //this.previousSlide.click();
 		  document.getElementById("prevSlide").click();
-          console.log(document.querySelector(".carousel-item.active"));
+	/*
+			var demoEl =document.getElementById("demo");
+                 var inner = demoEl.getElementsByClassName("carousel-inner")[0];
+                 var activeEl = inner.querySelector(".video-item");
+                 //console.log(activeEl.className);
+                 if(activeEl.className == "carousel-item video-item carousel-item-prev carousel-item-right"){
+                     console.log("its a video slide");
+                     this.isVideoSlide = true;
+                 }else{
+                                         this.isVideoSlide = false;
+
+                 }
 
 
-
+*/
     }
     if (key==="PageDown"){
           //alert(key);
+
 		  document.getElementById("nextSlide").click();
+           
 
-           console.log(document.querySelector(".carousel-item.active"));
-
-		
         //this.nextSlide.click();
         console.log("currentslide:"+this.currentSlide);
        // alert(this.currentSlide);
-        if(this.currentSlide>11){
-           console.log('quiztime');
-           this.quiztimeSlide =  document.querySelector('.quiztime');
-           this.quiztimeSlide.click();
-
-        }
+ /*            var demoEl =document.getElementById("demo");
+                 var inner = demoEl.getElementsByClassName("carousel-inner")[0];
+                 var activeEl = inner.querySelector(".video-item");
+                // console.log(activeEl.className);
+                 if(activeEl.className == "carousel-item video-item carousel-item-next carousel-item-left"){
+                     console.log("its a video slide");
+                     this.isVideoSlide = true;
+                 }else{
+                     this.isVideoSlide = false;
+                 }*/
+     
            
     }
     
@@ -172,6 +188,16 @@ export class SlideshowComponent implements OnInit {
   }
   
   
+  checkVideoSlide(activeEl){
+         if (activeEl == "carousel-indicator-image item active"){
+          // console.log("its a video slide");
+           this.isVideoSlide = true;
+           this.playVideo();
+       }else{
+          this.isVideoSlide = false;
+       }
+  }
+  
   ngAfterViewInit(){
 
     this.nextSlide = document.querySelector('.carousel-control-next');
@@ -181,19 +207,49 @@ export class SlideshowComponent implements OnInit {
 		//const source = interval(1000);
 		//const text = 'Your Text Here';
 		//this.subscriptionScroll = source.subscribe(val => this.animateScrollText());
-        this.animateScrollText();
+        //this.animateScrollText();
+       // console.log("next slide listener");
+       var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[10];
+     //  console.log(activeEl.className);
+       this.checkVideoSlide(activeEl.className);
+       console.log("detect changes");
+
+      
 
       });
-    console.log(this.nextSlide);
+   // console.log(this.nextSlide);
      this.previousSlide = document.querySelector('.carousel-control-prev');
       this.render.listen(this.previousSlide, 'click', (target)=>{
-        console.log('clicked', target);
-        this.animateScrollText();
+        //console.log('clicked', target);
+        //this.animateScrollText();
+           //     console.log("previous slide");
+       var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[12];
+       console.log(activeEl.className);
+       this.checkVideoSlide(activeEl.className);
       });
-    console.log(this.previousSlide);
+   // console.log(this.previousSlide);
+       var carouselIndicators = document.getElementsByClassName('carousel-indicators')[0].getElementsByTagName("IMG");
+       for (var x= 0; x<carouselIndicators.length; x++){
+		       console.log(carouselIndicators[x]);
+		       console.log("listen");
+		       var indicatorItem = carouselIndicators[x];
+		       this.render.listen(indicatorItem, 'click', (target)=>{
+		            console.log('clicked', target.originalTarget.dataset.slideTo);
+		            var slideIndex = target.originalTarget.dataset.slideTo;
+		            if (slideIndex==11){
+		                 console.log("its a video slide");
+		                 this.isVideoSlide = true;
+		                 this.playVideo();
+		            }else{
+		                this.isVideoSlide = false;
+						 console.log("its not video slide");
 
+		            }
+		       });
+
+       }
     
-
+     
    
     
     
@@ -206,6 +262,13 @@ export class SlideshowComponent implements OnInit {
      video.appendChild(source);
      video.style.display = "block";     */
      
+  }
+  
+  
+  iframeLoaded(event)
+  {
+     console.log("iframe loaded", event);
+     this.iframeIsNotLoaded = false;
   }
   
   playVideo(){
@@ -340,7 +403,7 @@ export class SlideshowComponent implements OnInit {
   }
   
   public getSafeSrc(): SafeResourceUrl {
-     var stringurl = "https://gesab001.github.io/videoassets/"+this.videoFileName + "?autoplay=1";
+     var stringurl = "https://gesab001.github.io/videoassets/"+this.videoFileName;
      this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(stringurl);
      return this.safeSrc;
   }
@@ -349,13 +412,19 @@ export class SlideshowComponent implements OnInit {
     
      this.currentSlide = this.currentSlide + 1;
      // this.makeActive2(this.currentSlide);
-
+  //   console.log("you clicked next slide");
+ 
 
   }
  
   prevSlideNumber(){
 	 this.currentSlide = this.currentSlide - 1;
      //this.makeActive2(this.currentSlide);
+ /*         console.log("you clicked prev slide");
+     var demoEl =document.getElementById("demo");
+	 var inner = demoEl.getElementsByClassName("carousel-inner")[0];
+	 var activeEl = inner.getElementsByClassName("carousel-item");
+	 console.log(activeEl);*/
 
   }
 

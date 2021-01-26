@@ -68,7 +68,7 @@
 		<!--<a class="user-profile-link" [routerLink]="['']" routerLinkActive="active" *ngIf="isSearchBar==false">Giovanni</a>  -->
 		<div  class="search-icon-container">
             <div class="search-bar" id="searchbar" style="display:none">
-		        <input type="text" (focusout)="hideSearchBar()" onfocus="this.value=''" autofocus id="inputField" (keyup)="searchTitle($event)" placeholder="Search stories">
+		        <input type="text"  onfocus="this.value=''" autofocus id="inputField" (keyup)="searchTitle($event)" placeholder="Search stories">
 		    </div>			
 			<div class="maticon-search"><mat-icon aria-hidden="false" aria-label="Example home icon" style="cursor: pointer" (click)="showSearchBar()">search</mat-icon> </div>
 	    </div>

@@ -17,7 +17,11 @@
            <img   class="img-fluid mx-auto d-block" [src]="[slide['image']]"    onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
           
       </ng-template>
+ <ng-template>
+	 					<img  id="videoPlayIcon" class="img-fluid mx-auto d-block" (click)="playVideo()"  src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png">
 
+			
+ </ng-template>
       <ng-template ngbSlide id="slides['slides'].length">
 
         <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
@@ -36,6 +40,7 @@
     </div>
 </div>
 
+<!--
 <div *ngIf="isLandscape && isMobile">
     <ngb-carousel #myCarousel="ngbCarousel"  (slide)="getCurrentSlide($event)" *ngIf="images" >
       <ng-template ngbSlide id="0">
@@ -47,7 +52,11 @@
       <ng-template ngbSlide *ngFor="let slide of slides['slides']; let i = index;" id={{i+1}}>
               <img   (tap)="onTap($event)"   class="img-fluid mx-auto d-block" [src]="[slide['image']]"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
       </ng-template>
+      <ng-template >
+               <img   (tap)="onTap($event)"   class="img-fluid mx-auto d-block" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
 
+      </ng-template>
+      
       <ng-template ngbSlide id="slides['slides'].length">
 
         <a [routerLink]="['/quiz', quiztitle]" routerLinkActive="active"><img class="img-fluid mx-auto d-block" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
@@ -65,9 +74,9 @@
 
     </div>
 </div>
+-->
 
-
-<div class="carousel-container" *ngIf="isDesktop && isLandscape">
+<div class="carousel-container" *ngIf="isLandscape">
 	<div class="slide-container">
 		<div id="demo" class="carousel slide slide-container "  data-ride="carousel" data-wrap="false" data-interval="false">
 		<!--  <ul style="height:30px;"	 class="carousel-indicators carousel-indicators--thumbnails">
@@ -99,19 +108,22 @@
 			<div  *ngFor="let slide of slides['slides']; let i = index;" class="carousel-item" >
 
 					<img class="imageslide"   [src]="getSlideImage([slide['image']])"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
-				  <div class="carousel-caption" [ngClass]="{'hideCaption': isHiddenCaption}">
+				  <div   class="carousel-caption caption-fullwidth" [ngClass]="{'hideCaption': isHiddenCaption}">
                    
  				     	<h1 class="textshadow ">{{slide["text"]}}</h1>
                    
       
 				  </div>
+
+      
 			  </div>   
-		    <div id="videoSlide" class="carousel-item">
+		    <div id="videoSlide" class="carousel-item video-item">
 					<div style=" width:100%; height: 100%; display:flex; flex-direction: column; align-items: center; justify-content: center">
-	<!--<iframe  style="width:50%; height:50%; display:none"         loading="lazy" [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
-					</iframe>	-->
-					<img  id="videoPlayIcon" width="320" height="240" (click)="playVideo()" src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png">
-					 <video style="display:none" id="videoplayer" controls><source id="videosource" src=""></video>		
+						<!--    <h1 *ngIf = "iframeIsNotLoaded" style="color:white">Loading video...</h1>
+							<iframe  *ngIf="isVideoSlide" (load) = "iframeLoaded($event)" style="width:50%; height:50%;" [src]="safeSrc" title="W3Schools Free Online Web Tutorials" allowFullScreen="allowFullScreen">
+							</iframe>-->
+					<img  id="videoPlayIcon" width="320" height="240" (click)="playVideo()"  src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png">
+					 <video style="display:none" width="320" height="240" id="videoplayer" poster="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png"  controls><source id="videosource" src=""></video>	
 						 
 					
 					</div>
@@ -123,10 +135,10 @@
 		        <a [routerLink]="['/quiz', quiztitle]"  routerLinkActive="active"><img  class="imageslide quiztime" onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" src="https://raw.githubusercontent.com/gesab001/assets/master/images/quiztime.jpg" alt="quiztime"></a>
 			</div>
 		  </div>
-		  <a id="prevSlide" (click)="prevSlideNumber()" href="#demo" data-slide="prev">
+		  <a id="prevSlide" class="carousel-control-prev" href="#demo" data-slide="prev">
 			<span class="carousel-control-prev-icon"></span>
 		  </a>
-		  <a id="nextSlide" (click)="nextSlideNumber()" href="#demo" data-slide="next">
+		  <a id="nextSlide" class="carousel-control-next" href="#demo" data-slide="next">
 			<span class="carousel-control-next-icon"></span>
 		  </a>
 
