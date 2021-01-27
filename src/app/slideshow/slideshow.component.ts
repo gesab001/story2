@@ -44,6 +44,7 @@ export class SlideshowComponent implements OnInit {
   elem: any;
   currentActiveClass;
   isVideoSlide: boolean = false;
+  scrollTimer;
 
   safeSrc: SafeResourceUrl;
 
@@ -148,10 +149,25 @@ export class SlideshowComponent implements OnInit {
     }
   }
   
+  stopScroll(){
+     clearInterval(this.scrollTimer);
+     console.log("stop scroll");
+  }
   animateScrollText(){	
-        var scrollmenu = document.getElementsByClassName('scrollmenu');
-        var container = scrollmenu[0];
+       var activeEl = document.getElementsByClassName("carousel-item active")[0];
+	   var scrollmenu = activeEl.getElementsByTagName('DIV')[0];
+       scrollmenu.scrollLeft = 0;
+        clearInterval(this.scrollTimer);
+        this.scrollTimer = setInterval(() => {this.myTimer();}, 5);
+                console.log("animate scrolltext");
+       // this.myTimer();
+      /*
+        var scrollmenu = document.getElementById('scrollmenu-mobile');
+        var container = scrollmenu;
+    	var h1 = container.getElementsByTagName('h1')[0];
+        console.log(h1.innerHTML);
         var scrollWidth = container.scrollWidth;
+        console.log("scrollWidth" + scrollWidth);
 		var cssAnimation = document.createElement('style');
 		cssAnimation.type = 'text/css';
 		var rules = document.createTextNode('@-webkit-keyframes scroll-left  {'+
@@ -159,18 +175,54 @@ export class SlideshowComponent implements OnInit {
 		'100% {  -webkit-transform: translateX(-'+scrollWidth+'px) }'+
 		'}');
 		cssAnimation.appendChild(rules);
-	    var newtext = this.slides[this.currentSlide]["text"];
-	    var h1 = container.getElementsByTagName('h1')[0];
-        h1.innerHTML = newtext; 
-        var lengthScroll = scrollWidth / 100;
-        //alert(lengthScroll);
+	    //var newtext = "hello";
+       // h1.innerHTML = newtext; 
+        var lengthScroll = scrollWidth;
+        console.log("lengthScroll: " + lengthScroll);
         //var lengthRule = document.createTextNode('animation: scroll-left 20s linear infinite');
         //cssAnimation.appendChild(lengthRule);
         h1.appendChild(cssAnimation);
         h1.style.animation = "scroll-left "+lengthScroll+"s linear infinite";
         var dupe = container.cloneNode(true);
         container.parentNode.replaceChild(dupe, container);
+      */
   }
+  
+  onScroll(event){
+     console.log(this.isEndOfScroll(event));
+     //this.animateScrollText();
+  }
+  
+  isEndOfScroll(event){
+     console.log("scrollwidth: " + event.target.scrollWidth);
+     console.log("left: " + event.target.scrollLeft);
+     var offset = event.target.offsetWidth;
+     var difference = event.target.scrollWidth - event.target.scrollLeft;
+     console.log("offset: " + offset);
+     console.log("difference: " + difference);
+      if (offset == difference){
+         return true;
+      }else {
+         return false;
+      }
+  }
+  
+  myTimer(){
+      var activeEl = document.getElementsByClassName("carousel-item active")[0];
+	  var scrollmenu = activeEl.getElementsByTagName('DIV')[0];
+      scrollmenu.scrollLeft = scrollmenu.scrollLeft +  1;
+      if (this.isEndOfScroll(scrollmenu)){
+		  clearInterval(this.scrollTimer);
+
+      }
+      console.log("scrollmenu.scrollLeft:" + scrollmenu.scrollLeft);
+  /*
+        
+    	h1.scrollLeft = h1.scrollLeft + 1;
+    	*/
+
+  }
+  
   
   animatePause(){
        var scrollmenu = document.getElementsByClassName('scrollmenu');
@@ -199,7 +251,7 @@ export class SlideshowComponent implements OnInit {
   }
   
   ngAfterViewInit(){
-
+    //this.animateScrollText(); 
     this.nextSlide = document.querySelector('.carousel-control-next');
       this.render.listen(this.nextSlide, 'click', (target)=>{
         // Create an Observable that will publish a value on an interval
@@ -207,12 +259,14 @@ export class SlideshowComponent implements OnInit {
 		//const source = interval(1000);
 		//const text = 'Your Text Here';
 		//this.subscriptionScroll = source.subscribe(val => this.animateScrollText());
-        //this.animateScrollText();
+         this.stopScroll();
+       // this.animateScrollText();
        // console.log("next slide listener");
        var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[10];
      //  console.log(activeEl.className);
        this.checkVideoSlide(activeEl.className);
        console.log("detect changes");
+       
 
       
 
@@ -221,7 +275,7 @@ export class SlideshowComponent implements OnInit {
      this.previousSlide = document.querySelector('.carousel-control-prev');
       this.render.listen(this.previousSlide, 'click', (target)=>{
         //console.log('clicked', target);
-        //this.animateScrollText();
+        this.animateScrollText();
            //     console.log("previous slide");
        var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[12];
        console.log(activeEl.className);

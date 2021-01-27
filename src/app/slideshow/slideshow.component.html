@@ -108,9 +108,9 @@
 			<div  *ngFor="let slide of slides['slides']; let i = index;" class="carousel-item" >
 
 					<img class="imageslide"   [src]="getSlideImage([slide['image']])"  onerror="this.src='https://raw.githubusercontent.com/gesab001/assets/master/images/black.jpg';" alt="Chicago">
-				  <div   class="carousel-caption caption-fullwidth" [ngClass]="{'hideCaption': isHiddenCaption}">
+				  <div id="scrollmenu-mobile" (scroll)="onScroll($event)" class="carousel-caption caption-fullwidth scrollmenu" [ngClass]="{'hideCaption': isHiddenCaption}">
                    
- 				     	<h1 class="textshadow ">{{slide["text"]}}</h1>
+ 				     	<h1 (click)="animateScrollText()" class="textshadow ">{{slide["text"]}}</h1>
                    
       
 				  </div>

@@ -8,19 +8,23 @@
 .indicator-container
   display: flex
   flex-direction: row
+      
+
   
   
 .carousel-indicators
 
   display: flex
   flex-direction: row
-  justify-content: center
   margin-top: 10px
   align-items: top
   z-index:1
   height: 150px
   @media screen and (max-width: 989px)
-   height: 10%
+   position: absolute
+   left: 0
+   height: 15%
+   text-align: center
    display: inline-block
    overflow: auto
    white-space: nowrap
@@ -33,6 +37,9 @@
   margin-right: 5px
   border-radius: 9999px
   opacity: 1
+  @media screen and (max-width: 989px)
+      width: 30px
+      height: 30px
 
 .carousel-indicator-image.active
   opacity: 0.7
@@ -127,19 +134,11 @@
   display:none
   
 div.scrollmenu 
-  background-color: #333
-  overflow: auto
-  white-space: nowrap
-  width:100
-  
+  @media screen and (max-width: 989px)
+   overflow: auto
+   white-space: nowrap
+   width: 100%
 
-.scrollmenu h1
-  -moz-transform: translateX(100%)
-  -webkit-transform: translateX(100%)
-  transform: translateX(100%)
-  animation: scroll-left 20s linear infinite
-
-  
           
 div.scrollmenu a 
   display: inline-block
@@ -172,6 +171,9 @@ div.scrollmenu a:hover
    @media screen and (max-width: 989px)
      width: 100%
      left: 0
+
+.carousel-caption h1
+   @media screen and (max-width: 989px)
 
 .quiztime
    z-index: 10    
