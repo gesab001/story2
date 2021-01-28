@@ -149,16 +149,27 @@ export class SlideshowComponent implements OnInit {
     }
   }
   
+  isScrollOn: boolean = false;
+  
   stopScroll(){
+     this.isScrollOn = false;
      clearInterval(this.scrollTimer);
      console.log("stop scroll");
   }
+  
+  toggleScroll(){
+      if(this.isScrollOn==false){
+         this.animateScrollText();
+      }else{
+         this.stopScroll();
+      }
+  }
+  
   animateScrollText(){	
-       var activeEl = document.getElementsByClassName("carousel-item active")[0];
-	   var scrollmenu = activeEl.getElementsByTagName('DIV')[0];
-       scrollmenu.scrollLeft = 0;
+       this.isScrollOn = true;
+
         clearInterval(this.scrollTimer);
-        this.scrollTimer = setInterval(() => {this.myTimer();}, 5);
+        this.scrollTimer = setInterval(() => {this.myTimer();}, 7);
                 console.log("animate scrolltext");
        // this.myTimer();
       /*
@@ -259,6 +270,9 @@ export class SlideshowComponent implements OnInit {
 		//const source = interval(1000);
 		//const text = 'Your Text Here';
 		//this.subscriptionScroll = source.subscribe(val => this.animateScrollText());
+		 var activeEl = document.getElementsByClassName("carousel-item active")[0];
+	     var scrollmenu = activeEl.getElementsByTagName('DIV')[0];
+         scrollmenu.scrollLeft = 0;
          this.stopScroll();
        // this.animateScrollText();
        // console.log("next slide listener");
@@ -275,7 +289,11 @@ export class SlideshowComponent implements OnInit {
      this.previousSlide = document.querySelector('.carousel-control-prev');
       this.render.listen(this.previousSlide, 'click', (target)=>{
         //console.log('clicked', target);
-        this.animateScrollText();
+        //this.animateScrollText();
+         var activeEl = document.getElementsByClassName("carousel-item active")[0];
+	     var scrollmenu = activeEl.getElementsByTagName('DIV')[0];
+         scrollmenu.scrollLeft = 0;
+          this.stopScroll();
            //     console.log("previous slide");
        var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[12];
        console.log(activeEl.className);
@@ -309,7 +327,7 @@ export class SlideshowComponent implements OnInit {
     
     this.openFullscreen();
 /*    var url = "https://gesab001.github.io/videoassets/"+this.videoFileName;
-    var video = document.getElementById('videoplayer');
+    var video = document	.getElementById('videoplayer');
     
      var source = document.createElement('source');   
      source.setAttribute('src', url);
