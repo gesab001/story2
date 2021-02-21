@@ -33,6 +33,7 @@ export class SlideshowComponent implements OnInit {
   isLandscape: boolean;
   subscription;
   storytitle: string;
+  titleparam: string;
   otherTitle: string;
   videoFileName: string;
   iframeIsNotLoaded: boolean = true;
@@ -68,10 +69,22 @@ export class SlideshowComponent implements OnInit {
 
   }
   
+ 
    @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
      var key = event.key;
-
+     console.log(key);
+     
+    if (event.shiftKey && event.key === '+') {
+       console.log('bigger font!');
+       var el = document.getElementsByClassName("imageDescription");
+       console.log(el);
+ 
+    }
+    
+    if (event.shiftKey && event.key === '_') {
+       console.log('smaller font!');
+    }
     if (key==="PageUp"){
             //  alert(key);
 		  //this.previousSlide.click();
@@ -435,6 +448,7 @@ export class SlideshowComponent implements OnInit {
      this.elem = document.documentElement;
      this.route.paramMap.subscribe(params => { 
         this.storytitle = params.get('title');
+        this.titleparam = params.get('title');
         this.otherTitle = params.get('otherTitle');
         this.videoFileName = this.otherTitle + ".mp4"; 
         this.quiztitle = this.storytitle;
