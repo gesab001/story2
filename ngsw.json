@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1613951411704,
+  "timestamp": 1614177431265,
   "index": "/story2/index.html",
   "assetGroups": [
     {
@@ -23,7 +23,7 @@
     },
     {
       "name": "assets",
-      "installMode": "lazy",
+      "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
         "/story2/assets/icons/icon-114x114.png",
@@ -40,7 +40,18 @@
         "/story2/assets/icons/icon-76x76.png",
         "/story2/assets/icons/icon-96x96.png"
       ],
-      "patterns": []
+      "patterns": [
+        "https:\\/\\/github\\.com\\/gesab001\\/assets\\/blob\\/master\\/story\\/stories\\.json",
+        "https:\\/\\/github\\.com\\/gesab001\\/assets\\/blob\\/master\\/story\\/articles\\/[^/]*\\.json",
+        "https:\\/\\/github\\.com\\/gesab001\\/assets\\/blob\\/master\\/images\\/[^/]*\\/[^/]*\\.jpg",
+        "https:\\/\\/raw\\.githubusercontent\\.com\\/gesab001\\/assets\\/master\\/images\\/app-icons\\/story\\/[^/]*\\.png",
+        "https:\\/\\/fonts\\.googleapis\\.com\\/css\\?family=Roboto:300,400,500&amp;display=swap",
+        "https:\\/\\/fonts\\.googleapis\\.com\\/icon\\?family=Material\\+Icons",
+        "https:\\/\\/maxcdn\\.bootstrapcdn\\.com\\/bootstrap\\/4\\.5\\.0\\/css\\/bootstrap\\.min\\.css",
+        "https:\\/\\/ajax\\.googleapis\\.com\\/ajax\\/libs\\/jquery\\/3\\.5\\.1\\/jquery\\.min\\.js",
+        "https:\\/\\/cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/popper\\.js\\/1\\.16\\.0\\/umd\\/popper\\.min\\.js",
+        "https:\\/\\/maxcdn\\.bootstrapcdn\\.com\\/bootstrap\\/4\\.5\\.0\\/js\\/bootstrap\\.min\\.js"
+      ]
     }
   ],
   "dataGroups": [],
