@@ -1,18 +1,18 @@
 {
-  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
-  "index": "/index.html",
-  "assetGroups": [
-    {
-      "name": "app",
-      "installMode": "prefetch",
-      "resources": {
-        "files": [
-          "/favicon.ico",
-          "/index.html",
-          "/manifest.webmanifest",
-          "/*.css",
-          "/*.js"
-        ],
+	"$schema": "./node_modules/@angular/service-worker/config/schema.json",
+	"index": "/index.html",
+	"assetGroups": [{
+		"name": "app",
+		"installMode": "prefetch",
+		"updateMode": "prefetch",
+		"resources": {
+			"files": [
+				"/favicon.ico",
+				"/index.html",
+				"/manifest.webmanifest",
+				"/*.css",
+				"/*.js"
+			],
 			"urls": ["https://github.com/gesab001/assets/blob/master/story/stories.json",
 				"https://github.com/gesab001/assets/blob/master/story/articles/*.json",
 				"https://github.com/gesab001/assets/blob/master/images/**/*.jpg",
@@ -24,17 +24,19 @@
 				"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js",
 				"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 			]
-      }
-    }, {
-      "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
-      "resources": {
-        "files": [
-          "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
-        ]
-      }
-    }
-  ]
+		}
+	}, {
+		"name": "assets",
+		"installMode": "prefetch",
+		"updateMode": "prefetch",
+		"resources": {
+			"files": [
+				"/assets/**",
+				"/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+			]
+
+
+		}
+
+	}]
 }

@@ -167,6 +167,10 @@ export class WordsearchComponent implements OnInit {
            this.wordlist["items"].push(entry);
         }
      }
-     return JSON.stringify(this.wordlist);
+     return this.wordlist;
+  }
+  
+  wordListToString(){
+    return JSON.stringify(this.getWordList());
   }
 }

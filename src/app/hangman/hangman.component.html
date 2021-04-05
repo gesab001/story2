@@ -1,19 +1,20 @@
+<div class="container">
 <h1>Hangman</h1>
 
 
 
 <!--<h1 class="text-center">Encrypt-Decrypt with AES</h1>  -->
-<br>  
-<div>  
-  <div class="row">  
-    <div class="col-sm-6">  
+ 
+
+
+
 <!--      <button type="button" class="btn btn-primary btn-lg btn-block">  
         Encryption  
       </button>  -->
-      <br>  
-  <div class="form-group">  
+    
+  <div >  
         <label for="txtTextToConvert">Enter word length</label>  
-        <input type="number" class="form-control" placeholder="Enter number of letters in a word" [(ngModel)]="wordlength">  
+        <input type="number" placeholder="Enter number of letters in a word" [(ngModel)]="wordlength">  
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div *ngFor="let i of [].constructor(getLongestWord()); let x=index">
               <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -22,35 +23,35 @@
               </div>
           </div>
         </div>
-  </div>  
+  </div>      
 
-<h2>Choose a word</h2>
-<p></p>
+
+<div><h2>Choose a word</h2></div>
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-  <div *ngFor="let word of getWordList()">
-      <div class="btn-group mr-2" role="group" aria-label="First group">
+  <div class="wordList" *ngFor="let word of getWordList()">
         <button type="button" class="btn btn-warning" (click)="convertTextSelectedWord('encrypt', word)">{{word}}</button>  
-      </div>
   </div>
 </div>
 
-<h2>Or Random</h2>
+<div><h2>Or Random</h2></div>
 <button type="button" class="btn btn-warning" (click)="convertText('encrypt')">Get a random word</button>  
 <!--
       <div class="form-group">  
         <label for="txtPassword">Password</label>  
         <input type="password" class="form-control" placeholder="Enter encryption password" value="secret" [(ngModel)]="encPassword">  
       </div>  -->
-      <h2>Encrypted word</h2>
-      <textarea class="form-control" readonly rows="3">{{conversionEncryptOutput}}</textarea>  
+       <br>
+      <div>Encrypted word: {{conversionEncryptOutput}}</div>  
       <br>  
       <div>  
-        <a target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play GitHub Server</a>
+        <a target="_blank" class="d-block mb-4 h-100" href="https://gesab001.github.io/reading/hangman/index.html?word={{conversionEncryptOutput}}"><h1>Play</h1></a>
       </div>
       <div>
-       <a target="_blank" class="d-block mb-4 h-100" href="http://192.168.1.70/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play Local Server</a>
+       <!--<a target="_blank" class="d-block mb-4 h-100" href="http://192.168.1.70/reading/hangman/index.html?word={{conversionEncryptOutput}}">Play Local Server</a>-->
       </div> 
-</div>  
+ 
+
+
 <!--
     <div class="col-sm-6">  
       <button type="button" class="btn btn-dark btn-lg btn-block">  
