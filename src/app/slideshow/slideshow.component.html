@@ -2,8 +2,7 @@
 
 
 <div class="menu-bar">
-	<button (click)="closeFullscreen()" *ngIf="isFullscreen">Exit</button>
-	<button *ngIf="isNotFullscreen" mat-button [matMenuTriggerFor]="animals">Menu</button>
+	<button mat-button [matMenuTriggerFor]="animals">Menu</button>
 	
 	<mat-menu style="z-index:100" #animals="matMenu" yPosition="above">
 	  <button mat-menu-item [matMenuTriggerFor]="font">Font</button>
