@@ -26,6 +26,9 @@ import {CdkScrollableModule} from '@angular/cdk/scrolling';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 
+
+import {MatMenuModule} from '@angular/material/menu'; 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
@@ -85,6 +88,7 @@ import { VocabularyComponent } from './vocabulary/vocabulary.component';
     MatTabsModule,
     MatIconModule,
     MatTableModule,
+    MatMenuModule,
     MatGridListModule,
     DeviceDetectorModule,
     MatFormFieldModule,

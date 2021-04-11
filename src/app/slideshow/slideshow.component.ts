@@ -46,6 +46,8 @@ export class SlideshowComponent implements OnInit {
   currentActiveClass;
   isVideoSlide: boolean = false;
   scrollTimer;
+  fontSizeInt = 24;
+  fontSize = "24px";
 
   safeSrc: SafeResourceUrl;
 
@@ -69,21 +71,20 @@ export class SlideshowComponent implements OnInit {
 
   }
   
- 
+   
    @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
      var key = event.key;
      console.log(key);
      
-    if (event.shiftKey && event.key === '+') {
-       console.log('bigger font!');
-       var el = document.getElementsByClassName("imageDescription");
-       console.log(el);
+    if (event.ctrlKey && event.shiftKey && event.key === '+') {
+				this.increaseFontSize();
  
     }
     
-    if (event.shiftKey && event.key === '_') {
-       console.log('smaller font!');
+    if (event.ctrlKey && event.shiftKey && event.key === '-') {
+          this.decreaseFontSize();
+
     }
     if (key==="PageUp"){
             //  alert(key);
@@ -164,6 +165,17 @@ export class SlideshowComponent implements OnInit {
   
   isScrollOn: boolean = false;
   
+    
+  decreaseFontSize(){
+         this.fontSizeInt = this.fontSizeInt - 1;
+           this.fontSize = this.fontSizeInt + "px"; 
+  }
+
+  increaseFontSize(){
+         this.fontSizeInt = this.fontSizeInt + 1;
+           this.fontSize = this.fontSizeInt + "px"; 
+  }
+      
   stopScroll(){
      this.isScrollOn = false;
      clearInterval(this.scrollTimer);
@@ -276,6 +288,12 @@ export class SlideshowComponent implements OnInit {
   
   ngAfterViewInit(){
     //this.animateScrollText(); 
+    
+  //  this.increaseFontSize = document.querySelector('.increaseFontSize-button');
+  //  this.render.listen(this.increaseFontSize, 'click', (target)=>{
+  //      console.log("bigger font");
+  //  });
+    
     this.nextSlide = document.querySelector('.carousel-control-next');
       this.render.listen(this.nextSlide, 'click', (target)=>{
         // Create an Observable that will publish a value on an interval
