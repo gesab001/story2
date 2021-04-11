@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import {ChangeDetectionStrategy, ViewChild, Inject, Component, OnInit, HostListener, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
+import {ChangeDetectionStrategy, ViewChild, Inject, Component, OnInit, HostListener, HostBinding, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
 import {Observable} from 'rxjs';
 import { SlideshowService} from './slideshow.service';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +7,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { interval, Subscription } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-slideshow',
@@ -158,8 +159,8 @@ export class SlideshowComponent implements OnInit {
      }
     
     if(key==="Escape"){
-    
-      alert("you pressed escape");
+       this.closeFullscreen();
+      //alert("you pressed escape");
     }
   }
   
@@ -531,39 +532,37 @@ export class SlideshowComponent implements OnInit {
 	 console.log(activeEl);*/
 
   }
+  @ViewChild('fs') fs: ElementRef;
 
- openFullscreen() {
-     console.log("fullscreen mode");
-        if (this.elem.requestFullscreen) {
-          this.elem.requestFullscreen();
-        } else if (this.elem.mozRequestFullScreen) {
-          /* Firefox */
-          this.elem.mozRequestFullScreen();
-        } else if (this.elem.webkitRequestFullscreen) {
-          /* Chrome, Safari and Opera */
-          this.elem.webkitRequestFullscreen();
-        } else if (this.elem.msRequestFullscreen) {
-          /* IE/Edge */
-          this.elem.msRequestFullscreen();
-        }
- }
- /* Close fullscreen */
- closeFullscreen() {
-        if (this.document.exitFullscreen) {
-          this.document.exitFullscreen();
-        } else if (this.document.mozCancelFullScreen) {
-          /* Firefox */
-          this.document.mozCancelFullScreen();
-        } else if (this.document.webkitExitFullscreen) {
-          /* Chrome, Safari and Opera */
-          this.document.webkitExitFullscreen();
-        } else if (this.document.msExitFullscreen) {
-          /* IE/Edge */
-          this.document.msExitFullscreen();
-        }
+  @HostBinding('class.is-fullscreen') isFullscreen = false;
+ isActive = false;
+  isNotFullscreen = true;
+  openFullscreen(): void {
+    this.isFullscreen = true;
+    this.isNotFullscreen = false;
+    const el = this.fs.nativeElement;
+
+    if (!document.fullscreenElement){  // current working methods
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } 
+    }
+
+    setTimeout(() => {
+      this.isActive = true;
+    }, 500);
   }
 
-
+  closeFullscreen(): void {
+   // alert("close fullscreen");
+    this.isFullscreen = false;
+    this.isNotFullscreen = true;
+    this.isActive =  false;
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } 
+  }
+  
  onSwipeLeft(evt) {
      alert("left");
      this.myCarousel.activeId = (this.convertString(this.myCarousel.activeId) + 1).toString();

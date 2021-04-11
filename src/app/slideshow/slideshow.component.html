@@ -1,7 +1,11 @@
+<div #fs fullscreen-able [class.is-active]="isActive" class="slideshow">
+
+
 <div class="menu-bar">
-	<button mat-button [matMenuTriggerFor]="animals">Menu</button>
+	<button (click)="closeFullscreen()" *ngIf="isFullscreen">Exit</button>
+	<button *ngIf="isNotFullscreen" mat-button [matMenuTriggerFor]="animals">Menu</button>
 	
-	<mat-menu #animals="matMenu" yPosition="above">
+	<mat-menu style="z-index:100" #animals="matMenu" yPosition="above">
 	  <button mat-menu-item [matMenuTriggerFor]="font">Font</button>
 	  <button mat-menu-item [matMenuTriggerFor]="view">View</button>
 	</mat-menu>
@@ -15,6 +19,8 @@
 	<mat-menu #view="matMenu">
 	  <button mat-menu-item>Mobile</button>
 	  <button mat-menu-item>Desktop</button>
+	  <button mat-menu-item (click) = "openFullscreen()">Fullscreen</button>
+	  <button mat-menu-item (click) = "closeFullscreen()" >Exit fullscreen</button>
 	  <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
 	  <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
 	  <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>		
@@ -117,7 +123,7 @@
 </div>
 -->
 
-<div class="carousel-container" *ngIf="isLandscape">
+<div  class="carousel-container" *ngIf="isLandscape">
 	<div class="slide-container">
 		<div id="demo" class="carousel slide slide-container "  data-ride="carousel" data-wrap="false" data-interval="false">
 		<!--  <ul style="height:30px;"	 class="carousel-indicators carousel-indicators--thumbnails">
@@ -220,4 +226,5 @@
     </cdk-virtual-scroll-viewport>
 
     </div>
+</div>
 </div>
