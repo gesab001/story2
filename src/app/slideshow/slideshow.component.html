@@ -3,7 +3,7 @@
 	
 	<mat-menu #animals="matMenu" yPosition="above">
 	  <button mat-menu-item [matMenuTriggerFor]="font">Font</button>
-	  <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+	  <button mat-menu-item [matMenuTriggerFor]="view">View</button>
 	</mat-menu>
 
 	<mat-menu #font="matMenu">
@@ -12,17 +12,12 @@
 	  <button mat-menu-item (click)="$event.stopPropagation(); decreaseFontSize();">Decrease Size</button>
 	</mat-menu>
 
-	<mat-menu #invertebrates="matMenu">
+	<mat-menu #view="matMenu">
+	  <button mat-menu-item>Mobile</button>
+	  <button mat-menu-item>Desktop</button>
 	  <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
 	  <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
 	  <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>		
-	  <button mat-menu-item>Insects</button>
-	  <button mat-menu-item>Molluscs</button>
-	  <button mat-menu-item>Crustaceans</button>
-	  <button mat-menu-item>Corals</button>
-	  <button mat-menu-item>Arachnids</button>
-	  <button mat-menu-item>Velvet worms</button>
-	  <button mat-menu-item>Horseshoe crabs</button>
 	</mat-menu>
 
 	<mat-menu #fish="matMenu">
