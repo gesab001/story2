@@ -537,21 +537,17 @@ export class SlideshowComponent implements OnInit {
   @HostBinding('class.is-fullscreen') isFullscreen = false;
  isActive = false;
   isNotFullscreen = true;
-  openFullscreen(): void {
-    this.isFullscreen = true;
-    this.isNotFullscreen = false;
-    const el = this.fs.nativeElement;
 
-    if (!document.fullscreenElement){  // current working methods
-      if (el.requestFullscreen) {
-        el.requestFullscreen();
-      } 
-    }
-
-    setTimeout(() => {
-      this.isActive = true;
-    }, 500);
-  }
+	/* View in fullscreen */
+ openFullscreen() {
+	  if (this.elem.requestFullscreen) {
+		this.elem.requestFullscreen();
+	  } else if (this.elem.webkitRequestFullscreen) { /* Safari */
+		this.elem.webkitRequestFullscreen();
+	  } else if (this.elem.msRequestFullscreen) { /* IE11 */
+		this.elem.msRequestFullscreen();
+	  }
+	}
 
   closeFullscreen(): void {
    // alert("close fullscreen");
