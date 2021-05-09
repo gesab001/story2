@@ -21,6 +21,7 @@ export class SlideshowComponent implements OnInit {
   @ViewChild('myCarousel') myCarousel: NgbCarousel;
  //   @ViewChild("carouselCaption") carouselCaption: ElementRef;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  sermonMode: boolean = false;
   deviceInfo = null;
   isHiddenCaption: boolean = false;
   isHiddenImage: boolean = false;
@@ -65,6 +66,8 @@ export class SlideshowComponent implements OnInit {
         config.pauseOnHover = false;
   }
 
+
+  
   @HostListener('window:resize', ['$event'])
     onOrientationChange(event) {
       this.checkOrientation();
@@ -191,6 +194,13 @@ export class SlideshowComponent implements OnInit {
       }
   }
   
+  setSermonMode(){
+    if (this.sermonMode){
+        this.sermonMode = false;
+    }else{
+     this.sermonMode = true;
+     }
+  }
   animateScrollText(){	
        this.isScrollOn = true;
 
