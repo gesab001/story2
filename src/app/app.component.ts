@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { StoryService} from './story.service';
 import { StateGroup } from './stategroup';
+import { LogUpdateService } from './log-update.service';
 
 export const _filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
@@ -15,7 +16,7 @@ export const _filter = (opt: string[], value: string): string[] => {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
-  providers: [StoryService]
+  providers: [StoryService, LogUpdateService]
 })
 export class AppComponent {
   @ViewChild('drawer')drawer;
@@ -33,9 +34,25 @@ export class AppComponent {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
-  constructor(private _formBuilder: FormBuilder, private storyService: StoryService) {}
+  constructor(private _formBuilder: FormBuilder, private storyService: StoryService, private logUpdateService: LogUpdateService) {
+  
+    document.addEventListener(
+	    "visibilitychange",
+		() => {
+		  if (document.hidden){
+             console.log("document is hidden");
+		  }else{
+                  document.location.reload();
+				 
+                   
+		  }			  			  
+
+		}
+		);
+	}
 
   ngOnInit() {
+
     this.loadData();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -47,8 +64,14 @@ export class AppComponent {
         startWith(''),
         map(value => this._filterGroup(value))
       );
+      
+          this.logUpdateData(); 
   }
 
+ logUpdateData() {
+       this.logUpdateService.getAvailableUpdate();
+  }
+  
   clearCache(){
      this.storyService.clearCache();
      this.clearCacheConfirm = "cache cleared";
