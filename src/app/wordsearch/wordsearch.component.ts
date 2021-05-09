@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import * as CryptoJS from 'crypto-js';  
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-wordsearch',
   templateUrl: './wordsearch.component.html',
@@ -33,7 +35,7 @@ export class WordsearchComponent implements OnInit {
   storytitle: string;
   quiztitle: string;
   currentSlide: number;
-  constructor(config: NgbCarouselConfig, private wordsearchService: WordsearchService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
+  constructor(private _location: Location, config: NgbCarouselConfig, private wordsearchService: WordsearchService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
       this.storytitle = "jesus";
       this.quiztitle = "jesus";
       this.currentSlide = 0;
@@ -59,6 +61,10 @@ export class WordsearchComponent implements OnInit {
       this.isDesktop = this.deviceService.isDesktop();
     }
 
+    backClicked() {
+    this._location.back();
+  }
+  
   checkOrientation(){
       if(window.innerHeight > window.innerWidth){
             this.isPortrait = true;

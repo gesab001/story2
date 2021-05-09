@@ -31,6 +31,7 @@ export class SlideshowComponent implements OnInit {
   isTablet: boolean;
   isDesktop: boolean;
   isPortrait: boolean;
+  isScrollingText: boolean = false;
   isLandscape: boolean;
   subscription;
   storytitle: string;
@@ -72,6 +73,8 @@ export class SlideshowComponent implements OnInit {
 
   }
   
+   
+
    
    @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
@@ -166,7 +169,43 @@ export class SlideshowComponent implements OnInit {
   
   isScrollOn: boolean = false;
   
-    
+   toggleTextImageHide(){
+     //alert("you pressed b");
+       this.hiddenNumber = this.hiddenNumber + 1;
+       console.log("hiddennumber: " + this.hiddenNumber);
+       //var carouselCaption =  document.querySelector('.carousel-caption');
+     //  this.carouselCaption.nativeElement.style.display = "none";  
+       if(this.hiddenNumber==1){
+		  this.isHiddenCaption  = true;
+ 
+	   }
+	   if(this.hiddenNumber==2){
+		  this.isHiddenCaption  = false;
+ 
+	   }
+	   if(this.hiddenNumber==3){
+	       this.isHiddenImage = true;
+	       console.log("hide image" + this.isHiddenImage);
+	   }
+	   if(this.hiddenNumber>3){
+	    this.isHiddenImage = false;
+	    console.log("hide image" + this.isHiddenImage);
+	    this.hiddenNumber = 0;
+        console.log("hiddennumber: " + this.hiddenNumber);
+
+	   }	   
+   }
+   
+  changeToScrollingText(){
+     this.isScrollingText = true;
+	 alert(this.isScrollingText);
+  }	  
+  
+  changeToFullTextView(){
+	  this.isScrollingText = false;
+	  	 alert(this.isScrollingText);
+
+  }
   decreaseFontSize(){
          this.fontSizeInt = this.fontSizeInt - 1;
            this.fontSize = this.fontSizeInt + "px"; 
@@ -442,6 +481,14 @@ export class SlideshowComponent implements OnInit {
    	 }
 
   }
+  
+    getSlideImageIndicator(image){
+
+   	    return image;
+   	
+
+  }
+  
   checkDeviceType() {
       this.deviceInfo = this.deviceService.getDeviceInfo();
       this.isMobile = this.deviceService.isMobile();
