@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1620548826972,
+  "timestamp": 1620549538734,
   "index": "/story2/index.html",
   "assetGroups": [
     {
@@ -10,14 +10,14 @@
       "urls": [
         "/story2/favicon.ico",
         "/story2/index.html",
-        "/story2/main-es2015.b137bb94ea6724d2e15f.js",
-        "/story2/main-es5.b137bb94ea6724d2e15f.js",
+        "/story2/main-es2015.0aaf24fa6e9553f12022.js",
+        "/story2/main-es5.0aaf24fa6e9553f12022.js",
         "/story2/manifest.webmanifest",
         "/story2/polyfills-es2015.2320f4dbebd0efa7fb56.js",
         "/story2/polyfills-es5.c036c089e5e061e8f4ce.js",
         "/story2/runtime-es2015.0dae8cbc97194c7caed4.js",
         "/story2/runtime-es5.0dae8cbc97194c7caed4.js",
-        "/story2/styles.4f4ee8e3ccb46fae098a.css"
+        "/story2/styles.aa5eab4babbaca3b288b.css"
       ],
       "patterns": [
         "https:\\/\\/github\\.com\\/gesab001\\/assets\\/blob\\/master\\/story\\/stories\\.json",
@@ -60,15 +60,15 @@
     "/story2/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/story2/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/story2/favicon.ico": "e735bf8cd9ea194decaff22434378e1fc3ae3c03",
-    "/story2/index.html": "c8198e663cf2cf56904e5ccafcbe5b551bceb917",
-    "/story2/main-es2015.b137bb94ea6724d2e15f.js": "c48293657861c7d308fcc7ce6db6ca22463f2c92",
-    "/story2/main-es5.b137bb94ea6724d2e15f.js": "d47ca4d88b21efcc0861f7835de5969f08183621",
+    "/story2/index.html": "879d20b46c709da8fb6941b6f452bbad64155eac",
+    "/story2/main-es2015.0aaf24fa6e9553f12022.js": "b1bec6db4c2d8e87a649e953d66d4ed29fa44ef9",
+    "/story2/main-es5.0aaf24fa6e9553f12022.js": "031f8e8c6432209696bffd8221b5619b1db523b5",
     "/story2/manifest.webmanifest": "86b10c942c48f1881fa38be749a9d081a5cfcbd6",
     "/story2/polyfills-es2015.2320f4dbebd0efa7fb56.js": "90fb474e1a7d87bd57bc8a95fb3fd361b919d815",
     "/story2/polyfills-es5.c036c089e5e061e8f4ce.js": "ccfff1a6bd0b9531245e25bf3c0c8cf948ced8c2",
     "/story2/runtime-es2015.0dae8cbc97194c7caed4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/story2/runtime-es5.0dae8cbc97194c7caed4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "/story2/styles.4f4ee8e3ccb46fae098a.css": "ab5ae549abde4244b0535079f10e34f24bb505b3"
+    "/story2/styles.aa5eab4babbaca3b288b.css": "d6f37d56aca86eb7a3e4d5ae4e46566393f6341b"
   },
   "navigationUrls": [
     {
