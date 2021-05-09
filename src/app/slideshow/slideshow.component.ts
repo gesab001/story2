@@ -21,7 +21,7 @@ export class SlideshowComponent implements OnInit {
   @ViewChild('myCarousel') myCarousel: NgbCarousel;
  //   @ViewChild("carouselCaption") carouselCaption: ElementRef;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  sermonMode: boolean = false;
+  kidsMode: boolean = false;
   deviceInfo = null;
   isHiddenCaption: boolean = false;
   isHiddenImage: boolean = false;
@@ -233,13 +233,16 @@ export class SlideshowComponent implements OnInit {
       }
   }
   
-  setSermonMode(){
-    if (this.sermonMode){
-        this.sermonMode = false;
-    }else{
-     this.sermonMode = true;
-     }
+  setKidsMode(){
+     this.kidsMode = true;
+
   }
+  
+   setSermonMode(){
+        this.kidsMode = false;
+
+  }
+  
   animateScrollText(){	
        this.isScrollOn = true;
 
