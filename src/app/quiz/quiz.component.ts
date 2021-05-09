@@ -72,6 +72,7 @@ export class QuizComponent implements OnInit{
   
   answerbuttonClick(event){
     this.answer = event;
+	//alert("you chose: " + this.answer);
   }
   
 @HostListener('focus', ["$event"])

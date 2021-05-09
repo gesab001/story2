@@ -4,6 +4,8 @@ import { MemorygameService} from './memorygame.service';
 import { ActivatedRoute } from '@angular/router';
   import { DeviceDetectorService } from 'ngx-device-detector';
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-memorygame',
   templateUrl: './memorygame.component.html',
@@ -25,7 +27,7 @@ export class MemorygameComponent implements OnInit {
   storytitle: string;
   quiztitle: string;
   currentSlide: number;
-  constructor(config: NgbCarouselConfig, private memoryGameService: MemorygameService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
+  constructor(private _location: Location, config: NgbCarouselConfig, private memoryGameService: MemorygameService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
       this.storytitle = "jesus";
       this.quiztitle = "jesus";
       this.currentSlide = 0;
@@ -43,6 +45,10 @@ export class MemorygameComponent implements OnInit {
       this.checkOrientation();
 
 
+  }
+  
+      backClicked() {
+    this._location.back();
   }
   checkDeviceType() {
       this.deviceInfo = this.deviceService.getDeviceInfo();

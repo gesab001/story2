@@ -1,4 +1,6 @@
 import {ChangeDetectionStrategy, ViewChild, Component, OnInit, HostListener } from '@angular/core';
+import {Location} from '@angular/common';
+
 import {Observable} from 'rxjs';
 import { JigsawService} from './jigsaw.service';
 import { ActivatedRoute } from '@angular/router';
@@ -25,7 +27,7 @@ export class JigsawComponent implements OnInit {
   storytitle: string;
   quiztitle: string;
   currentSlide: number;
-  constructor(config: NgbCarouselConfig, private jigsawService: JigsawService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
+  constructor(private _location: Location, config: NgbCarouselConfig, private jigsawService: JigsawService, private route: ActivatedRoute, private deviceService: DeviceDetectorService) {
       this.storytitle = "jesus";
       this.quiztitle = "jesus";
       this.currentSlide = 0;
@@ -44,6 +46,11 @@ export class JigsawComponent implements OnInit {
 
 
   }
+  
+     backClicked() {
+    this._location.back();
+  }
+  
   checkDeviceType() {
       this.deviceInfo = this.deviceService.getDeviceInfo();
       this.isMobile = this.deviceService.isMobile();
