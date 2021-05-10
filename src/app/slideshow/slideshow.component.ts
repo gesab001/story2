@@ -21,7 +21,7 @@ export class SlideshowComponent implements OnInit {
   @ViewChild('myCarousel') myCarousel: NgbCarousel;
  //   @ViewChild("carouselCaption") carouselCaption: ElementRef;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  kidsMode: boolean = false;
+  kidsMode: boolean = true;
   deviceInfo = null;
   isHiddenCaption: boolean = false;
   isHiddenImage: boolean = false;
@@ -201,12 +201,12 @@ export class SlideshowComponent implements OnInit {
    
   changeToScrollingText(){
      this.isScrollingText = true;
-	 alert(this.isScrollingText);
+	 //alert(this.isScrollingText);
   }	  
   
   changeToFullTextView(){
 	  this.isScrollingText = false;
-	  	 alert(this.isScrollingText);
+	  	 //alert(this.isScrollingText);
 
   }
   decreaseFontSize(){
