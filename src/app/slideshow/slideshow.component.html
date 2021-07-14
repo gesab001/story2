@@ -146,7 +146,8 @@
 				 <img *ngIf="kidsMode"  class="carousel-indicator-image item"  src="https://www.word-grabber.com/3/m/2019/07/Word-Search-Quest-Icon.png" data-target="#demo" [attr.data-slide-to]="13">
 				 <img *ngIf="kidsMode"   class="carousel-indicator-image item"  src="https://www.tenforums.com/geek/gars/images/2/types/thumb_Spell_Checking.png" data-target="#demo" [attr.data-slide-to]="14">
 				 <img  *ngIf="kidsMode"  class="carousel-indicator-image item"  src="https://h5p.org/sites/default/files/styles/medium-logo/public/logos/memory-game-icon.png?itok=bIQqHE7Y" data-target="#demo" [attr.data-slide-to]="15">
-				 <img *ngIf="kidsMode"   class="carousel-indicator-image item"  src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png" data-target="#demo" [attr.data-slide-to]="16">
+				  <img *ngIf="kidsMode"   class="carousel-indicator-image item"  src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/writing/icon-192x192.png" data-target="#demo" [attr.data-slide-to]="16">
+				 <img *ngIf="kidsMode"   class="carousel-indicator-image item"  src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png" data-target="#demo" [attr.data-slide-to]="17">
 
 			  </div>
 		  </div>
@@ -160,7 +161,7 @@
 			    <a  *ngIf="kidsMode"  [routerLink]="['/wordsearch', titleparam]" routerLinkActive="active" class="card-link"><img class="game-icons" src="https://www.word-grabber.com/3/m/2019/07/Word-Search-Quest-Icon.png"/></a>
 			    <a *ngIf="kidsMode"   [routerLink]="['/hangman', titleparam]" routerLinkActive="active"  class="card-link"><img class="game-icons" src="https://www.tenforums.com/geek/gars/images/2/types/thumb_Spell_Checking.png"/></a>
 				<a *ngIf="kidsMode"  [routerLink]="['/memorygame', titleparam]" routerLinkActive="active" class="card-link"><img class="game-icons" src="https://h5p.org/sites/default/files/styles/medium-logo/public/logos/memory-game-icon.png?itok=bIQqHE7Y"/></a>
-
+				<a *ngIf="kidsMode"  [routerLink]="['/writing', titleparam]" routerLinkActive="active" class="card-link"><img class="game-icons" src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/writing/icon-192x192.png"/></a>
               <!--  <a href="" class="btn btn-info" role="button" class="card-link" ><img style="width: 30px" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/file-video-icon.png"/></a>-->
 			  </div>   
 			</div>
@@ -201,7 +202,11 @@
 			  
 				<a  [routerLink]="['/memorygame', titleparam]" routerLinkActive="active"><img class="imageslide gametime" src="https://h5p.org/sites/default/files/styles/medium-logo/public/logos/memory-game-icon.png?itok=bIQqHE7Y"/></a>
 			</div>
-			
+<div *ngIf="kidsMode"  class="carousel-item">
+			  
+				<a  [routerLink]="['/writing', titleparam]" routerLinkActive="active"><img class="imageslide gametime" src="https://raw.githubusercontent.com/gesab001/assets/master/images/app-icons/writing/icon-192x192.png"/></a>
+			</div>
+						
 		    <div *ngIf="kidsMode"  id="videoSlide" class="carousel-item video-item">
 					<div style=" width:100%; height: 100%; display:flex; flex-direction: column; align-items: center; justify-content: center">
 						<!--    <h1 *ngIf = "iframeIsNotLoaded" style="color:white">Loading video...</h1>

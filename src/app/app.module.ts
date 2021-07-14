@@ -48,6 +48,7 @@ import { MemorygameComponent } from './memorygame/memorygame.component';
 import { HangmanComponent } from './hangman/hangman.component';
 import { WordsearchComponent } from './wordsearch/wordsearch.component';
 import { VocabularyComponent } from './vocabulary/vocabulary.component';
+import { WritingComponent } from './writing/writing.component';
 
 //modules for autocomplete
 
@@ -64,7 +65,8 @@ import { VocabularyComponent } from './vocabulary/vocabulary.component';
     MemorygameComponent,
     HangmanComponent,
     WordsearchComponent,
-    VocabularyComponent
+    VocabularyComponent,
+    WritingComponent
   ],
   imports: [
     BrowserModule,
