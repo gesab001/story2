@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1626288075729,
+  "timestamp": 1626466770664,
   "index": "/story2/index.html",
   "assetGroups": [
     {
@@ -17,7 +17,7 @@
         "/story2/polyfills-es5.591b5ee033474730d8f5.js",
         "/story2/runtime-es2015.0dae8cbc97194c7caed4.js",
         "/story2/runtime-es5.0dae8cbc97194c7caed4.js",
-        "/story2/styles.4f4ee8e3ccb46fae098a.css"
+        "/story2/styles.1cbfdaf24f7f8bd0adcc.css"
       ],
       "patterns": [
         "https:\\/\\/github\\.com\\/gesab001\\/assets\\/blob\\/master\\/story\\/stories\\.json",
@@ -60,7 +60,7 @@
     "/story2/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/story2/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/story2/favicon.ico": "e735bf8cd9ea194decaff22434378e1fc3ae3c03",
-    "/story2/index.html": "ad4f20ae6357931057912d8302fd3f9cda49089a",
+    "/story2/index.html": "ddf4832ec85aa99bfa4cfad4695f4519b8f79764",
     "/story2/main-es2015.caed7ccdbf1089f6a955.js": "def0630948c7a218839d803679d3b8aab5dec018",
     "/story2/main-es5.caed7ccdbf1089f6a955.js": "aacb76202d44423bd0013143bf42b96f7858a169",
     "/story2/manifest.webmanifest": "86b10c942c48f1881fa38be749a9d081a5cfcbd6",
@@ -68,7 +68,7 @@
     "/story2/polyfills-es5.591b5ee033474730d8f5.js": "ccfff1a6bd0b9531245e25bf3c0c8cf948ced8c2",
     "/story2/runtime-es2015.0dae8cbc97194c7caed4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/story2/runtime-es5.0dae8cbc97194c7caed4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "/story2/styles.4f4ee8e3ccb46fae098a.css": "ab5ae549abde4244b0535079f10e34f24bb505b3"
+    "/story2/styles.1cbfdaf24f7f8bd0adcc.css": "9a1b95ccbad1cf51da7421f11860508e257a0206"
   },
   "navigationUrls": [
     {
