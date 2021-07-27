@@ -5,6 +5,7 @@ import {map, startWith} from 'rxjs/operators';
 import { StoryService} from './story.service';
 import { StateGroup } from './stategroup';
 import { LogUpdateService } from './log-update.service';
+import { DropboxService } from './dropbox/dropbox.service';
 
 export const _filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
@@ -16,7 +17,7 @@ export const _filter = (opt: string[], value: string): string[] => {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
-  providers: [StoryService, LogUpdateService]
+  providers: [StoryService, LogUpdateService, DropboxService ]
 })
 export class AppComponent {
   @ViewChild('drawer')drawer;
@@ -34,7 +35,7 @@ export class AppComponent {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
-  constructor(private _formBuilder: FormBuilder, private storyService: StoryService, private logUpdateService: LogUpdateService) {
+  constructor(private _formBuilder: FormBuilder, private storyService: StoryService, private logUpdateService: LogUpdateService, private dropboxService: DropboxService) {
   
     document.addEventListener(
 	    "visibilitychange",
@@ -53,7 +54,8 @@ export class AppComponent {
 
   ngOnInit() {
 
-    this.loadData();
+    //this.loadData();
+    this.loadDataFromDropbox();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -82,7 +84,13 @@ export class AppComponent {
       error => console.log(error),
     );
   }
-
+  loadDataFromDropbox() {
+    this.subscription = this.dropboxService.getStoryList().subscribe(
+      res => (this.stateGroups = res),
+      error => console.log(error),
+    );
+  }
+  
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 

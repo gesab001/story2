@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {FormControl, FormBuilder, FormGroup} from '@angular/forms';
 import {map, startWith, filter} from 'rxjs/operators';
 import { StoryService} from '../story.service';
+import { DropboxService } from '../dropbox/dropbox.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { interval } from 'rxjs';
 
@@ -12,7 +13,7 @@ import { interval } from 'rxjs';
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.sass'],
-  providers: [StoryService]
+  providers: [StoryService, DropboxService]
 
 })
 export class HomepageComponent implements OnInit {
@@ -42,13 +43,14 @@ export class HomepageComponent implements OnInit {
   storytitle: string;
   stateGroupOptions: Observable<StateGroup[]>;
   
-  constructor(private deviceService: DeviceDetectorService, private _formBuilder: FormBuilder,  private storyService: StoryService) { 
+  constructor(private deviceService: DeviceDetectorService, private _formBuilder: FormBuilder,  private storyService: StoryService, private dropboxService: DropboxService) { 
       this.checkDeviceType();
       
   }
 
   ngOnInit() {
-    this.loadData();
+    //this.loadData();
+    this.loadDataFromDropbox();
   }
 
   checkDeviceType() {
@@ -93,7 +95,14 @@ export class HomepageComponent implements OnInit {
       error => console.log(error),
     );
   }
-  
+
+ loadDataFromDropbox() {
+    this.subscription = this.dropboxService.getStoryList().subscribe(
+      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"]), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
+      error => console.log(error),
+    );
+  }
+    
   limitNewList(){
       var total = this.newList.length;
       if (total>10){

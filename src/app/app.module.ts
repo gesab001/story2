@@ -49,6 +49,8 @@ import { HangmanComponent } from './hangman/hangman.component';
 import { WordsearchComponent } from './wordsearch/wordsearch.component';
 import { VocabularyComponent } from './vocabulary/vocabulary.component';
 import { WritingComponent } from './writing/writing.component';
+import { EditorComponent } from './editor/editor.component';
+import { DropboxComponent } from './dropbox/dropbox.component';
 
 //modules for autocomplete
 
@@ -66,7 +68,9 @@ import { WritingComponent } from './writing/writing.component';
     HangmanComponent,
     WordsearchComponent,
     VocabularyComponent,
-    WritingComponent
+    WritingComponent,
+    EditorComponent,
+    DropboxComponent
   ],
   imports: [
     BrowserModule,

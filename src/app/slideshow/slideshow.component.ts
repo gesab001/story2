@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import {ChangeDetectionStrategy, ViewChild, Inject, Component, OnInit, HostListener, HostBinding, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
 import {Observable} from 'rxjs';
 import { SlideshowService} from './slideshow.service';
+import { DropboxService } from '../dropbox/dropbox.service';
 import { ActivatedRoute } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +14,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
   styleUrls: ['./slideshow.component.sass'],
-  providers: [SlideshowService, NgbCarouselConfig],
+  providers: [SlideshowService, NgbCarouselConfig, DropboxService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SlideshowComponent implements OnInit {
@@ -54,7 +55,7 @@ export class SlideshowComponent implements OnInit {
 
   safeSrc: SafeResourceUrl;
 
-  constructor(@Inject(DOCUMENT) private document: any, config: NgbCarouselConfig, private sanitizer: DomSanitizer, private slideshowService: SlideshowService, private route: ActivatedRoute, private deviceService: DeviceDetectorService, private render: Renderer2) {
+  constructor(@Inject(DOCUMENT) private document: any, config: NgbCarouselConfig, private sanitizer: DomSanitizer, private slideshowService: SlideshowService, private dropboxService: DropboxService, private route: ActivatedRoute, private deviceService: DeviceDetectorService, private render: Renderer2) {
       this.storytitle = "jesus";
       this.quiztitle = "jesus";
       this.currentSlide = 0;
@@ -534,7 +535,8 @@ export class SlideshowComponent implements OnInit {
         let re = /\s/gi;   
         let filename = this.storytitle.replace(re, "_") + ".json";
         this.storytitle = this.storytitle.toUpperCase();
-        this.loadData(filename);
+        //this.loadData(filename); from github
+        this.loadDataFromDropbox(filename);
         this.currentSlide = -1;
 
      });
@@ -558,7 +560,15 @@ export class SlideshowComponent implements OnInit {
     );
 
   }
-  
+ 
+  loadDataFromDropbox(filename) {
+    this.subscription = this.dropboxService.getStory(filename).subscribe(
+      res => (this.slides = res,         this.safeSrc = this.getSafeSrc()),
+      error => console.log(error),
+    );
+
+  }
+   
   getVideoUrl(){
      var url = "https://gesab001.github.io/videoassets/"+this.slides['video'];
      var videoplayer = document.getElementById("videoplayer");
