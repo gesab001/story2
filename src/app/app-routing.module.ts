@@ -17,12 +17,12 @@ const routes: Routes = [
     {path: 'slideshow/:title/:otherTitle', component: SlideshowComponent},
     {path: 'quiz/:title', component: QuizComponent},
     {path: 'list/:list', component: StorylistComponent},
-    {path: 'jigsaw/:title', component: JigsawComponent},
-    {path: 'memorygame/:title', component: MemorygameComponent},
-    {path: 'hangman/:title', component: HangmanComponent},
-    {path: 'wordsearch/:title', component: WordsearchComponent},
-    {path: 'vocabulary/:title', component: VocabularyComponent},
-    {path: 'writing/:title', component: WritingComponent},
+    {path: 'jigsaw/:slides', component: JigsawComponent},
+    {path: 'memorygame/:slides', component: MemorygameComponent},
+    {path: 'hangman/:slides', component: HangmanComponent},
+    {path: 'wordsearch/:slides', component: WordsearchComponent},
+    {path: 'vocabulary/:slides', component: VocabularyComponent},
+    {path: 'writing/:slides', component: WritingComponent},
     {path: 'editor/:data', component: EditorComponent}
 
 ];

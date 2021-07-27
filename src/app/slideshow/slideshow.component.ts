@@ -83,7 +83,7 @@ export class SlideshowComponent implements OnInit {
    @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
      var key = event.key;
-     console.log(key);
+     //console.log(key);
      
     if (event.ctrlKey && event.shiftKey && event.key === '+') {
 				this.increaseFontSize();
@@ -121,7 +121,7 @@ export class SlideshowComponent implements OnInit {
            
 
         //this.nextSlide.click();
-        console.log("currentslide:"+this.currentSlide);
+        //console.log("currentslide:"+this.currentSlide);
        // alert(this.currentSlide);
  /*            var demoEl =document.getElementById("demo");
                  var inner = demoEl.getElementsByClassName("carousel-inner")[0];
@@ -140,7 +140,7 @@ export class SlideshowComponent implements OnInit {
     if(key==="b" || key==="B"){
        //alert("you pressed b");
        this.hiddenNumber = this.hiddenNumber + 1;
-       console.log("hiddennumber: " + this.hiddenNumber);
+     //  console.log("hiddennumber: " + this.hiddenNumber);
        //var carouselCaption =  document.querySelector('.carousel-caption');
      //  this.carouselCaption.nativeElement.style.display = "none";  
        if(this.hiddenNumber==1){
@@ -153,13 +153,13 @@ export class SlideshowComponent implements OnInit {
 	   }
 	   if(this.hiddenNumber==3){
 	       this.isHiddenImage = true;
-	       console.log("hide image" + this.isHiddenImage);
+	     //  console.log("hide image" + this.isHiddenImage);
 	   }
 	   if(this.hiddenNumber>3){
 	    this.isHiddenImage = false;
-	    console.log("hide image" + this.isHiddenImage);
+	  //  console.log("hide image" + this.isHiddenImage);
 	    this.hiddenNumber = 0;
-        console.log("hiddennumber: " + this.hiddenNumber);
+       // console.log("hiddennumber: " + this.hiddenNumber);
 
 	   }
 
@@ -176,7 +176,7 @@ export class SlideshowComponent implements OnInit {
    toggleTextImageHide(){
      //alert("you pressed b");
        this.hiddenNumber = this.hiddenNumber + 1;
-       console.log("hiddennumber: " + this.hiddenNumber);
+      // console.log("hiddennumber: " + this.hiddenNumber);
        //var carouselCaption =  document.querySelector('.carousel-caption');
      //  this.carouselCaption.nativeElement.style.display = "none";  
        if(this.hiddenNumber==1){
@@ -189,13 +189,13 @@ export class SlideshowComponent implements OnInit {
 	   }
 	   if(this.hiddenNumber==3){
 	       this.isHiddenImage = true;
-	       console.log("hide image" + this.isHiddenImage);
+	      // console.log("hide image" + this.isHiddenImage);
 	   }
 	   if(this.hiddenNumber>3){
 	    this.isHiddenImage = false;
-	    console.log("hide image" + this.isHiddenImage);
+	   // console.log("hide image" + this.isHiddenImage);
 	    this.hiddenNumber = 0;
-        console.log("hiddennumber: " + this.hiddenNumber);
+       // console.log("hiddennumber: " + this.hiddenNumber);
 
 	   }	   
    }
@@ -223,7 +223,7 @@ export class SlideshowComponent implements OnInit {
   stopScroll(){
      this.isScrollOn = false;
      clearInterval(this.scrollTimer);
-     console.log("stop scroll");
+    // console.log("stop scroll");
   }
   
   toggleScroll(){
@@ -249,7 +249,7 @@ export class SlideshowComponent implements OnInit {
 
         clearInterval(this.scrollTimer);
         this.scrollTimer = setInterval(() => {this.myTimer();}, 7);
-                console.log("animate scrolltext");
+               // console.log("animate scrolltext");
        // this.myTimer();
       /*
         var scrollmenu = document.getElementById('scrollmenu-mobile');
@@ -279,17 +279,17 @@ export class SlideshowComponent implements OnInit {
   }
   
   onScroll(event){
-     console.log(this.isEndOfScroll(event));
+   //  console.log(this.isEndOfScroll(event));
      //this.animateScrollText();
   }
   
   isEndOfScroll(event){
-     console.log("scrollwidth: " + event.target.scrollWidth);
-     console.log("left: " + event.target.scrollLeft);
+    // console.log("scrollwidth: " + event.target.scrollWidth);
+    // console.log("left: " + event.target.scrollLeft);
      var offset = event.target.offsetWidth;
      var difference = event.target.scrollWidth - event.target.scrollLeft;
-     console.log("offset: " + offset);
-     console.log("difference: " + difference);
+   //  console.log("offset: " + offset);
+    // console.log("difference: " + difference);
       if (offset == difference){
          return true;
       }else {
@@ -305,7 +305,7 @@ export class SlideshowComponent implements OnInit {
 		  clearInterval(this.scrollTimer);
 
       }
-      console.log("scrollmenu.scrollLeft:" + scrollmenu.scrollLeft);
+    //  console.log("scrollmenu.scrollLeft:" + scrollmenu.scrollLeft);
   /*
         
     	h1.scrollLeft = h1.scrollLeft + 1;
@@ -364,7 +364,7 @@ export class SlideshowComponent implements OnInit {
        var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[10];
      //  console.log(activeEl.className);
        this.checkVideoSlide(activeEl.className);
-       console.log("detect changes");
+      // console.log("detect changes");
        
 
       
@@ -381,25 +381,25 @@ export class SlideshowComponent implements OnInit {
           this.stopScroll();
            //     console.log("previous slide");
        var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[12];
-       console.log(activeEl.className);
+     //  console.log(activeEl.className);
        this.checkVideoSlide(activeEl.className);
       });
    // console.log(this.previousSlide);
        var carouselIndicators = document.getElementsByClassName('carousel-indicators')[0].getElementsByTagName("IMG");
        for (var x= 0; x<carouselIndicators.length; x++){
-		       console.log(carouselIndicators[x]);
-		       console.log("listen");
+		      // console.log(carouselIndicators[x]);
+		       //console.log("listen");
 		       var indicatorItem = carouselIndicators[x];
 		       this.render.listen(indicatorItem, 'click', (target)=>{
-		            console.log('clicked', target.originalTarget.dataset.slideTo);
+		            //console.log('clicked', target.originalTarget.dataset.slideTo);
 		            var slideIndex = target.originalTarget.dataset.slideTo;
 		            if (slideIndex==11){
-		                 console.log("its a video slide");
+		                 //console.log("its a video slide");
 		                 this.isVideoSlide = true;
 		                 this.playVideo();
 		            }else{
 		                this.isVideoSlide = false;
-						 console.log("its not video slide");
+						// console.log("its not video slide");
 
 		            }
 		       });
@@ -424,7 +424,7 @@ export class SlideshowComponent implements OnInit {
   
   iframeLoaded(event)
   {
-     console.log("iframe loaded", event);
+    // console.log("iframe loaded", event);
      this.iframeIsNotLoaded = false;
   }
   
@@ -524,6 +524,7 @@ export class SlideshowComponent implements OnInit {
   }
 
   slides: any;
+  slidesParam: string;
   ngOnInit(): void {
      this.elem = document.documentElement;
      this.route.paramMap.subscribe(params => { 
@@ -552,10 +553,13 @@ export class SlideshowComponent implements OnInit {
 
   }
    
+ goToHangman(){
+   // console.log(this.slidesParam);
+ }
 
  loadData(filename) {
     this.subscription = this.slideshowService.getData(filename).subscribe(
-      res => (this.slides = res,         this.safeSrc = this.getSafeSrc()),
+      res => (this.slides = res, this.slidesParam = JSON.stringify(res),        this.safeSrc = this.getSafeSrc()),
       error => console.log(error),
     );
 
@@ -563,7 +567,7 @@ export class SlideshowComponent implements OnInit {
  
   loadDataFromDropbox(filename) {
     this.subscription = this.dropboxService.getStory(filename).subscribe(
-      res => (this.slides = res,         this.safeSrc = this.getSafeSrc()),
+      res => (this.slides = res, this.slidesParam = JSON.stringify(res),        this.safeSrc = this.getSafeSrc()),
       error => console.log(error),
     );
 
@@ -572,7 +576,7 @@ export class SlideshowComponent implements OnInit {
   getVideoUrl(){
      var url = "https://gesab001.github.io/videoassets/"+this.slides['video'];
      var videoplayer = document.getElementById("videoplayer");
-     console.log("getVideoUrl" + videoplayer);
+     //console.log("getVideoUrl" + videoplayer);
      return url;
      
   }

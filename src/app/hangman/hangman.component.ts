@@ -83,12 +83,14 @@ export class HangmanComponent implements OnInit {
   ngOnInit(): void {
 
      this.route.paramMap.subscribe(params => { 
-        this.storytitle = params.get('title');
+       /* this.storytitle = params.get('title');
         this.quiztitle = this.storytitle;
         let re = /\s/gi;   
         let filename = this.storytitle.replace(re, "_") + ".json";
         this.storytitle = this.storytitle.toUpperCase();
-        this.loadData(filename);
+        this.loadData(filename);*/
+        this.slides = JSON.parse(params.get('slides'))["slides"];
+        console.log(this.slides);
         this.currentSlide = -1;
 
      });
