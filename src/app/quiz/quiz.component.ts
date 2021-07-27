@@ -1,13 +1,14 @@
 import { Component, OnInit, HostListener, AfterViewInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SlideshowService} from '../slideshow/slideshow.service';
+import { DropboxService } from '../dropbox/dropbox.service';
 import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.sass'],
-  providers: [SlideshowService]
+  providers: [SlideshowService, DropboxService]
 })
 export class QuizComponent implements OnInit{
   storytitle: string;
@@ -25,7 +26,7 @@ export class QuizComponent implements OnInit{
   letterchoices: any = ['A', 'B', 'C', 'D'];
   questionNumber: number = 0;
   congrats: any = ["correct", "excellent", "awesome", "well done", "great job", "fantastic", "all right!", "exactly right", "exceptional", "sensational", "wonderful", "fabulous", "outstanding", "You're learning fast", "perfect", "You're doing well", "Unbelievable", "Way to go", "Marvelous", "Good for you", "That's great"];
-  constructor(private _location: Location, private slideshowService: SlideshowService, private route: ActivatedRoute, private render: Renderer2) { }
+  constructor(private _location: Location, private slideshowService: SlideshowService, private dropboxService: DropboxService, private route: ActivatedRoute, private render: Renderer2) { }
   buttonChoiceIndex = -1;
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
@@ -87,7 +88,8 @@ export class QuizComponent implements OnInit{
      let re = /\s/gi;   
      let filename = this.storytitle.replace(re, "_") + ".json";
      this.storytitle = this.storytitle.toUpperCase();
-     this.loadData(filename);
+     //this.loadData(filename);
+     this.loadDataFromDropbox(filename);
      this.shuffleChoices();
      this.setCorrectAnswer();
 
@@ -107,6 +109,14 @@ export class QuizComponent implements OnInit{
     );
   }
 
+  loadDataFromDropbox(filename) {
+    this.subscription = this.dropboxService.getStory(filename).subscribe(
+      res => (this.questions = res["questions"]),
+      error => console.log(error),
+    );
+  }
+
+  
   setCorrectAnswer(){
     this.correct = this.questions[this.questionNumber].answer;
 
