@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1627402767250,
+  "timestamp": 1627430344550,
   "index": "/story2/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "/story2/favicon.ico",
         "/story2/index.html",
-        "/story2/main-es2015.1ff056a9d4e33893bd2c.js",
-        "/story2/main-es5.1ff056a9d4e33893bd2c.js",
+        "/story2/main-es2015.6fcf26cca109a12dcac7.js",
+        "/story2/main-es5.6fcf26cca109a12dcac7.js",
         "/story2/manifest.webmanifest",
         "/story2/polyfills-es2015.2320f4dbebd0efa7fb56.js",
         "/story2/polyfills-es5.591b5ee033474730d8f5.js",
@@ -60,9 +60,9 @@
     "/story2/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/story2/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/story2/favicon.ico": "e735bf8cd9ea194decaff22434378e1fc3ae3c03",
-    "/story2/index.html": "143c3a88e6d866b0b74861084747e275de52adcf",
-    "/story2/main-es2015.1ff056a9d4e33893bd2c.js": "462815f884cf79c5dd240c7d4751b8d30ecebca2",
-    "/story2/main-es5.1ff056a9d4e33893bd2c.js": "2f762334a0f34691219cff32f577205601f92ced",
+    "/story2/index.html": "fd7a0d3dd114ba1d8d7e328ec98eb03cd9a8b39e",
+    "/story2/main-es2015.6fcf26cca109a12dcac7.js": "c4bfb0f515e259faaa466e3a74e39b5a6e7ae502",
+    "/story2/main-es5.6fcf26cca109a12dcac7.js": "87ae23100b0f035149526044771341138ce7c12f",
     "/story2/manifest.webmanifest": "86b10c942c48f1881fa38be749a9d081a5cfcbd6",
     "/story2/polyfills-es2015.2320f4dbebd0efa7fb56.js": "90fb474e1a7d87bd57bc8a95fb3fd361b919d815",
     "/story2/polyfills-es5.591b5ee033474730d8f5.js": "ccfff1a6bd0b9531245e25bf3c0c8cf948ced8c2",
