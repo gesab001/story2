@@ -2,5 +2,24 @@
 <div class="container">
   <h1 (click)="backClicked()" style="cursor:pointer; color:white;">Back</h1>
 
- <a target="_blank" href="http://gesab001.github.io/memorygame/index.html?imagelist={{getImageList() | json}}">Play</a> 
+ 
+
+<!-- Page Content -->
+<div class="container">
+
+
+
+
+  <hr class="mt-2 mb-5">
+
+  <div *ngIf="imagelist['items'].length>1" class="row text-center text-lg-left">
+	<div>
+	 <a target="_blank" href="http://gesab001.github.io/memorygame/index.html?imagelist={{imagelist | json}}">Play</a> 
+	</div>
+    <div  *ngFor="let item of imagelist['items']; let i = index;" class="col-lg-3 col-md-4 col-6">
+
+<img  class="img-fluid img-thumbnail" [src]="item['img']"  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" alt="Chicago">
+    </div>
+  </div>
+
 </div>

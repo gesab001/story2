@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ViewChild, Component, OnInit, HostListener } from '@angular/core';
+import {ChangeDetectionStrategy, ViewChild, Component, OnInit, HostListener, AfterViewInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import { MemorygameService} from './memorygame.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ import {Location} from '@angular/common';
   providers: [MemorygameService, NgbCarouselConfig],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MemorygameComponent implements OnInit {
+export class MemorygameComponent implements OnInit, AfterViewInit {
 
   @ViewChild('myCarousel') myCarousel: NgbCarousel;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
@@ -72,15 +72,20 @@ export class MemorygameComponent implements OnInit {
 
   slides: any;
   imagelist: any = {"items": []};
+  imageListParam: string;
   ngOnInit(): void {
 
      this.route.paramMap.subscribe(params => { 
-        this.storytitle = params.get('title');
+     /*   this.storytitle = params.get('title');
         this.quiztitle = this.storytitle;
         let re = /\s/gi;   
         let filename = this.storytitle.replace(re, "_") + ".json";
         this.storytitle = this.storytitle.toUpperCase();
-        this.loadData(filename);
+        this.loadData(filename);*/
+        this.slides = JSON.parse(params.get('slides'))["slides"];
+        this.getImageList();
+        console.log(this.slides);     
+        console.log(this.imagelist);   
         this.currentSlide = -1;
 
 
@@ -133,6 +138,10 @@ export class MemorygameComponent implements OnInit {
     return parseFloat(value);
   }
 
+
+  ngAfterViewInit(){
+       
+  }
   getImageList(){
      var id:number;
      var imgname:string;
@@ -144,7 +153,7 @@ export class MemorygameComponent implements OnInit {
       imgurl = this.slides[id]["image"];
       jsonobj = {'name': imgname, 'img': imgurl, 'id': id};
       this.imagelist["items"].push(jsonobj);
+      this.imageListParam = JSON.stringify(this.imagelist);
      }
-     return JSON.stringify(this.imagelist);
   }
 }
