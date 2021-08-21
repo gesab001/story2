@@ -525,6 +525,7 @@ export class SlideshowComponent implements OnInit {
 
   slides: any;
   slidesParam: string;
+  filename: string;
   ngOnInit(): void {
      this.elem = document.documentElement;
      this.route.paramMap.subscribe(params => { 
@@ -534,10 +535,10 @@ export class SlideshowComponent implements OnInit {
         this.videoFileName = this.otherTitle + ".mp4"; 
         this.quiztitle = this.storytitle;
         let re = /\s/gi;   
-        let filename = this.storytitle.replace(re, "_") + ".json";
-        this.storytitle = this.storytitle.toUpperCase();
+        this.filename = this.storytitle.replace(/ /g, "_") + ".json";
+
         //this.loadData(filename); from github
-        this.loadDataFromDropbox(filename);
+        this.loadDataFromDropbox(this.filename);
         this.currentSlide = -1;
 
      });
