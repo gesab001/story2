@@ -110,7 +110,7 @@
 					  </div>
 					  <div  class="hovered-state" style="display:none">
 							<div class="posterimage-container">
-								 <a [routerLink]="['/slideshow', name.title, name.otherTitle]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage"[src]="name.thumbnail">	
+								 <a [routerLink]="['/slideshow', name.title, name.otherTitle]" routerLinkActive="active" ><img  onerror="this.src='https://gesab001.github.io/assets/images/black.jpg';" class="posterimage" [src]="name.thumbnail">	
 									 <div class="caption-container-search-results">
 											<p class="caption">{{name.otherTitle}}</p>
 											<p class="caption">{{name.description}}</p>                                    

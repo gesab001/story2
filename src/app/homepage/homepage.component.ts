@@ -91,18 +91,22 @@ export class HomepageComponent implements OnInit {
     
  loadData() {
     this.subscription = this.storyService.getData().subscribe(
-      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"]), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
+      res => (this.stateGroups = res["atoz"], this.setSearchData(this.stateGroups), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
       error => console.log(error),
     );
   }
 
  loadDataFromDropbox() {
     this.subscription = this.dropboxService.getStoryList().subscribe(
-      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"]), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
+      res => (this.stateGroups = res["atoz"], this.setSearchData(this.stateGroups), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
       error => console.log(error),
     );
   }
+   
+  removeDuplicates(){
     
+  }
+   
   limitNewList(){
       var total = this.newList.length;
       if (total>10){
