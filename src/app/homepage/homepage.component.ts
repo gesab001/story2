@@ -85,27 +85,42 @@ export class HomepageComponent implements OnInit {
            }
         }
     }
-         console.log(this.stateGroupsSearchable);
 
  }
+
+
     
  loadData() {
     this.subscription = this.storyService.getData().subscribe(
-      res => (this.stateGroups = res["atoz"], this.setSearchData(this.stateGroups), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
+      res => (this.stateGroups = res["atoz"], this.setSearchData(res["atoz"]), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
       error => console.log(error),
     );
   }
 
+
+removeDuplicates(){
+let arr = [
+    [{'name':'cat'}, {'name':'lion'}], 
+    [{'name':'elephant'},{'name':'lion'}, {'name':'dog'}],
+    [{'name':'tiger'}, {'name':'mouse'}, {'name':'dog'}]
+    ]
+
+let known = new Set()
+let filtered = arr.map(subarray => 
+    subarray.filter(item => !known.has(item.name) && known.add(item.name))
+)
+
+console.log(filtered)
+}
+
  loadDataFromDropbox() {
     this.subscription = this.dropboxService.getStoryList().subscribe(
-      res => (this.stateGroups = res["atoz"], this.setSearchData(this.stateGroups), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
+      res => (this.stateGroups = res["atoz"], this.removeDuplicates(), this.setSearchData(this.stateGroups), this.newList = res["new"].reverse(), this.limitNewList(), this.loadCoverImage()),
       error => console.log(error),
     );
   }
    
-  removeDuplicates(){
-    
-  }
+
    
   limitNewList(){
       var total = this.newList.length;
