@@ -52,6 +52,7 @@ export class SlideshowComponent implements OnInit {
   scrollTimer;
   fontSizeInt = 24;
   fontSize = "24px";
+  synth;
 
   safeSrc: SafeResourceUrl;
 
@@ -172,6 +173,7 @@ export class SlideshowComponent implements OnInit {
   }
   
   isScrollOn: boolean = false;
+  
   
    toggleTextImageHide(){
      //alert("you pressed b");
@@ -347,7 +349,7 @@ export class SlideshowComponent implements OnInit {
   //  this.render.listen(this.increaseFontSize, 'click', (target)=>{
   //      console.log("bigger font");
   //  });
-    
+    this.synth = window.speechSynthesis;  
     this.nextSlide = document.querySelector('.carousel-control-next');
       this.render.listen(this.nextSlide, 'click', (target)=>{
         // Create an Observable that will publish a value on an interval
@@ -360,7 +362,18 @@ export class SlideshowComponent implements OnInit {
          scrollmenu.scrollLeft = 0;
          this.stopScroll();
        // this.animateScrollText();
-       // console.log("next slide listener");
+        console.log("next slide listener");
+		//console.log(this.slides['slides']);
+		this.currentSlide = this.currentSlide + 1;
+		if (this.currentSlide>this.slides['slides'].length-1){
+			this.currentSlide = this.slides['slides'].length-1;
+		}
+		console.log("this.currentSlide: " + this.currentSlide);
+		var wordofgod = this.slides['slides'][this.currentSlide]['text'];
+		var msg = new SpeechSynthesisUtterance(wordofgod);
+				this.synth.cancel();
+
+        this.synth.speak(msg);  
        var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[10];
      //  console.log(activeEl.className);
        this.checkVideoSlide(activeEl.className);
@@ -379,7 +392,16 @@ export class SlideshowComponent implements OnInit {
 	     var scrollmenu = activeEl.getElementsByTagName('DIV')[0];
          scrollmenu.scrollLeft = 0;
           this.stopScroll();
-           //     console.log("previous slide");
+                console.log("previous slide");
+		this.currentSlide = this.currentSlide - 1;
+	    if (this.currentSlide<-1){
+			this.currentSlide = -1;
+		}
+		console.log("this.currentSlide: " + this.currentSlide);
+		var wordofgod = this.slides['slides'][this.currentSlide]['text'];
+		var msg = new SpeechSynthesisUtterance(wordofgod);
+		this.synth.cancel();
+        this.synth.speak(msg);  			
        var activeEl = document.getElementsByClassName("carousel-indicators")[0].getElementsByTagName("IMG")[12];
      //  console.log(activeEl.className);
        this.checkVideoSlide(activeEl.className);
