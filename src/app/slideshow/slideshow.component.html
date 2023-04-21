@@ -8,6 +8,7 @@
 	  <button mat-menu-item><a href="#"><mat-icon>home</mat-icon></a></button>
 	  <button mat-menu-item [matMenuTriggerFor]="font">Font</button>
 	  <button mat-menu-item [matMenuTriggerFor]="view">View</button>
+	  <button mat-menu-item [matMenuTriggerFor]="languagesAlphabet">Languages</button>
 	</mat-menu>
 
 	<mat-menu #font="matMenu">
@@ -28,15 +29,15 @@
 	  <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>		-->
 	</mat-menu>
 
-	<mat-menu #fish="matMenu">
-	  <button mat-menu-item>Baikal oilfish</button>
+	<mat-menu #languagesAlphabet="matMenu">
+	  <button mat-menu-item [matMenuTriggerFor]="languages">A</button>
 	  <button mat-menu-item>Bala shark</button>
 	  <button mat-menu-item>Ballan wrasse</button>
 	  <button mat-menu-item>Bamboo shark</button>
 	  <button mat-menu-item>Banded killifish</button>
 	</mat-menu>
 
-	<mat-menu #amphibians="matMenu">
+	<mat-menu #languages="matMenu">
 	  <button mat-menu-item>Sonoran desert toad</button>
 	  <button mat-menu-item>Western toad</button>
 	  <button mat-menu-item>Arroyo toad</button>

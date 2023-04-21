@@ -90,13 +90,14 @@ export class QuizComponent implements OnInit{
      this.storytitle = this.storytitle.toUpperCase();
      //this.loadData(filename);
      this.loadDataFromDropbox(filename);
-     this.shuffleChoices();
-     this.setCorrectAnswer();
+
+	 
 
   }
 
   ngAfterViewInit(){
     //this.setChoicesListener();
+
     this.setButtonChoiceIndex();
     this.openFullscreen();
 
@@ -111,7 +112,7 @@ export class QuizComponent implements OnInit{
 
   loadDataFromDropbox(filename) {
     this.subscription = this.dropboxService.getStory(filename).subscribe(
-      res => (this.questions = res["questions"]),
+      res => (this.questions = res["questions"], 	this.shuffleChoices(), this.setCorrectAnswer()),
       error => console.log(error),
     );
   }
@@ -144,9 +145,11 @@ export class QuizComponent implements OnInit{
   }
   
   shuffleChoices(){
+	  
       for (var x=0; x<this.questions.length; x++){
          this.questions[x].choices = this.shuffle(this.questions[x].choices);
       }
+	  console.log("choices: " + this.questions);
   }
 
   getRandomNumberBetween(min,max){

@@ -15,6 +15,7 @@ export class SlideshowService {
 
   private handleError: HandleError;
   url = 'https://gesab001.github.io/assets/story/articles/';
+  bibleVersionsUrl = 'https://raw.githubusercontent.com/gesab001/bibles/main/bibles.json';
   constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler) {
@@ -43,6 +44,17 @@ export class SlideshowService {
     return this._data;
   }
 
+  getBibleVersionsData() {
+    this.clearCache();
+    if (!this._data) {
+      this._data = this.http
+        .get(this.bibleVersionsUrl)
+        .pipe(publishReplay(1), refCount());
+    }
+	console.log(this._data);
+    return this._data;
+  }
+  
   getCachedData(){
           return this._data;
   }

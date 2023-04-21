@@ -370,6 +370,29 @@ export class SlideshowComponent implements OnInit {
 		}
 		console.log("this.currentSlide: " + this.currentSlide);
 		var wordofgod = this.slides['slides'][this.currentSlide]['text'];
+				console.log("bibleversions: " + JSON.stringify(this.bibleversions));
+        var version = this.bibleversions["items"]["english"];
+		console.log("version: " + JSON.stringify(version));
+		var reference; 
+		var book;
+		var chapter;
+		var verses;
+		try{
+			reference  = this.slides['slides'][this.currentSlide]["reference"];
+			book  = reference["book"]
+			chapter = reference["chapter"];
+			verses = reference["verse"];
+			var verseStart = verses["start"];
+			var verseEnd = verses["end"];
+			console.log("reference : " + reference);
+			console.log("book: " + book);
+			console.log("chapter: " + chapter);
+			console.log("verseStart: " + verseStart);
+			console.log("verseEnd: " + verseEnd);
+		} catch(e){
+			console.log(e);
+		}
+
 		var msg = new SpeechSynthesisUtterance(wordofgod);
 				this.synth.cancel();
 
@@ -399,6 +422,25 @@ export class SlideshowComponent implements OnInit {
 		}
 		console.log("this.currentSlide: " + this.currentSlide);
 		var wordofgod = this.slides['slides'][this.currentSlide]['text'];
+		var reference; 
+		var book;
+		var chapter;
+		var verses;
+		try{
+			reference  = this.slides['slides'][this.currentSlide]["reference"];
+			book  = reference["book"]
+			chapter = reference["chapter"];
+			verses = reference["verse"];
+			var verseStart = verses["start"];
+			var verseEnd = verses["end"];
+			console.log("reference : " + reference);
+			console.log("book: " + book);
+			console.log("chapter: " + chapter);
+			console.log("verseStart: " + verseStart);
+			console.log("verseEnd: " + verseEnd);
+		} catch(e){
+			console.log(e);
+		}
 		var msg = new SpeechSynthesisUtterance(wordofgod);
 		this.synth.cancel();
         this.synth.speak(msg);  			
@@ -546,6 +588,7 @@ export class SlideshowComponent implements OnInit {
   }
 
   slides: any;
+  bibleversions: any;
   slidesParam: string;
   filename: string;
   ngOnInit(): void {
@@ -561,18 +604,25 @@ export class SlideshowComponent implements OnInit {
 
         //this.loadData(filename); from github
         this.loadDataFromDropbox(this.filename);
+        this.loadBibleVersionsData();
         this.currentSlide = -1;
 
      });
     
-     this.myCarousel.activeId='0';
+	 try{
+       this.myCarousel.activeId='0';
+		 
+	 }catch(e){
+       console.log(e);
+	 }		 
          this.openFullscreen();
          this.currentActiveClass = document.getElementsByClassName("carousel-indicator-image")[0];
     var element = this.currentActiveClass;
-    alert(this.currentActiveClass());
-    element.style.borderStyle = "solid"; 
-    element.style.borderColor = "blue";
-    element.style.opacity = "1";    
+	
+    //alert(this.currentActiveClass());
+    //element.style.borderStyle = "solid"; 
+    //element.style.borderColor = "blue";
+    //element.style.opacity = "1";    
 
   }
    
@@ -588,6 +638,13 @@ export class SlideshowComponent implements OnInit {
 
   }
  
+ loadBibleVersionsData() {
+    this.subscription = this.slideshowService.getBibleVersionsData().subscribe(
+      res => (this.bibleversions = res),
+      error => console.log(error),
+    );
+
+  }
   loadDataFromDropbox(filename) {
     this.subscription = this.dropboxService.getStory(filename).subscribe(
       res => (this.slides = res, this.slidesParam = JSON.stringify(res),        this.safeSrc = this.getSafeSrc()),
@@ -638,7 +695,7 @@ export class SlideshowComponent implements OnInit {
 	/* View in fullscreen */
  openFullscreen() {
 	  if (this.elem.requestFullscreen) {
-		this.elem.requestFullscreen();
+		//this.elem.requestFullscreen();
 	  } else if (this.elem.webkitRequestFullscreen) { /* Safari */
 		this.elem.webkitRequestFullscreen();
 	  } else if (this.elem.msRequestFullscreen) { /* IE11 */
